@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
       console.log('Password is :', this.password)
 
       this.cs.validateCustomer(this.UserName, this.password).subscribe((response => {
-        console.log(response)
+        console.log("this.cs.validateCustomer response",response)
         this.processbtn = response?.success;
-        console.log(this.processbtn)
+        console.log("process button",this.processbtn)
         if (this.processbtn) {
           this.cs.getCustomer(this.UserName).subscribe((response) => {
             console.log('Response is :', response)
@@ -64,9 +64,6 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-
-
-
 
           console.log(localStorage.getItem("loggedInCustomer"));
           this.router.navigate(['/home']);

@@ -12,20 +12,64 @@
       <div class="menu-text">
         <h6>Grocery</h6>
       </div>  
-    </div>    
+    </div>  
+    
+    
     <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
-      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px;">
-        <span class="material-symbols-outlined" style="color: #2465e7;">
-        sports
-        </span>
-      </div>
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #CAF6E9;border-radius: 5px;">
+        <span class="material-symbols-outlined" style="color: #019063;">  sports_soccer </span>
+        </div>
       <div class="menu-text">
         <h6>Sports</h6>
       </div>
     </div>    
-    <div class="col-md-2 m-1 p-1">Home Applience</div>    
-    <div class="col-md-2 m-1 p-1 ">Electronics</div>    
-    <div class="col-md-2 m-1 p-1">clothes</div>    
+    
+
+
+
+
+
+
+
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #F2C45D;border-radius: 5px;">
+        <span class="material-symbols-outlined" style="color: #85802B;">  kitchen </span>
+        </div>
+      <div class="menu-text">
+        <h6>Home Applience</h6>
+      </div>
+    </div>  
+
+
+
+
+
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #DAEEF7;border-radius: 5px;">
+        <span class="material-symbols-outlined" style="color: #668997;">  laptop_mac </span>
+        </div>
+      <div class="menu-text">
+        <h6>Electronics</h6>
+      </div>
+    </div>  
+
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #FCE7EC;border-radius: 5px;">
+        <span class="material-symbols-outlined" style="color: #F55D78;">  apparel </span>
+        </div>
+      <div class="menu-text">
+        <h6>Clothes</h6>
+      </div>
+    </div>  
+
+
+
+
+
+
+    
+    
+
     </div>
 </div>
 
@@ -35,9 +79,10 @@
   <div class="row d-flex justify-content-center">
 
   <!-- <div class="product-list d-flex"> -->
-    <div class=" col-md-3 product m-2  mb-4" *ngFor="let product of productList">
-      <!-- <div class="" style="position: absolute;">
-        <h5>save 10%</h5>
+    <div class=" col-md-3 product m-2  mb-4 " *ngFor="let product of productList">
+
+      <!-- <div class="border border-dark  py-1 px-3" style="position: absolute;">
+        <h6>Save 10%</h6>
       </div> -->
       <div (click)="productDetails(product.id)">
         <div class="product-img d-flex justify-content-center py-4">
@@ -46,9 +91,11 @@
         <div class="product-details p-2 px-3">
           <h6 class="py-1">{{product.name}}</h6>
           <!-- <p>{{product.description}}</p> -->
-          <h6 class="">
+          <h6 class="d-flex justify-content-between">
             <span class="product-price">₹ {{(product.price).toFixed(2)}}</span>
-            <del><span class="ps-3">{{(product.price * 1.1).toFixed(2)}}</span></del>
+            <del><span class="ps-3">{{(product.price + ((product.price*product.discount))/100).toFixed(2)}}</span></del>
+             <span style="color: #388E3C; font-weight: 700;"> {{product.discount}} % off </span>
+            
           </h6>
         </div>
       </div>

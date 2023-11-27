@@ -19,19 +19,19 @@ export class CustomerService {
   private readonly BASE_URL: string = environment.customerServiceUrl
 
 
-  validateCustomer(emailAdress: string, contactNumber: string): Observable<Response> {
+  validateCustomer(emailAddress: string, contactNumber: string): Observable<Response> {
     // Create an instance of HttpParams
     const params = new HttpParams()
-      .set('emailAdress', emailAdress)
+      .set('emailAddress', emailAddress)
       .set('contactNumber', contactNumber);
-    //console.log('params is :', params)
+    console.log('params is :', params)
     return this.http.get<Response>(this.BASE_URL + 'validateCustomer', ({ params }))
   }
   
 
-  getCustomer(emailAdress: string): Observable<Response> {
+  getCustomer(emailAddress: string): Observable<Response> {
     const params = new HttpParams()
-      .set('emailAdress', emailAdress)
+      .set('emailAdd  ress', emailAddress)
     return this.http.get<Response>(this.BASE_URL + 'getCustomer', ({ params }))
   }
 

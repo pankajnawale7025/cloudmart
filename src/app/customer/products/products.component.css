@@ -48,7 +48,9 @@ h6{
   .product:hover{
     cursor: pointer;
   }
-
+ .discount-div.menu-icon{
+  
+ }
   .menus {
     border-radius: 1px;
     /* margin: 1px; */

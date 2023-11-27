@@ -76,7 +76,8 @@ backToHome()
       name: 'Product 1',
       description: 'Description for Product 1',
       price: 19.99,
-      imageurl: "assets/Perfume.jpg"
+      imageurl: "assets/Perfume.jpg",
+      discount:0
     }
   ]
 
