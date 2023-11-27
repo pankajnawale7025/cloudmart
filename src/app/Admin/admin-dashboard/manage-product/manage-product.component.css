@@ -1,0 +1,135 @@
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: #007BFF;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    background-color: #dddddd;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.excelgeneration {
+    display: flex;
+    justify-content: center;
+}
+
+
+.excelgeneration input {
+    margin-right: 27px;
+    height: 45px;
+    margin-top: 9px;
+    border-radius: 17px;
+}
+
+.main button {
+
+    justify-content: space-evenly;
+}
+
+
+.pagination-btn {
+
+    display: flex;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+
+    h6 {
+
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0px 13px;
+    }
+}
+
+.Delete-btn {
+    color: white;
+    border-radius: 5px;
+    background: #e97461;
+    border: none;
+    padding: 6px 16px;
+
+}
+
+.update-btn {
+    color: white;
+    border-radius: 5px;
+    padding: 6px 16px;
+    background: #0e7db3;
+    border: none;
+}
+
+.imagediv {
+    display: flex;
+    justify-content: center;
+}
+
+.imagediv img {
+    width: 30%;
+}
+
+
+/* Apply styles to the parent container with the *ngIf directive */
+.addProductDiv {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Apply styles to the input fields and labels */
+.name-div,
+.category-div,
+.price-div,
+.imageurl {
+    margin-bottom: 10px;
+}
+
+/* Style the buttons */
+.update-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Apply styles to the success message */
+.addedmsg {
+    margin-top: 20px;
+    font-size: 18px;
+    color: green;
+}
+
+.addProductMain {
+    display: flex;
+    justify-content: center;
+}
+.select-div select{
+    margin-bottom: 08px;
+    margin-right: 27px;
+    border-radius: 5px;
+    width: 188px;
+    height: 32px;
+}
+

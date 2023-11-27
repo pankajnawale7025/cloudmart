@@ -1,0 +1,95 @@
+<div class="main">
+
+    <div>
+        <h3> Welcome to admin dashboard</h3>
+        <div>
+            <p> Admin can manage user and product details.</p>
+        </div>
+    </div>
+
+    <div>
+        <h3> manage user </h3>
+
+        <button routerLink="/Adminlogin/manageUser">Click here</button>
+    </div>
+    <div>
+        <h3> manage Admin </h3>
+        <button routerLink="/Adminlogin/manageAdmin">Click here </button>
+    </div>
+
+    <div>
+        <h3>Manage Products</h3>
+          <button routerLink="/Adminlogin/manageProduct"> Click here </button>
+      </div>
+    </div>
+
+
+
+
+    <div class="allproduct" *ngIf="showPrTable">
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <td>sr no. </td>
+                    <td>Name</td>
+                    <td>Price </td>
+                    <td>Category </td>
+                    <td>Update </td>
+                    <td>Delete </td>
+                    <td>Image </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of re.content; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.category}}</td>
+                    <td><button class="update-btn" (click)="(item)">Update Quantity ( Pending )</button></td>
+                    <td><button class="Delete-btn" (click)="deleteProduct(item)">Delete</button></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination_btn">
+            <div class="m-1" *ngFor="let item of totalPagesarray; let i = index">
+                <button class="page-btn" (click)="getPageWiseProduct(i,pageSize)">{{i+1}}</button>
+            </div>
+            <div class="dropdown">
+                <h6>Select the page Size </h6>
+                <select name="pageSize" id="pageSize" (change)="onPageSizeBtnClick($event)">
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="addProductTableDiv">
+        <div class="addProductDiv">
+
+            <div class="name-div">
+                <input type="text" placeholder="Enter the Name" name="name" [(ngModel)]="product.name"><br><br>
+            </div>
+
+            <div class="category-div">
+                <input type="text" placeholder="Enter the category" name="category"
+                    [(ngModel)]="product.category"><br><br>
+            </div>
+            <div class="price-div">
+                <input type="text" placeholder="Enter the price" name="price" [(ngModel)]="product.price"><br><br>
+            </div>
+            <div class="imageurl">
+                <input type="text" placeholder="Enter the  image path in project " name="imageurl"
+                    [(ngModel)]="product.imageurl"><br><br>
+            </div>
+            <div class=" Add-button "><button class="update-btn" (click)="addProduct()"> Add Product</button></div>
+        </div>
+
+    </div>
+
+    <div>
+        <router-outlet></router-outlet> 
+    </div>

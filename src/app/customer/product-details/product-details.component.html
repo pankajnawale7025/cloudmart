@@ -1,0 +1,25 @@
+<div class="container">
+<div class="row">
+
+  <div class="product-details">
+    <img [src]="p.responseData.imageurl" alt=" img not added in database ">
+    <h2>{{ p.responseData.name }}</h2>
+    <p>{{ p.responseData.category }}</p>
+    <p>Price:  ₹ {{p.responseData.price  }}</p>
+    <div class="increment-decrement">
+      <div><button (click)="decrement()">-</button></div>
+      <div>{{value}}</div>
+      <div> <button (click)="increment()" >+</button></div>
+    </div>
+    
+    <div> Total Amount :₹ {{p.responseData.price*value}}</div>
+    
+    <button  class="addbtn"(click)="addToCart(p.responseData.id)">Add to Cart</button>
+    <!-- 
+      <div *ngIf="showSucessMessage"><h1>Products added successfully </h1></div>
+    </div>
+  -->
+  <!-- <h1>{{p.responseData.name}}</h1> -->
+  <!-- <button (click)="showSuccessAlert()">Show Success Alert</button> -->
+</div>
+</div>

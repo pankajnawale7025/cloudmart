@@ -1,0 +1,18 @@
+<div class="main-login">
+    <div>
+        <label for="Username"><b>Username</b></label>
+        <input type="text" placeholder="Email-Adress" [(ngModel)]="UserName" name="UserName">
+    </div>
+    <div>
+        <label for="Password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password">
+    </div>
+    <div>
+        <button (click)="login()">LogIn</button>
+    </div>
+    <div *ngIf="errdiv">
+        <h6>Please Enter valid username or password or else sign up</h6>
+        
+            <button (click)="toSignUp()">Sign Up</button>
+    </div>
+</div>

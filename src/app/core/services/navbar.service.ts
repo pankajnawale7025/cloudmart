@@ -1,0 +1,40 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NavbarService {
+
+
+   cartitem:any=0;
+    
+  constructor() { }
+
+
+  home:boolean=true;
+  login:boolean=true;
+  signUp:boolean=true;
+  search:boolean=true;
+
+  about:boolean=false;
+  cart:boolean=false;
+  products:boolean=false;
+  orderHistrory:boolean=false;
+  logout:boolean=false;
+  admin:boolean=false;
+  navbar:boolean=true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,63 @@
+<div class="allProductdata" class="scroll-container">
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <td>sr no. </td>
+                <td class=" align-items-centre">
+                    Name 
+                    <span class="material-symbols-rounded"  (click)="ascOrder('name')">
+                        arrow_drop_up
+                    </span>
+                    <span class="material-symbols-rounded" (click)="descOrder('name')">
+                        arrow_drop_down
+                    </span>
+                </td>
+                <td>Price
+                    <span class="material-symbols-rounded"  (click)="ascOrder('price')">
+                        arrow_drop_up
+                    </span>
+                    <span class="material-symbols-rounded" (click)="descOrder('price')">
+                        arrow_drop_down
+                    </span> </td>
+                <td>Category 
+                    <span class="material-symbols-rounded"  (click)="ascOrder('category')">
+                        arrow_drop_up
+                    </span>
+                    <span class="material-symbols-rounded" (click)="descOrder('category')">
+                        arrow_drop_down
+                    </span>
+                </td>
+                <td>Emnter the Quantity</td>
+                <td>Add to Cart </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of response.responseData.content; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.category}}</td>
+                <td><input type="text" class="Qtext" placeholder="Enter the Quantity" (input)="setQuantity($event)">
+                </td>
+                <td><button class="update-btn" (click)="addProductToCart(item)">Add to cart </button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <div class="pagination_btn me-5 pe-5">
+        <div class="m-1" *ngFor="let item of totalPagesarray; let i = index">
+            <button class="page-btn" (click)="getPageWiseProduct(i,pageSize)">{{i+1}}</button>
+        </div>
+
+        <div class="dropdown">
+            <h6>Select the page Size </h6>
+            <select name="pageSize" id="pageSize" (change)="onPageSizeBtnClick($event)">
+                <option value=5>5</option>
+                <option value=10>10</option>
+                <option value=15>15</option>
+                <option value=20>20</option>
+            </select>
+        </div>
+    </div>

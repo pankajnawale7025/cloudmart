@@ -1,0 +1,107 @@
+<div class="main">
+    <button (click)="addCustomer()" class="btn me-5">Add User</button>
+    <button (click)="viewCustomer()" class="btn">View User </button>
+</div>
+<div *ngIf="vct">
+    <div class="allUSer">
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <td>sr no.</td>
+                    <td>Name</td>
+                    <td>Surname </td>
+                    <td>Contact Number </td>
+                    <td>Email Address </td>
+                    <td>Address </td>
+                    <td>Orders</td>
+                    <td>Update</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of response; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.surName}}</td>
+                    <td>{{item.contactNumber}}</td>
+                    <td>{{item.emailAddress}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.customerOrderList.length}}</td>
+                    <td><button class="update-btn" (click)="updateUser(item)">Update Customer</button></td>
+                    <td><button class="Delete-btn" (click)="deleteUser(item)">Delete</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="adct">
+    <div class="addCustomerDiv">
+
+        <div class="container">
+            <h1>Register Customer </h1>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" [(ngModel)]="customer.name" />
+            </div>
+            <div class="form-group">
+                <label for="surName">Surname:</label>
+                <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" />
+            </div>
+            <div class="form-group">
+                <label for="emailAdress">Email Address:</label>
+                <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" />
+            </div>
+            <div class="form-group">
+                <label for="adress">Address:</label>
+                <input type="text" id="adress" name="adress" [(ngModel)]="customer.address" />
+            </div>
+            <input type="submit" (click)="addCustomerInDatabase()" value="Add Customer">
+        </div>
+        <div class="msgdiv">
+
+            <div class="errdiv" *ngIf="errmsgforadd">
+                <h3>Please Cheack Input's</h3>
+            </div>
+            <div class="msgdiv" *ngIf="sccmsgforadd">
+                <h3>Customer Registered</h3>
+            </div>
+        </div>
+     </div>
+</div>
+
+<div *ngIf="upct" >
+<div class="addCustomerDiv">
+
+    <div class="container">
+        <h1>Update Customer </h1>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="customer.name" />
+        </div>
+        <div class="form-group">
+            <label for="surName">Surname:</label>
+            <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
+        </div>
+        <div class="form-group">
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" />
+        </div>
+        <div class="form-group">
+            <label for="emailAdress">Email Address:</label>
+            <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" />
+        </div>
+        <div class="form-group">
+            <label for="adress">Address:</label>
+            <input type="text" id="adress" name="adress" [(ngModel)]="customer.address" />
+        </div>
+        <input type="submit" (click)="updateCustomerInDatabase()" value="Update Customer">
+    </div>
+</div>
+</div>

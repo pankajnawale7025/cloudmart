@@ -1,0 +1,28 @@
+body   
+{  
+/* padding: 30px;   */
+background-size: cover;  
+font-family: sans-serif;  
+}  
+ul {  
+    background-color: #5c6476;  
+
+  
+     display: flex;
+    display: blocks;
+    padding: 10px 25px;
+    
+}  
+ul li{
+    margin-left: 18px;
+    display: inline;
+}
+ul li a{
+       text-decoration: none;
+    color :white
+   }
+
+  .active
+  {
+    border-bottom: 2px solid white;
+  }

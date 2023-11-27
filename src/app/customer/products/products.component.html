@@ -1,0 +1,79 @@
+
+<div class="container-fluid pt-3" style="background-color: #EFF1F5;">
+  <div class="row menus d-flex justify-content-center ps-5 mb-5">
+  
+
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px;">
+        <span class="material-symbols-outlined" style="color: #2465e7;">
+        grocery
+        </span>
+      </div>
+      <div class="menu-text">
+        <h6>Grocery</h6>
+      </div>  
+    </div>    
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px;">
+        <span class="material-symbols-outlined" style="color: #2465e7;">
+        sports
+        </span>
+      </div>
+      <div class="menu-text">
+        <h6>Sports</h6>
+      </div>
+    </div>    
+    <div class="col-md-2 m-1 p-1">Home Applience</div>    
+    <div class="col-md-2 m-1 p-1 ">Electronics</div>    
+    <div class="col-md-2 m-1 p-1">clothes</div>    
+    </div>
+</div>
+
+
+<div class="container">
+
+  <div class="row d-flex justify-content-center">
+
+  <!-- <div class="product-list d-flex"> -->
+    <div class=" col-md-3 product m-2  mb-4" *ngFor="let product of productList">
+      <!-- <div class="" style="position: absolute;">
+        <h5>save 10%</h5>
+      </div> -->
+      <div (click)="productDetails(product.id)">
+        <div class="product-img d-flex justify-content-center py-4">
+          <img [src]="product.imageurl" alt="{{product.name}}" class="product-image">
+        </div>
+        <div class="product-details p-2 px-3">
+          <h6 class="py-1">{{product.name}}</h6>
+          <!-- <p>{{product.description}}</p> -->
+          <h6 class="">
+            <span class="product-price">₹ {{(product.price).toFixed(2)}}</span>
+            <del><span class="ps-3">{{(product.price * 1.1).toFixed(2)}}</span></del>
+          </h6>
+        </div>
+      </div>
+    </div>
+    
+  <!-- </div> -->
+    
+  
+  
+</div>
+
+<!-- 
+<div class="product-list">
+  <div class="product" *ngFor="let product of productList">
+    <div (click)="productDetails(product.id)">
+      <img [src]="product.imageurl" alt="{{product.name}}" class="product-image">
+      <div class="product-details">
+        <h3>{{product.name}}</h3>
+        <p>{{product.description}}</p>
+        <span class="product-price">₹ {{product.price}}</span>
+      </div>
+    </div>
+  </div> -->
+<!--   
+  <div *ngIf="errmsgforsearch">
+    <h1>Above is the result you search </h1>
+    <h6><a href='' (click)="backToHome()">Home Page</a></h6>
+  </div> -->

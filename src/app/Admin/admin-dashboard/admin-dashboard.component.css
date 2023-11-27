@@ -1,0 +1,103 @@
+/* Style the container div */
+.product-btn {
+    text-align: center;
+}
+
+.product-btn button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-btn button:hover {
+    background-color: #2980b9;
+    /* Change the background color on hover */
+}
+
+.update-btn {
+    color: white;
+    border-radius: 5px;
+    background: #0e7db3;
+    border: none;
+    padding: 6px 16px;
+}
+
+.Delete-btn {
+    color: white;
+    border-radius: 5px;
+    background: #e97461;
+    border: none;
+    padding: 6px 16px;
+}
+
+.pagination_btn {
+
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+
+    .page-btn {
+        border-radius: 5px;
+    }
+}
+
+.addProductDiv {
+    display: flex;
+    justify-content: centre;
+    display: block;
+    border: 1px solid;
+    background-color: whitesmoke;
+    margin-left: 1000px;
+    box-shadow: 10px 10px lightblue;
+
+}
+
+.addProductDiv {
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+
+
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 51vh;
+    background-color: #f0f0f0;
+}
+
+.main>div {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

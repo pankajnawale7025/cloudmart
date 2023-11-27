@@ -1,0 +1,48 @@
+.allProductdata{
+    margin: 80px;
+   
+
+}
+.update-btn{
+    color: white;
+    border-radius: 5px;
+    background: #0e7db3;
+    border: none;
+    padding: 6px 16px;
+}
+.Delete-btn{
+    color: white;
+    border-radius: 5px;
+    background: #e97461;
+    border: none;
+    padding: 6px 16px;
+}
+.Qtext{
+ 
+    border-radius: 5px;
+    border-radius: 1px ;
+}
+.pagination_btn{
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+
+    .page-btn{
+        border-radius: 5px;
+    }
+}
+.scroll-container{
+    margin: 80px;
+    height: 500px; 
+    overflow: auto;
+}
+.dropdown
+{
+    display: flex;
+    align-items: center;
+    margin-left: 82px;
+}
+    .dropdown select {
+    margin: 12px;
+    font-family: sans-serif;
+}

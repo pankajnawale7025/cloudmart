@@ -1,0 +1,52 @@
+<!-- 
+<div class="grid-container">
+
+    <div class="allProductdata">
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                <td>sr no. </td>
+                <td>localDate</td>
+                <td>finalTotalPrice </td>
+                <td>View in Detail</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of response.responseData; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{item.localDate}}</td>
+                <td>{{item.finalTotalPrice}}</td>
+                <td><button (click)="OrderDetails(item.id)">more information </button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div> -->
+
+
+<div class="container">
+    <div class="col-md-6 Order-History">
+        <div class="single-order" *ngFor="let item of response  let i=index">
+            <!-- <pre>{{item|json}}</pre> -->
+            <h3>Date is : {{item.localDate}}</h3>
+            <h3>Price : ₹ {{item.finalTotalPrice}}</h3>
+            <div class="image-outerdiv">
+
+                <div *ngFor="let ite of item.orderitemList  let k=index">
+                    <img src={{ite.product.imageurl}} alt="img not found">
+                </div>
+            </div>
+
+            <button (click)="OrderDetails(item.id)">more information </button>
+        </div>
+
+
+
+        <div class="cont" *ngIf="showerrmsg">
+            <h1>Excited to see your First Order Shop Now</h1>
+            <button (click)="toHome()">Shop Now</button>   
+        </div> 
+
+
+    </div>
+</div>

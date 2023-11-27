@@ -1,0 +1,77 @@
+
+button {
+    background-color: #6c776d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #5a6b5b;
+}
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    background-color: #eed4d4;
+}
+
+.main button{
+
+    justify-content: space-evenly;
+}
+
+/* ADD CUSTOMER */
+
+.addCustomerDiv {
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+label {
+    display: block;
+    font-weight: bold;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.errdiv
+{
+
+    justify-content: center;
+    display: flex;
+    color: #f11111;
+
+}
+.msgdiv{
+
+    justify-content: center;
+    display: flex;
+    color: #1bcf33;
+}

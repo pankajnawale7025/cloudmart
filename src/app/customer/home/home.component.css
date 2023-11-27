@@ -1,0 +1,31 @@
+.category-type {
+
+display: flex;
+justify-content: center;
+
+}
+.category-type-all-menu{
+    display: flex;
+    border-radius: 5px;
+    background-color: #e3e3e3;
+    color: black;
+}       
+.cat-single-menu{
+    margin: 0px 10px ;
+    
+}
+ul{
+    display: flex;
+
+}
+.cat-btn{
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cat-img img{
+        height: 70px;
+        width: 100px;
+}
+

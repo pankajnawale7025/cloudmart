@@ -1,0 +1,86 @@
+<!-- <body>
+  <ul class="py-3 ps-3">
+    <li><a routerLink="home" routerLinkActive='active' *ngIf="navbarService.home">Home</a></li>
+    <li><a [routerLink]="'cart'" [routerLinkActive]="'active'" *ngIf="navbarService.cart">
+        Cart
+        <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg"
+          alt="Cart" class="_1XmrCc _1FTDbN" width="24" height="24">
+        <i class="fa badge fa-lg" attr.value={{cartitemNumber}}>&#xf290;</i></a></li>
+
+
+
+    <li><a routerLink="products" [routerLinkActive]="'active'" *ngIf="navbarService.products">Products</a></li>
+
+    <li><a routerLink="orderhistory" [routerLinkActive]="'active'" *ngIf="navbarService.orderHistrory">Order History</a>
+    </li>
+
+    <li *ngIf="navbarService.about"><a routerLink="about" [routerLinkActive]="'active'"
+        *ngIf="navbarService.about">About</a></li>
+
+    <li *ngIf="navbarService.admin"><a routerLink="login" [routerLinkActive]="'active'">Admin<img
+          src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-815786.svg"
+          alt="Pankaj" class="-dOa_b L_FVxe" width="24" height="24"></a></li>
+
+
+    <li *ngIf="navbarService.search"> <input type="text" placeholder="Search..." (event)="searchDataByEvent($event)"
+        [(ngModel)]="searchedData">&nbsp;
+      <button class="search-btn" (click)="searchData()">Search</button>
+
+    <li><a routerLink="login" [routerLinkActive]="'active'" *ngIf="navbarService.login">Login</a></li>
+
+    <li *ngIf="navbarService.signUp"><a routerLink="signup" [routerLinkActive]="'active'">Sign Up</a></li>
+
+    <li><a routerLink="login" [routerLinkActive]="'active'" (click)="logoutCustomer()" login:boolean=true;
+        *ngIf="navbarService.logout">Logout</a></li>
+  </ul>
+</body> -->
+<div class="container-fluid px-5 py-3" style="background-color: #EFF1F5;">
+  <div class="row">
+    <div class="col-md-3" [routerLink]="'home'" [routerLinkActive]="'active'"  style="cursor: pointer;">
+      <h5>CloudMart</h5>
+    </div>
+    <div class="col-md-6 d-flex">
+      <input class="form-control mx-2" type="text" placeholder="Search..." [(ngModel)]="searchedData">
+      <button class="btn btn-secondary search-btn" (click)="searchData()">Search</button>
+    </div>
+    <div class="col-md-3 d-flex justify-content-end align-items-center">
+      <div>
+        <li><a routerLink="login" [routerLinkActive]="'active'" *ngIf="navbarService.login">Login</a></li>
+        <li *ngIf="navbarService.signUp"><a routerLink="signup" [routerLinkActive]="'active'">Sign Up</a></li>
+      </div>
+      <div class="d-flex">
+        <div class="cart">
+          <a [routerLink]="'cart'" [routerLinkActive]="'active'" *ngIf="navbarService.cart">
+            <img
+              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg"
+              alt="Cart" class="_1XmrCc _1FTDbN" width="24" height="24">
+          </a>
+        </div>
+        <div class="ms-4" *ngIf="navbarService.cart">
+          <button class="profile-btn btn" (click)="changeProfileStatus()">{{cs.loggedInCustomer.name}}</button>
+        </div>
+
+        <div class="drop-down d-flex flex-column px-3 py-3" style="background-color: antiquewhite;position: absolute;
+          margin-top: 46px; border-radius: 8px;" *ngIf="profileOptions">
+
+          <div>
+            <a class="d-flex align-items-center mb-2" routerLink="about" [routerLinkActive]="'active'"><span
+              class="material-symbols-outlined" (click)="changeProfileStatus()">person</span>Profile</a>
+          </div>
+          <div>
+            <a class="d-flex align-items-center mb-2" routerLink="orderhistory" [routerLinkActive]="'active'" (click)="changeProfileStatus()"><span class="material-symbols-outlined">
+              package_2
+              </span>Orders</a>
+          </div>
+          <div>
+            <a class="d-flex align-items-center" routerLink="login" [routerLinkActive]="'active'" (click)="logoutCustomer()" login:boolean=true;
+              *ngIf="navbarService.logout"><span class="material-symbols-outlined">
+                logout
+                </span>Logout</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

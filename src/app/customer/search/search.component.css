@@ -1,0 +1,129 @@
+.main{
+    /* padding: 0px;
+ vertical-align: auto;
+ display: flex; */
+ display: flex;
+}
+
+.back-btn-div span
+{
+cursor: pointer;
+font-size: 30px;
+}
+.serachresult{
+
+    display: flex;
+    justify-content: center;
+}
+.filter{
+display: block;
+padding: 100px;
+width: 400px;
+justify-content: center;
+}
+.min-max{
+    display: flex;
+}
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .product {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    padding-left: 50px;
+    height: 250px;
+  }
+  
+  .product-details {
+    text-align: left;
+  }
+  
+  .product-price {
+    font-weight: bold;
+    color: #e81a24;
+  }
+  .increment-decrement{
+    border-radius: 5px;
+    flex: content;
+    justify-content: center;
+  }
+  img
+  {
+    padding-left: 50px;
+    height: 250px;
+  }
+  button.search-btn {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+}
+
+button.search-btn:hover {
+    background-color: #ff6600; /* Change the color when the button is hovered */
+}
+.searchbar{
+  display: flex;
+  justify-content: center;
+}
+
+
+.product-p{
+  border: 1px solid #ededed;
+}
+/* Style the container div */
+.slidecontainer {
+  text-align: center; /* Center the content horizontally */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+/* Style the range input */
+.slider {
+  width: 80%; /* Set the width of the range input */
+}
+
+
+.slidecontainer input[type="text"] {
+  width: 150px; 
+  padding: 5px; 
+  margin: 5px; 
+  border-radius: 5px;
+}
+
+
+button {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px;
+  border: none; 
+  cursor: pointer; 
+  border-radius: 4px;
+}
+
+
+button:hover {
+  background-color: #45a049; 
+}
+.back-btn:hover {
+  cursor: pointer; 
+  
+}
+  .product-p:hover{
+    cursor: pointer;
+  }

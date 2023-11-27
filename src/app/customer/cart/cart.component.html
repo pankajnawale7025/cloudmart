@@ -1,0 +1,74 @@
+<!-- <div class="cartitem" *ngIf="showcartitem">
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <td>sr no. </td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Category</td>
+                <td>Quantity</td>
+                <td>TotalPrice</td>
+                <td>delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartItems.responseData; let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.price}}</td>
+                <td>{{item.product.category}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.totalPrice}}</td>
+                <td><button (click)=deleteItemFromCart(item.id)>delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+-->
+<div class="container" *ngIf="showerrmsg">
+    <h1>cart is Empty</h1>
+    <button (click)="toHome()">Shop Now</button>
+
+</div> 
+
+
+
+
+<div class="product-list">
+    <div class="product" *ngFor="let item of cartItems.responseData">
+        <div>
+            <img [src]="item.product.imageurl" alt="Image not added in database" class="product-image">
+            <div class="product-details">
+                <h3>{{item.product.name}}</h3>
+                <p>{{item.product.category}}</p>
+                <span class="product-price">rs {{item.product.price}}</span>
+                <td><button (click)=deleteItemFromCart(item.id)>Remove From Cart</button></td>
+            </div>
+            <div>
+                <p>Quantity is :{{item.quantity}}
+                </p>
+                <div>
+
+                    <button (click)="updateQuantity(item.product.id,item.id)">Update Quantity</button>
+                </div>
+
+                <div class="total-price">
+ q
+                    <p>Total Price is :{{item.quantity*item.product.price}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1> </h1>
+        <h6></h6>
+    </div>
+</div>
+
+
+<div *ngIf="showfinalTotalPrice">
+    <h6 class="final-price">Total price is : ₹ {{finaltotalPrice}} </h6>
+</div>
+<div *ngIf="showprocessbtn">
+    <button class="process-btn" (click)="processOrder()">Process Order</button>
+</div>
