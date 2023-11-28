@@ -1,3 +1,5 @@
+import { Category } from "./Object-model";
+
 export class Product {
     id: number;
     name: string;
@@ -5,6 +7,8 @@ export class Product {
     price: number;
     imageurl:string
     discount:number;
+    categoryInProduct:Category
+    stockQuantity:number
   
     constructor(
       id?: number,

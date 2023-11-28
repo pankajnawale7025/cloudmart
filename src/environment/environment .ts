@@ -6,5 +6,7 @@ export const environment = {
     orderServiceUrl:'http://localhost:8081/CustomerOrder/',
     customerServiceUrl:'http://localhost:8081/customer/'    ,
     cartServiceUrl:'//localhost:8081/cart/',
-    cartItemsServiceUrl:"//localhost:8081/cartItem/"
+    cartItemsServiceUrl:"//localhost:8081/cartItem/",
+  categoryUrl: '//localhost:8081/category/'
+
 };

@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './customer/cart/cart.component';
 import { OrderComponent } from './customer/order/order.component';
 import { OrderhistoryComponent } from './customer/orderhistory/orderhistory.component';
-import { ProductsComponent } from './customer/products/products.component';
+import { ProductsComponent } from './customer/products/ProductsComponent';
 import { ProductDetailsComponent } from './customer/product-details/product-details.component';
 import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard.component';
 import { OrderDetailsComponent } from './customer/order-details/order-details.component';

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { any } from 'list';
+import { Category } from 'src/app/core/model/Object-model';
 import { Product } from 'src/app/core/model/Product';
 import { ProductsService } from 'src/app/core/services/products.service';
 import Swal from 'sweetalert2';
@@ -22,7 +24,7 @@ export class ManageProductComponent {
   showProductTable: boolean = false;
   showupdateform: boolean = false;
   responseForUpdate: any;
-  dropdownData: any[] = ["Select", "Grocery", "Electronics","Home applience","Sport","Clothes"];
+  dropdownData: Category[] = [];
 
 
   constructor(private productService: ProductsService) { }
@@ -30,22 +32,82 @@ export class ManageProductComponent {
   addProduct() {
     this.showProductTable = this.showProductTable == true ? false : false;
     this.addProductTableDiv = this.addProductTableDiv == true ? false : true;
+
+
+    this.productService.listOfCategory().subscribe((response) => {
+      
+      console.log("Response is :", response)
+      this.dropdownData = response.responseData
+      
+            console.log("  Before  Sorting this.dropdownData is :", this.dropdownData)
+       this.dropdownData .sort((a, b) => {
+        const category_idA = a.category_id; // Ignore case for comparison
+        const category_idB = b.category_id;
+                if (category_idA < category_idB) {
+          return -1; // a comes before b
+        }
+        if (category_idA > category_idB) {
+          return 1; // a comes after b
+        }
+        return 0; // names are equal
+      });
+
+
+
+
+
+
+
+
+
+      console.log("  A  fter Sorting this.dropdownData is :", this.dropdownData)
+    }
+    )
+
+
+
+
   }
+  dynamicString:string="Error";
   addProductInDatabase() {
-    console.log(this.product);
-      if(this.product.category!=null && this.product.category!="Select")
-{  this.productService.addProduct(this.product).subscribe((data => {
-    this.addedmsg = true;
-  }));
-}
-else
+    console.log("product is ===>",this.product);
+    if (this.product.categoryInProduct != null && this.product.category != "Select Category" && this.product.categoryInProduct.category_id!=1 ) {
+      this.productService.addProduct(this.product).subscribe((data => {
+
+
+if(data.success)
 {
-  Swal.fire("Please Select Valid Category")
-  
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Product has been Added",
+    showConfirmButton: false,
+    timer: 1500
+  });
 }
+    this.addedmsg = true;
+      }),
+      (error)=>{
+  console.log(error)
+        console.log(error.error.errorMessage)
+        this.dynamicString=error.error.errorMessage
+        
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          //title: 'Product is not saved, ${this.dynamicString }!',
+          title: `Product is not saved, ${this.dynamicString }!`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    
+      );
+    }
+    else {
+      Swal.fire("Please Select Valid Category")
 
-
-
+    }
   }
 
 
@@ -248,23 +310,27 @@ else
 
 
 
-  selectCategory(selectCategory: any) {
-    //console.log(selectCategory.target.value)
+  category: Category;
 
+   selectCategory(selectedCategory:  any) {
+     console.log(selectedCategory.target.value)
+    // console.log(this.dropdownData.find(category=>category.category_id===selectedCategory.target.value))
+      let category1=this.dropdownData.find((a) =>a.category_id == selectedCategory.target.value);
+      this.category = category1?category1:{category_id:0, category:'',productList:[]}
+      this.product.categoryInProduct= this.category
+      console.log(this.category)
+    if (selectedCategory.target.value == 1) {
 
+      Swal.fire("Please Select Valid Category")
+      console.log("valid input");
 
-if(selectCategory.target.value=="Select")
-{
-  
-  Swal.fire("Please Select Valid Category")
-  console.log("valid input");
-  this.product.category = selectCategory.target.value
-}
+    }
 
-else{
-  this.product.category = selectCategory.target.value
-      console.log( " this.product.category===>",this.product.category)
-}
+    // else{
+    //   this.product.category = selectCategory.target.value
+    //       console.log( " this.product.category===>",this.product.category)
+    // }
+
   }
 
 

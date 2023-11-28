@@ -36,7 +36,7 @@
 </body> -->
 <div class="container-fluid px-5 py-3" style="background-color: #EFF1F5;">
   <div class="row">
-    <div class="col-md-3" [routerLink]="'home'" [routerLinkActive]="'active'"  style="cursor: pointer;">
+    <div class="col-md-3" [routerLink]="'home'" [routerLinkActive]="'active'" style="cursor: pointer;">
       <h5>CloudMart</h5>
     </div>
     <div class="col-md-6 d-flex">
@@ -55,6 +55,7 @@
               src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg"
               alt="Cart" class="_1XmrCc _1FTDbN" width="24" height="24">
           </a>
+          <i class="fa badge fa-lg"  *ngIf="navbarService.cart" attr.value={{navbarService.cartitem}} >&#xf290;</i>
         </div>
         <div class="ms-4" *ngIf="navbarService.cart">
           <button class="profile-btn btn" (click)="changeProfileStatus()">{{cs.loggedInCustomer.name}}</button>
@@ -65,18 +66,20 @@
 
           <div>
             <a class="d-flex align-items-center mb-2" routerLink="about" [routerLinkActive]="'active'"><span
-              class="material-symbols-outlined" (click)="changeProfileStatus()">person</span>Profile</a>
+                class="material-symbols-outlined" (click)="changeProfileStatus()">person</span>Profile</a>
           </div>
           <div>
-            <a class="d-flex align-items-center mb-2" routerLink="orderhistory" [routerLinkActive]="'active'" (click)="changeProfileStatus()"><span class="material-symbols-outlined">
-              package_2
+            <a class="d-flex align-items-center mb-2" routerLink="orderhistory" [routerLinkActive]="'active'"
+              (click)="changeProfileStatus()"><span class="material-symbols-outlined">
+                package_2
               </span>Orders</a>
           </div>
           <div>
-            <a class="d-flex align-items-center" routerLink="login" [routerLinkActive]="'active'" (click)="logoutCustomer()" login:boolean=true;
-              *ngIf="navbarService.logout"><span class="material-symbols-outlined">
+            <a class="d-flex align-items-center" routerLink="login" [routerLinkActive]="'active'"
+              (click)="logoutCustomer()" login:boolean=true; *ngIf="navbarService.logout"><span
+                class="material-symbols-outlined">
                 logout
-                </span>Logout</a>
+              </span>Logout</a>
           </div>
         </div>
 

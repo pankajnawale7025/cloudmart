@@ -64,12 +64,15 @@ export class ProductDetailsComponent implements OnInit {
     else {
       this.cartService.addProductToCart(this.cs.loggedInCustomer?.id, productId, this.value).subscribe((data) => {
         this.response = data
+
+        
         //     console.log("Response  is ",this.response)
         this.showSucessMessage = this.response.success
-if(this.showSucessMessage )
-{
-  this.showSuccessAlert()
-}
+        this.navbarService.cartitem= this.response.responseData
+      if(this.showSucessMessage )
+   {
+     this.showSuccessAlert()
+   }
 
         //   console.log("message is ",this.showSucessMessage )
         // setTimeout(() => {

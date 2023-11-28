@@ -11,6 +11,8 @@ import { Product } from '../model/Product';
   constructor(private http: HttpClient) { }
     
   private readonly BASE_URL:string=   environment.productUrl;  
+  private readonly CATEGORY_BASE_URL:string=   environment.categoryUrl;  
+
   allProduct():Observable<Response>
   {
     return this.http.get<Response>(this.BASE_URL+'getAllProduct')
@@ -94,7 +96,10 @@ priceFilter(min:number,max:number) :Observable<Response>{
 }
 
 
+listOfCategory() :Observable<Response>{
+ return this.http.get<Response>(this.CATEGORY_BASE_URL+'listOfCategory');
 
+}
 
 
 

@@ -9,7 +9,7 @@ import { CartComponent } from './customer/cart/cart.component';
 import { OrderComponent } from './customer/order/order.component';
 import { OrderhistoryComponent } from './customer/orderhistory/orderhistory.component';
 import { ProductDetailsComponent } from './customer/product-details/product-details.component';
-import { ProductsComponent } from './customer/products/products.component';
+import { ProductsComponent } from './customer/products/ProductsComponent';
 import { AdminDashboardComponent } from './Admin/admin-dashboard/admin-dashboard.component';
 import { OrderDetailsComponent } from './customer/order-details/order-details.component';
 import { ManageProductComponent } from './Admin/admin-dashboard/manage-product/ManageProductComponent';

@@ -91,10 +91,10 @@
         <div class="product-details p-2 px-3">
           <h6 class="py-1">{{product.name}}</h6>
           <!-- <p>{{product.description}}</p> -->
-          <h6 class="d-flex justify-content-between">
+          <h6 class="d-flex ">
             <span class="product-price">₹ {{(product.price).toFixed(2)}}</span>
             <del><span class="ps-3">{{(product.price + ((product.price*product.discount))/100).toFixed(2)}}</span></del>
-             <span style="color: #388E3C; font-weight: 700;"> {{product.discount}} % off </span>
+             <span class="ps-3" style="color: #388E3C; font-weight: 700;"> {{product.discount}} % off </span>
             
           </h6>
         </div>

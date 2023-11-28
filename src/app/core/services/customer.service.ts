@@ -31,7 +31,7 @@ export class CustomerService {
 
   getCustomer(emailAddress: string): Observable<Response> {
     const params = new HttpParams()
-      .set('emailAdd  ress', emailAddress)
+      .set('emailAddress', emailAddress)
     return this.http.get<Response>(this.BASE_URL + 'getCustomer', ({ params }))
   }
 
@@ -74,10 +74,6 @@ isEmailNotPresent(emailAddress:string)
   return this.http.get<Response>(this.BASE_URL + 'isEmailNotPresent',({ params }))
 
 }
-
-
-
-
 xyz = new Customer();
 loogedOutCustomer()
 {

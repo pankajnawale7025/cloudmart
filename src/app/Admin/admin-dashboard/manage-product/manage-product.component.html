@@ -11,7 +11,7 @@
 
 
 
-        <!-- <div *ngIf="addProductTableDiv">
+<!-- <div *ngIf="addProductTableDiv">
             <div class="addProductMain">
                <div class="addProductDiv">
 
@@ -39,165 +39,138 @@
         </div>
         <div class="addedmsg" *ngIf="addedmsg">
             <h3>Product addd Sucessfully</h3>
-        </div>
+        </div> -->
 
-    </div>
+<!-- </div>
 </div> -->
-<div class="container">
-    <div class="style:">
-        <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+<div class="container" *ngIf="addProductTableDiv">
+    <div class="row justify-content-center"> Add Product </div>
+    <div class="row justify-content-center">
+        <!-- <div class="col-md-6 marg py-2">Add Product </div> -->
+        <div class="col-md-6 marg py-2">
 
-        </div>
+            <input type="text" class="form-control  mt-2 " id="name" placeholder="Enter Name Of Product"
+                [(ngModel)]="product.name">
+            <select class="form-control mt-2 " (change)="selectCategory($event)">
+                <option *ngFor="let item of dropdownData" [value]="item.category_id">{{item.category}}</option>
+            </select>
+            <input type="price" class="form-control mt-2" id="price" placeholder="Enter  the Price of product "
+                [(ngModel)]="product.price">
+            <input type="text" class="form-control mt-2" id="discount" placeholder="Enter discount  on  Product"
+                [(ngModel)]="product.discount">
+            <input type="text" class="form-control mt-2" id="exampleInputEmail1"
+                placeholder="Enter the Stock in Quantity" [(ngModel)]="product.stockQuantity">
+            <input type="text" class="form-control  mt-2 mb-2 " id="image" placeholder="Enter ImageUrl of product"
+                [(ngModel)]="product.imageurl">
 
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div *ngIf="showProductTable" class="container">
-
-    <div class="allProductdata" class="scroll-container">
-        <table class="table" border="1">
-            <thead>
-                <tr>
-                    <td class=" align-items-centre">
-                        Name
-                        <span class="material-symbols-rounded" (click)="ascOrder('name')">
-                            arrow_drop_up
-                        </span>
-                        <span class="material-symbols-rounded" (click)="descOrder('name')">
-                            arrow_drop_down
-                        </span>
-                    </td>
-                    <td>Price
-                        <span class="material-symbols-rounded" (click)="ascOrder('price')">
-                            arrow_drop_up
-                        </span>
-                        <span class="material-symbols-rounded" (click)="descOrder('price')">
-                            arrow_drop_down
-                        </span>
-                    </td>
-                    <td>Category
-                        <span class="material-symbols-rounded" (click)="ascOrder('category')">
-                            arrow_drop_up
-                        </span>
-                        <span class="material-symbols-rounded" (click)="descOrder('category')">
-                            arrow_drop_down
-                        </span>
-                    </td>
-                    <td>Enter the Quantity to update</td>
-                    <td> Update Product</td>
-                    <td> Delete </td>
-                    <td> Image </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of response.responseData.content; let i = index;">
-
-                    <td>{{item.name}}</td>
-                    <td>{{item.price}}</td>
-                    <td>{{item.category}}</td>
-                    <td><input type="text" class="Qtext" placeholder="Enter the Quantity"></td>
-                    <td><button class="update-btn" (click)="updateProduct(item)">Update</button></td>
-                    <td><button class="Delete-btn" (click)="deleteProduct(item)">Delete</button></td>
-                    <td>
-                        <div class="imagediv">
-                            <img src={{item.imageurl}} alt="{{item.name}}">
-
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div>
-        <div class="pagination-btn me-5 pe-5">
-            <div class="m-1" *ngFor="let item of totalPagesarray; let i = index">
-                <button class="page-btn" (click)="getPageWiseProduct(i,pageSize)">{{i+1}}</button>
-            </div>
-            <div class="dropdown">
-                <h6>Select the page Size </h6>
-                <select name="pageSize" id="pageSize" (change)="onPageSizeBtnClick($event)">
-                    <option value=5>5</option>
-                    <option value=10>10</option>
-                    <option value=15>15</option>
-                    <option value=20>20</option>
-                </select>
+            <div class=" Add-button "><button class="update-btn ms-4" (click)="addProductInDatabase()"> Add
+                    Product</button>
             </div>
         </div>
     </div>
 
 
-    <div class="updateForm" *ngIf="showupdateform">
-        <div class="updiv">
 
-            <label for="product_name">Product Name:</label><br>
-            <input type="text" id="product_name" name="name" [(ngModel)]="product.name" required><br><br>
+    <div *ngIf="showProductTable" class="container">
 
-            <label for="product_category">Category:</label><br>
-            <input type="text" id="product_category" name="category" [(ngModel)]="product.category" required><br><br>
+        <div class="allProductdata" class="scroll-container">
+            <table class="table" border="1">
+                <thead>
+                    <tr>
+                        <td class=" align-items-centre">
+                            Name
+                            <span class="material-symbols-rounded" (click)="ascOrder('name')">
+                                arrow_drop_up
+                            </span>
+                            <span class="material-symbols-rounded" (click)="descOrder('name')">
+                                arrow_drop_down
+                            </span>
+                        </td>
+                        <td>Price
+                            <span class="material-symbols-rounded" (click)="ascOrder('price')">
+                                arrow_drop_up
+                            </span>
+                            <span class="material-symbols-rounded" (click)="descOrder('price')">
+                                arrow_drop_down
+                            </span>
+                        </td>
+                        <td>Category
+                            <span class="material-symbols-rounded" (click)="ascOrder('category')">
+                                arrow_drop_up
+                            </span>
+                            <span class="material-symbols-rounded" (click)="descOrder('category')">
+                                arrow_drop_down
+                            </span>
+                        </td>
+                        <td>Enter the Quantity to update</td>
+                        <td> Update Product</td>
+                        <td> Delete </td>
+                        <td> Image </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of response.responseData.content; let i = index;">
 
-            <label for="                   ct_price">Price:</label><br>
-            <input type="number" id="pro
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.category}}</td>
+                        <td><input type="text" class="Qtext" placeholder="Enter the Quantity"></td>
+                        <td><button class="update-btn" (click)="updateProduct(item)">Update</button></td>
+                        <td><button class="Delete-btn" (click)="deleteProduct(item)">Delete</button></td>
+                        <td>
+                            <div class="imagediv">
+                                <img src={{item.imageurl}} alt="{{item.name}}">
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <div class="pagination-btn me-5 pe-5">
+                <div class="m-1" *ngFor="let item of totalPagesarray; let i = index">
+                    <button class="page-btn" (click)="getPageWiseProduct(i,pageSize)">{{i+1}}</button>
+                </div>
+                <div class="dropdown">
+                    <h6>Select the page Size </h6>
+                    <select name="pageSize" id="pageSize" (change)="onPageSizeBtnClick($event)">
+                        <option value=5>5</option>
+                        <option value=10>10</option>
+                        <option value=15>15</option>
+                        <option value=20>20</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="updateForm" *ngIf="showupdateform">
+            <div class="updiv">
+
+                <label for="product_name">Product Name:</label><br>
+                <input type="text" id="product_name" name="name" [(ngModel)]="product.name" required><br><br>
+
+                <label for="product_category">Category:</label><br>
+                <input type="text" id="product_category" name="category" [(ngModel)]="product.category"
+                    required><br><br>
+
+                <label for="                   ct_price">Price:</label><br>
+                <input type="number" id="pro
             duct_price" name="price" step="0.01" [(ngModel)]="product.price" required><br><br>
-            <div class="imageurl">
-                <input type="text" placeholder="Enter the  image path in project " name="imageurl"
-                    [(ngModel)]="product.imageurl"><br><br>
-            </div>
-            <!-- <div *ngIf="response?.isSuccess!=false">
+                <div class="imageurl">
+                    <input type="text" placeholder="Enter the  image path in project " name="imageurl"
+                        [(ngModel)]="product.imageurl"><br><br>
+                </div>
+                <!-- <div *ngIf="response?.isSuccess!=false">
                    <p *ngFor=" let item of response.errorMessage">{{item}}</p>
                 
                    <div *ngIf="response?.isSuccess==true">
             </div>    
                 <p>Product Updated Successfully</p>
             </div>   -->
-            <input type="submit" (click)="updatePro()" value="Update Product">
+                <input type="submit" (click)="updatePro()" value="Update Product">
 
+            </div>
         </div>
-    </div>

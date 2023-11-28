@@ -36,14 +36,16 @@ export class LoginComponent implements OnInit {
       console.log('Password is :', this.password)
 
       this.cs.validateCustomer(this.UserName, this.password).subscribe((response => {
-        console.log("this.cs.validateCustomer response",response)
+        console.log("this.cs.validateCustomer response", response)
         this.processbtn = response?.success;
-        console.log("process button",this.processbtn)
+        console.log("process button", this.processbtn)
         if (this.processbtn) {
           this.cs.getCustomer(this.UserName).subscribe((response) => {
             console.log('Response is :', response)
             this.cs.loggedInCustomer = response?.responseData;
             console.log('loggedInCustomer is :', this.cs.loggedInCustomer)
+            console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart.cartitemList.length)
+          this.navbarService.cartitem=  this.cs.loggedInCustomer.cart.cartitemList.length;
             localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer));
 
           })
@@ -55,18 +57,19 @@ export class LoginComponent implements OnInit {
           this.navbarService.about = true;
 
 
+         
           Swal.fire({
             position: "center",
             icon: "success",
 
-           title: `Welcome`,
-           //title: `Welcome, ${this.dynamicString }!`,
+            title: `Welcome`,
+            //title: `Welcome, ${this.dynamicString }!`,
             showConfirmButton: false,
             timer: 1500
           });
 
           console.log(localStorage.getItem("loggedInCustomer"));
-          this.router.navigate(['/home']);
+            this.router.navigate(['/home']);
         }
         else {
           this.errdiv = true;
