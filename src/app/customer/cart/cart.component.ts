@@ -5,6 +5,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/core/services/products.service';
+import { NavbarService } from 'src/app/core/services/navbar.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class CartComponent implements OnInit {
 
 
-  constructor(private car: CartService, private cs: CustomerService, private cartiCartItemService: CartItemService,private aRroute:ActivatedRoute) { }
+  constructor(private car: CartService, private cs: CustomerService, private cartiCartItemService: CartItemService,private aRroute:ActivatedRoute,private navbarService :NavbarService){ }
 
   showcartitem: boolean = false;
   showerrmsg: boolean = false;
@@ -51,14 +52,13 @@ export class CartComponent implements OnInit {
   }
 
   deleteItemFromCart(cartItemID: number) {
+
+    this.navbarService.cartitem=this.navbarService.cartitem-1;
     this.cartiCartItemService.deleteFromCart(cartItemID).subscribe((data) => {
       console.log(data)
       this.showfinalTotalPrice=false;
         this.showprocessbtn = false;
       this.viewCart();
-
-
-
     })
   }
 

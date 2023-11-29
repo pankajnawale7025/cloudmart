@@ -14,8 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  UserName: string = 'pankajnawale7025@gmail.com';
-  password: string = '8806444288';
+  UserName: string = 'pavan123@gmail.com';
+  password: string = '8329215769';
   errdiv: boolean = false;
   processbtn = false;
   private router = inject(Router);
@@ -41,13 +41,22 @@ export class LoginComponent implements OnInit {
         console.log("process button", this.processbtn)
         if (this.processbtn) {
           this.cs.getCustomer(this.UserName).subscribe((response) => {
-            console.log('Response is :', response)
+            console.log(' getCustomer Response is :', response)
             this.cs.loggedInCustomer = response?.responseData;
             console.log('loggedInCustomer is :', this.cs.loggedInCustomer)
-            console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart.cartitemList.length)
-          this.navbarService.cartitem=  this.cs.loggedInCustomer.cart.cartitemList.length;
+            if(this.cs.loggedInCustomer.cart.cartitemList!=null)
+            {
+              
+              console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart.cartitemList.length)
+              this.navbarService.cartitem=  this.cs.loggedInCustomer.cart.cartitemList.length;
+            }
+
+
             localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer));
 
+              
+
+                    
           })
           this.navbarService.signUp = false;
           this.navbarService.login = false;

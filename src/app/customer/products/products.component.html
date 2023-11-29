@@ -3,23 +3,23 @@
   <div class="row menus d-flex justify-content-center ps-5 mb-5">
   
 
-    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
-      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px;">
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column" >
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px; cursor: pointer;" (click)="productsByCategory(6)" >
         <span class="material-symbols-outlined" style="color: #2465e7;">
         grocery
         </span>
       </div>
-      <div class="menu-text">
+      <div class="menu-text" (click)="productsByCategory(6)" style="cursor: pointer;">
         <h6>Grocery</h6>
       </div>  
     </div>  
     
     
-    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
-      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #CAF6E9;border-radius: 5px;">
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column" >
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #CAF6E9;border-radius: 5px; cursor: pointer;" (click)="productsByCategory(3)" >
         <span class="material-symbols-outlined" style="color: #019063;">  sports_soccer </span>
         </div>
-      <div class="menu-text">
+      <div class="menu-text" (click)="productsByCategory(3)" style="cursor: pointer;">
         <h6>Sports</h6>
       </div>
     </div>    
@@ -31,11 +31,11 @@
 
 
 
-    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
-      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #F2C45D;border-radius: 5px;">
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column"   >
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #F2C45D;border-radius: 5px; cursor: pointer;" (click)="productsByCategory(5)" >
         <span class="material-symbols-outlined" style="color: #85802B;">  kitchen </span>
         </div>
-      <div class="menu-text">
+      <div class="menu-text" (click)="productsByCategory(5)" style="cursor: pointer;">
         <h6>Home Applience</h6>
       </div>
     </div>  
@@ -44,20 +44,20 @@
 
 
 
-    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
-      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #DAEEF7;border-radius: 5px;">
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column" >
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #DAEEF7;border-radius: 5px; cursor: pointer;" (click)="productsByCategory(2) ">
         <span class="material-symbols-outlined" style="color: #668997;">  laptop_mac </span>
         </div>
-      <div class="menu-text">
+      <div class="menu-text" (click)="productsByCategory(2)" style="cursor: pointer;">
         <h6>Electronics</h6>
       </div>
     </div>  
 
-    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column">
-      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #FCE7EC;border-radius: 5px;">
+    <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column" >
+      <div class="menu-icon p-3 px-4 mb-2" style="background-color: #FCE7EC;border-radius: 5px; cursor: pointer;" (click)="productsByCategory(4)" >
         <span class="material-symbols-outlined" style="color: #F55D78;">  apparel </span>
         </div>
-      <div class="menu-text">
+      <div class="menu-text" (click)="productsByCategory(4)" style="cursor: pointer;">
         <h6>Clothes</h6>
       </div>
     </div>  
@@ -79,7 +79,7 @@
   <div class="row d-flex justify-content-center">
 
   <!-- <div class="product-list d-flex"> -->
-    <div class=" col-md-3 product m-2  mb-4 " *ngFor="let product of productList">
+    <div class=" col-md-3 product m-2  mb-4 " *ngFor="let product of navbarService.productListInNavbarService">
 
       <!-- <div class="border border-dark  py-1 px-3" style="position: absolute;">
         <h6>Save 10%</h6>

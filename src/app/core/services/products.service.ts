@@ -101,6 +101,14 @@ listOfCategory() :Observable<Response>{
 
 }
 
+productsByCategory(categoryId:number):Observable<Response>{
+  const params=new HttpParams()
+  .set('categoryId', categoryId)
+  return this.http.get<Response>(this.BASE_URL+'productsByCategory',{params});
+}
+
+
+
 
 
 }

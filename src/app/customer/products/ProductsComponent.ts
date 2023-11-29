@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
   errmsgforsearch = false;
 
 
-  constructor(private aroute: ActivatedRoute, private route: Router, private productService: ProductsService, private navbarService: NavbarService, private cartService: CartItemService) {
+  constructor(private aroute: ActivatedRoute, private route: Router, private productService: ProductsService, public navbarService: NavbarService, private cartService: CartItemService) {
     // console.log('constructor invoke !!!!');
   }
 
@@ -47,17 +47,12 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.productList().subscribe((data) => {
-      this.productList = data.responseData;
+      this.navbarService.productListInNavbarService = data.responseData;
       console.log("this.productList is ", this.productList);
     }
     );
     console.log('init invoke !!!!');
-
-
-
-
     const loggedInCustomerString: string | null = localStorage.getItem("loggedInCustomer");
-
     if (loggedInCustomerString !== null) {
       const loggedInCustomer = JSON.parse(loggedInCustomerString);
       console.log("loggedInCustomer.id;===> ", loggedInCustomer.id);
@@ -66,20 +61,10 @@ export class ProductsComponent implements OnInit {
       console.log(this.tempCustomer);
       this.tempCustomer.id = 125;
       this.tempCustomer.id = loggedInCustomer.id;
-
       console.log("loggedInCustomer.id;===> ", loggedInCustomer.id);
       console.log("tempcustomer ===> ", this.tempCustomer);
-
-
-
-
-
-
-
-      console.log("for cartiten number", loggedInCustomer);
+     
       this.cartService.getCartitemsNumbers(this.tempCustomer).subscribe((data) => {
-
-
         console.log("getitemnumbers resposne is ==>", data);
 
       });
@@ -88,8 +73,6 @@ export class ProductsComponent implements OnInit {
       // Handle the case where the key is not found in localStorage
       console.log("loggedInCustomer not found in localStorage");
     }
-
-
   }
 
 
@@ -98,6 +81,19 @@ export class ProductsComponent implements OnInit {
       this.productList = data.responseData;
     }
     );
+  }
+
+
+
+  productsByCategory(categoryId:number)
+  {
+
+    this.productService.productsByCategory(categoryId).subscribe((data)=>{
+
+      this.navbarService.productListInNavbarService = data.responseData;
+      
+
+    })
   }
 
 

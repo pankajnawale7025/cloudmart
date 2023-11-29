@@ -4,6 +4,7 @@ import { Customer } from 'src/app/core/model/Object-model';
 import { CartService } from 'src/app/core/services/cart.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { NavbarService } from 'src/app/core/services/navbar.service';
+import { ProductsService } from 'src/app/core/services/products.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
   cartin: string;
   result: any;
   profileOptions:boolean=false;
-  constructor(public cartService: CartService, public  cs: CustomerService, private route: Router,public  navbarService:NavbarService) { }
+  constructor(public cartService: CartService, public  cs: CustomerService, private route: Router,public  navbarService:NavbarService,private productService:ProductsService) { }
   ngOnInit(): void {
     this.cartitemNumber=this.navbarService.cartitem
   if(localStorage.getItem("loggedInCustomer"))
@@ -66,6 +67,17 @@ export class NavbarComponent implements OnInit {
     console.log(this.profileOptions)
      this.profileOptions=this.profileOptions==true?this.profileOptions=false:this.profileOptions=true;
   }
+
+
+  refreshProductList()
+  {
+    this.productService.productList().subscribe((data) => {
+      this.navbarService.productListInNavbarService = data.responseData;
+    }
+    );
+    
+  }
+
 
   productDetails() {
   }

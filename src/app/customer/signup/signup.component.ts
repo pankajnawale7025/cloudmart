@@ -21,17 +21,13 @@ constructor(private customerService:CustomerService,private router:Router)
   customer=new Customer()
   addCustomerInDatabase(){
     this.customerService.isEmailNotPresent(this.customer.emailAddress).subscribe((data)=>{
-  
-      console.log("isEmailNotPresentOutput",data)
-            this.response1=data
-      console.log(this.response1.success)
-
-
-      if(!this.response1.success)
+    console.log("isEmailNotPresentOutput",data)
+    this.response1=data
+    console.log(this.response1.success)
+     if(!this.response1.success)
       {
-            Swal.fire("Email Address Already Registered Please  login");
-        
-      }
+       Swal.fire("Email Address Already Registered Please  login");
+         }
       else{
 
 
@@ -50,9 +46,8 @@ constructor(private customerService:CustomerService,private router:Router)
             Swal.fire("Please insert valid Inputs");  
           }
             else{
-             
-              Swal.fire('Profile created')
-              this.router.navigate(["/login"])
+            Swal.fire('Profile created')
+            this.router.navigate(["/login"])
            //   console.log("in  else  block  this.errmsgforadd and this.sccmsgforadd=false  is : ", this.errmsgforadd=true,this.sccmsgforadd=false)
               this.errmsgforadd=false;
               this.sccmsgforadd=true;
@@ -65,91 +60,13 @@ constructor(private customerService:CustomerService,private router:Router)
             (error) => {
               // Handle HTTP errors here
               console.error("HTTP error:", error);
-
-
               // You can display an error message or perform other actions here
             }
-            
-            )
-
-
-
-
-
-
-
-
-
-
-
-
-            this.customerService.addCustomer(this.customer).subscribe(
-              (data) => {
-                console.log("data is ", data);
-                this.response = data;
-                console.log("this.response.success :", this.response);
-            
-                if (this.response.success == false) {
-                  //  console.log("in if block  this.errmsgforadd and this.sccmsgforadd=false  is : ", this.errmsgforadd=true,this.sccmsgforadd=false)
-                  //  this.errmsgforadd=true;
-                  //  this.sccmsgforadd=false;
-                  Swal.fire("Please insert valid Inputs");
-                } else {
-                  Swal.fire('Profile created');
-                  this.router.navigate(["/login"]);
-                  //   console.log("in  else  block  this.errmsgforadd and this.sccmsgforadd=false  is : ", this.errmsgforadd=true,this.sccmsgforadd=false)
-                  this.errmsgforadd = false;
-                  this.sccmsgforadd = true;
-                }
-            
-                this.response = this.response.responseData;
-                console.log(this.response);
-              },
-              (error) => {
-                // Handle HTTP errors here
-
-
-
-                Swal.fire("Please insert valid Inputs");
-
-
-                console.error("HTTP error message is :", error.error.errorMessage);
-            
-                // You can display an error message or perform other actions here
-              }
-            );
+      )
+           
       }
 
-    })
-
-    
-
-    // this.customerService.addCustomer(this.customer).subscribe((data=>{
-      
-    //   console.log( "data is ",data)
-    //   this.response=data
-    //   console.log("this.response.success :",this.response)
-      
-    //   if(this.response.success==false)
-    //   {
-    //    console.log("in if block  this.errmsgforadd and this.sccmsgforadd=false  is : ", this.errmsgforadd=true,this.sccmsgforadd=false)
-    //    this.errmsgforadd=true;
-    //    this.sccmsgforadd=false;
-    //   }
-    //   else{
-       
-    //     Swal.fire('Profile created')
-    //     this.router.navigate(["/login"])
-    //  //   console.log("in  else  block  this.errmsgforadd and this.sccmsgforadd=false  is : ", this.errmsgforadd=true,this.sccmsgforadd=false)
-    //     this.errmsgforadd=false;
-    //     this.sccmsgforadd=true;
-    //   }
-      
-      
-    //   this.response=this.response.responseData
-    //   console.log(this.response)
-      
-    //   }))
+    }) 
 
   }
 

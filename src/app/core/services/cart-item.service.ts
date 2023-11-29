@@ -23,8 +23,9 @@ export class CartItemService {
 
 
   getCartitemsNumbers(customer: Customer): Observable<Response> {
+    console.log("In the  fetcartitemnumber===>",customer)
     // console.log("data in productService==>"+product)
-    return this.http.post<Response>(this.BASE_URL + 'getCartitemsNumbers', customer)
+    return this.http.post<Response>('http://localhost:8081/cart/getCartitemsNumbers', customer)
   }
 
 

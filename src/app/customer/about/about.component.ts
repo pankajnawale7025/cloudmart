@@ -15,70 +15,143 @@ constructor(private customerService:CustomerService,private router:Router ){}
 
 
 
-customer =new Customer();
+customer: Customer = {
+  id:1,
+  name: "xyz",
+  surName: "xyz",
+  contactNumber: "xyz",
+  emailAddress: "xyz",
+  address: "xyz",
+  
+  customerOrderList:"xyz",
+  cart:"xyz"
+
+};
 result:any;
 ngOnInit(): void {
   
-    this.customerService.getCustomer(this.customerService.loggedInCustomer.emailAddress).subscribe((data)=>{
-      this.result=data;
-      this.customer=this.result.responseData
-    })
+//console.log("login customerobject in customer Service ====>",this.customerService.loggedInCustomer)
 
-  console.log()
+// create shallow copy to otherwise two instances will point to the same memory address by below first commiirting line 
+//this.customer=this.customerService.loggedInCustomer;
+ this.customer = { ...this.customerService.loggedInCustomer };
+
+
+    // this.customerService.getCustomer(this.customerService.loggedInCustomer.emailAddress).subscribe((data)=>{
+    //   this.result=data;
+    //   this.customer=this.result.responseData
+    //   console.log("login customer at in about component OnInit====>",this.customer)
+    // })
+  }
+
+ dataVerification:boolean;
+
+
+
+
+
+
+
+
+
+
+
+
+
+  updateCustomerInDatabase(){
+
+console.log("Updated  Customer===>",this.customer)
+console.log("Customer in Service ===>",this.customerService.loggedInCustomer)
+
+   
+
+
+
+if (
+  this.customer.id === this.customerService.loggedInCustomer.id &&
+  this.customer.name === this.customerService.loggedInCustomer.name &&
+  this.customer.surName === this.customerService.loggedInCustomer.surName &&
+  this.customer.contactNumber === this.customerService.loggedInCustomer.contactNumber &&
+  this.customer.emailAddress === this.customerService.loggedInCustomer.emailAddress &&
+  this.customer.address === this.customerService.loggedInCustomer.address 
+) 
+
+
+
+{
+  console.log("same");
+} else {
+  console.log("Different");
+}
+ // 96 to 133 update logic swal.fire not working according to it 
+
+
+
+
+
+
+
+
+
+    // Swal.fire({
+    //   title: 'Do you want to save the changes?',
+    //   showDenyButton: true,
+    //   // showCancelButton: true,
+    //   confirmButtonText: 'Save',
+    //   denyButtonText: `Don't save`,
+    // }).then((result) => {
+    //   console.log("in swalfire")
+    //   this.customerService.updateCustomer(this.customer).subscribe((data)=>{
+    //     console.log("data in update is" , data)
+    //     this.ngOnInit()
+    //         this.dataVerification=data.success 
+                
+    //         console.log("data is  while updating ===>",data)
+
+    //           console.log("this.dataVerification ====>",this.dataVerification)
+    //   })
   
+    //   if(false)
+    //   {
+    //     if (result.isConfirmed) {
+    //       Swal.fire('Saved!', '', 'success')
+    //     } else if (result.isDenied) {
+    //       Swal.fire('Changes are not saved', '', 'info')
+    //     }
+    //   }
+    //   else
+    //   {
+    //     Swal.fire('Insert valid data')
+    //   }
+    // })
+//   // this.customerService.updateCustomer(this.customer).subscribe((data)=>{
+    //   //   console.log("data in update is" , data)
+    //   // })
+      // //  alert("Data updated")
+    // // this.ngOnInit()
+     
+    // }
+
+
   }
 
 
 
- dataVerification:boolean;
-
-  updateCustomerInDatabase(){
-
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
-      // showCancelButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      console.log("in swalfire")
-      this.customerService.updateCustomer(this.customer).subscribe((data)=>{
-        console.log("data in update is" , data)
-        this.ngOnInit()
-            this.dataVerification=data.success 
-                
-            console.log("data is  while updating ===>",data)
-
-              console.log("this.dataVerification ====>",this.dataVerification)
-      })
-  
-      if(false)
-      {
-        if (result.isConfirmed) {
-          Swal.fire('Saved!', '', 'success')
-        } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info')
-        }
-      }
-      else
-      {
-        Swal.fire('Insert valid data')
-      }
-    })
 
 
 
 
 
 
-      // this.customerService.updateCustomer(this.customer).subscribe((data)=>{
-      //   console.log("data in update is" , data)
-      // })
-     
-    //  alert("Data updated")
-    // this.ngOnInit()
-     
-    }
+
+
+
+
+
+
+
+
+
     deleteCustomerProfile(){
       Swal.fire({
         title: 'Are you sure?',
@@ -111,3 +184,7 @@ ngOnInit(): void {
 
 
 }
+  function deepEqual(customer: Customer, loggedInCustomer: Customer) {
+    throw new Error('Function not implemented.');
+  }
+

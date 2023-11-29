@@ -70,6 +70,14 @@ export class ManageProductComponent {
   }
   dynamicString:string="Error";
   addProductInDatabase() {
+
+
+
+
+
+
+
+    
     console.log("product is ===>",this.product);
     if (this.product.categoryInProduct != null && this.product.category != "Select Category" && this.product.categoryInProduct.category_id!=1 ) {
       this.productService.addProduct(this.product).subscribe((data => {
@@ -115,6 +123,8 @@ if(data.success)
   viewAllProduct() {
     this.showProductTable = this.showProductTable == true ? false : true;
     this.addProductTableDiv = false;
+
+     console.log("Yo are in view all product")
     this.productService.allProduct().subscribe((data => {
       this.response = data;
       this.response = this.response;

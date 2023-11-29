@@ -19,8 +19,6 @@ export class OrderService {
     return this.http.post<Response>(this.BASE_URL + 'processOrder', {}, ({ params }))
   }
 
-
-
   viewOrder(customerId: number):Observable<Response> {
     const params = new HttpParams()
       .set('customerId', customerId)
