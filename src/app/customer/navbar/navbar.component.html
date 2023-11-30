@@ -55,7 +55,7 @@
               src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg"
               alt="Cart" class="_1XmrCc _1FTDbN" width="24" height="24">
           </a>
-          <i class="fa badge fa-lg"  *ngIf="navbarService.cart" attr.value={{navbarService.cartitem}} >&#xf290;</i>
+          <i class="fa badge fa-lg"  *ngIf="navbarService.cart" attr.value={{cartitem}} >&#xf290;</i>
         </div>
         <div class="ms-4" *ngIf="navbarService.cart">
           <button class="profile-btn btn" (click)="changeProfileStatus()">{{(cs.loggedInCustomer.name)}}</button>

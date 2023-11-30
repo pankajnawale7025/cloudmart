@@ -31,7 +31,14 @@ export class OrderComponent implements OnInit {
       console.log(this.processorderresponse.success)
        if(this.processorderresponse.success)
 
-       this.navbarService.cartitem=0;
+       
+
+
+
+
+
+
+       this.navbarService.cartitemflag=  this.navbarService.cartitemflag?this.navbarService.cartitemflag=false:this.navbarService.cartitemflag=true
 {
   this.orderService.sendEmail(this.cs.loggedInCustomer.id,this.OrderId).subscribe((data)=>{
     console.log(Response)

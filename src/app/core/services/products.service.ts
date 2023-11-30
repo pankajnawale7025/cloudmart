@@ -13,6 +13,27 @@ import { Product } from '../model/Product';
   private readonly BASE_URL:string=   environment.productUrl;  
   private readonly CATEGORY_BASE_URL:string=   environment.categoryServiceUrl;  
 
+
+
+
+  productListInProductService = [
+    {
+      id: 1,
+      name: 'Product 1',
+      description: 'Description for Product 1',
+      price: 19.99,
+      imageurl: "assets/Perfume.jpg",
+      discount: 0
+    }
+  ];
+
+
+
+
+
+
+
+
   allProduct():Observable<Response>
   {
     return this.http.get<Response>(this.BASE_URL+'getAllProduct')

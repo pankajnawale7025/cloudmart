@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class NavbarService {
 
 
-   cartitem:any=0;
+   cartitemflag:boolean=false;
     
   constructor() { }
 

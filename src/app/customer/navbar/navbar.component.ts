@@ -1,6 +1,7 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Customer } from 'src/app/core/model/Object-model';
+import { CartItemService } from 'src/app/core/services/cart-item.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { NavbarService } from 'src/app/core/services/navbar.service';
@@ -11,16 +12,39 @@ import { ProductsService } from 'src/app/core/services/products.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit , DoCheck{
   searchedData: string = '';
   customerLoggedIn: false;
   cartitemNumber: any=0;
   cartin: string;
   result: any;
   profileOptions:boolean=false;
-  constructor(public cartService: CartService, public  cs: CustomerService, private route: Router,public  navbarService:NavbarService,private productService:ProductsService) { }
+  cartitemflagInNavbar= this.navbarService.cartitemflag
+
+cartitem:number;
+
+
+  constructor(public cartService: CartService,private cartItemService:CartItemService ,public  cs: CustomerService, private route: Router,public  navbarService:NavbarService,private productService:ProductsService) { }
+  ngDoCheck(): void {
+    console.log("Changes in navbar ")
+
+
+    if(this.cs.loggedInCustomer.cart!=undefined && this.cs!=undefined)
+    {
+      
+      console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart)
+      //  this.cartItemService.getCartItemCount(this.cs.loggedInCustomer.id).subscribe((data)=>{
+      //   this.cartitem=data.responseData
+      // })
+    
+    }
+
+
+
+
+  }
   ngOnInit(): void {
-    this.cartitemNumber=this.navbarService.cartitem
+    this.cartitemNumber=0
   if(localStorage.getItem("loggedInCustomer"))
 {
   this.navbarService.orderHistrory=true;

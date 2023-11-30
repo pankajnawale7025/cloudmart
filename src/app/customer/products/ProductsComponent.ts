@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { Product } from 'src/app/core/model/Product';
@@ -12,15 +12,25 @@ import { Customer } from 'src/app/core/model/Object-model';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit,OnChanges  {
 
   value: number = 1;
   searchData: string = 'null';
   errmsgforsearch = false;
 
-
-  constructor(private aroute: ActivatedRoute, private route: Router, private productService: ProductsService, public navbarService: NavbarService, private cartService: CartItemService) {
+  @Input() categoryId:number
+  constructor(private aroute: ActivatedRoute, private route: Router, public productService: ProductsService, public navbarService: NavbarService, private cartService: CartItemService) {
     // console.log('constructor invoke !!!!');
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    
+console.log("categoryId in product is ",this.categoryId)
+    
+    this.productService.productsByCategory(this.categoryId).subscribe((data)=>{
+      console.log(data)
+      this.productService.productListInProductService=data.responseData
+    })
+
   }
 
 
@@ -47,32 +57,32 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.productList().subscribe((data) => {
-      this.navbarService.productListInNavbarService = data.responseData;
+      // this.navbarService.productListInNavbarService = data.responseData;
       console.log("this.productList is ", this.productList);
     }
     );
     console.log('init invoke !!!!');
-    const loggedInCustomerString: string | null = localStorage.getItem("loggedInCustomer");
-    if (loggedInCustomerString !== null) {
-      const loggedInCustomer = JSON.parse(loggedInCustomerString);
-      console.log("loggedInCustomer.id;===> ", loggedInCustomer.id);
+    // const loggedInCustomerString: string | null = localStorage.getItem("loggedInCustomer");
+    // if (loggedInCustomerString !== null) {
+    //   const loggedInCustomer = JSON.parse(loggedInCustomerString);
+    //   console.log("loggedInCustomer.id;===> ", loggedInCustomer.id);
 
-      tempCustomer: Customer;
-      console.log(this.tempCustomer);
-      this.tempCustomer.id = 125;
-      this.tempCustomer.id = loggedInCustomer.id;
-      console.log("loggedInCustomer.id;===> ", loggedInCustomer.id);
-      console.log("tempcustomer ===> ", this.tempCustomer);
+    //   tempCustomer: Customer;
+    //   console.log(this.tempCustomer);
+    //   this.tempCustomer.id = 125;
+    //   this.tempCustomer.id = loggedInCustomer.id;
+    //   console.log("loggedInCustomer.id;===> ", loggedInCustomer.id);
+    //   console.log("tempcustomer ===> ", this.tempCustomer);
      
-      this.cartService.getCartitemsNumbers(this.tempCustomer).subscribe((data) => {
-        console.log("getitemnumbers resposne is ==>", data);
+    //   this.cartService.getCartitemsNumbers(this.tempCustomer).subscribe((data) => {
+    //     console.log("getitemnumbers resposne is ==>", data);
 
-      });
-      //         this.navbarService.cartitem=loggedInCustomer.cart.cartitemList.length
-    } else {
-      // Handle the case where the key is not found in localStorage
-      console.log("loggedInCustomer not found in localStorage");
-    }
+    //   });
+    //   //         this.navbarService.cartitem=loggedInCustomer.cart.cartitemList.length
+    // } else {
+    //   // Handle the case where the key is not found in localStorage
+    //   console.log("loggedInCustomer not found in localStorage");
+    // }
   }
 
 

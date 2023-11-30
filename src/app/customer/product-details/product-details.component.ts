@@ -68,7 +68,7 @@ export class ProductDetailsComponent implements OnInit {
         
         //     console.log("Response  is ",this.response)
         this.showSucessMessage = this.response.success
-        this.navbarService.cartitem= this.response.responseData
+        this.navbarService.cartitemflag=  this.navbarService.cartitemflag?this.navbarService.cartitemflag=false:this.navbarService.cartitemflag=true
       if(this.showSucessMessage )
    {
      this.showSuccessAlert()
@@ -84,7 +84,7 @@ export class ProductDetailsComponent implements OnInit {
       this.cartService.viewCartItem(this.cs.loggedInCustomer?.id).subscribe((data => {
         this.responseforcartitem = data
         this.responseforcartitem = this.responseforcartitem.responseData
-        this.navbarService.cartitem = this.responseforcartitem.length
+        this.navbarService.cartitemflag=  this.navbarService.cartitemflag?this.navbarService.cartitemflag=false:this.navbarService.cartitemflag=true
       }))
 
 

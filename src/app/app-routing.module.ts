@@ -33,7 +33,7 @@ const routes: Routes = [
   },
 
 
-  //{path:'category',component:CategoryComponent}
+  {path:'category',component:CategoryComponent},
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'productDetails', component: ProductDetailsComponent },

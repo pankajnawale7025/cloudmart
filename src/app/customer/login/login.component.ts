@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  UserName: string = 'pavan123@gmail.com';
+  UserName: string = 'pankajnawale123@gmail.com';
   password: string = '8329215769';
   errdiv: boolean = false;
   processbtn = false;
@@ -44,18 +44,8 @@ export class LoginComponent implements OnInit {
             console.log(' getCustomer Response is :', response)
             this.cs.loggedInCustomer = response?.responseData;
             console.log('loggedInCustomer is :', this.cs.loggedInCustomer)
-            if(this.cs.loggedInCustomer.cart.cartitemList!=null)
-            {
-              
-              console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart.cartitemList.length)
-              this.navbarService.cartitem=  this.cs.loggedInCustomer.cart.cartitemList.length;
-            }
-
-
-            localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer));
-
-              
-
+          this.navbarService.cartitemflag=true
+            localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer))
                     
           })
           this.navbarService.signUp = false;

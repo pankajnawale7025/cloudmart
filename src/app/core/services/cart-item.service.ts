@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment ';
 import { Customer } from '../model/Object-model';
+import { Response } from '../model/Object-model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class CartItemService {
     return this.http.post<Response>('http://localhost:8081/cart/getCartitemsNumbers', customer)
   }
 
+
+
+  getCartItemCount(customerId: number): Observable<Response> {
+   
+    const params = new HttpParams()
+    .set('customerId', customerId)
+        return this.http.post<Response>(this.BASE_URL+'getCartitemsNumbers',  ({ params }))
+  }
 
 
 
