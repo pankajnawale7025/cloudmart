@@ -30,18 +30,11 @@ export class OrderhistoryComponent implements OnInit {
 {
        this.showerrmsg=true;
 }
-
-
-
-
      // console.log("orderList is :",this.response[0].orderitemList[0].product.imageurl)
     })
 
-
   }
-
-
-  OrderDetails(orderitemList: []) {
+    OrderDetails(orderitemList: []) {
     //console.log(orderitemList)
     this.route.navigate(['orderDetail'], {
       queryParams: { param1: orderitemList }

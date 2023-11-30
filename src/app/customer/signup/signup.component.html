@@ -2,30 +2,29 @@
     <h1>Register Customer </h1>
 
     <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" [(ngModel)]="customer.name" />
+        <label for="name">Name<span class="asterik">*</span> :</label>
+        <input type="text" id="name" name="name" [(ngModel)]="customer.name"  required />
     </div>
     <div class="form-group">
-        <label for="surName">Surname:</label>
+        <label for="surName">Surname :</label>
         <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
     </div>
     <div class="form-group">
-        <label for="contactNumber">Contact Number:</label>
+        <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
         <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" />
     </div>
     <div class="form-group">
-        <label for="emailAdress">Email Address:</label>
+        <label for="emailAdress">Email Address<span class="asterik">*</span> :</label>
         <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" />
     </div>
     <div class="form-group">
-        <label for="adress">Address:</label>
+        <label for="adress">Address <span class="asterik">*</span> :</label>
         <input type="text" id="adress" name="adress" [(ngModel)]="customer.address" />
     </div>
     <input type="submit" (click)="addCustomerInDatabase()" value="Add Customer">
 </div>
 <div class="msgdiv">
-
-    <div class="errdiv" *ngIf="errmsgforadd">
+ <div class="errdiv" *ngIf="errmsgforadd">
         <h3>Please Cheack Input's</h3>
     </div>
 

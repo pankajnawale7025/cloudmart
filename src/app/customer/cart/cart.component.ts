@@ -53,7 +53,11 @@ export class CartComponent implements OnInit {
 
   deleteItemFromCart(cartItemID: number) {
 
-    this.navbarService.cartitem=this.navbarService.cartitem-1;
+
+    if(this.navbarService.cartitem!=0)
+    {
+      this.navbarService.cartitem=this.navbarService.cartitem-1;
+    }
     this.cartiCartItemService.deleteFromCart(cartItemID).subscribe((data) => {
       console.log(data)
       this.showfinalTotalPrice=false;

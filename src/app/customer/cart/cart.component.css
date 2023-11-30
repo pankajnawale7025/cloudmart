@@ -85,7 +85,7 @@
     text-align: center;
     max-width: 400px;
     margin: 0 auto;
-    height: 206px;
+    height: 151px;
     margin-top: 351px;
 }
 
@@ -98,7 +98,7 @@
 
 
 .container button {
-    background-color: #45a049;
+    background-color: #FD8801;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -109,5 +109,5 @@
 }
 
 .container button:hover {
-    background-color: #3ab441;
+    background-color: #fc941d;
 }

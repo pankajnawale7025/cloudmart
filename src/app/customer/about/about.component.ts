@@ -79,18 +79,20 @@ if (
 
 
 {
-  console.log("same");
+
+   
+  Swal.fire({
+    position: "center",
+    icon: "question",
+    title: `Sorry ! No Changes Found `,
+    showConfirmButton: false,
+    timer: 1500
+  });
+  //console.log("same");
 } else {
   console.log("Different");
 }
  // 96 to 133 update logic swal.fire not working according to it 
-
-
-
-
-
-
-
 
 
     // Swal.fire({

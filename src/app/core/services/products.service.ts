@@ -11,7 +11,7 @@ import { Product } from '../model/Product';
   constructor(private http: HttpClient) { }
     
   private readonly BASE_URL:string=   environment.productUrl;  
-  private readonly CATEGORY_BASE_URL:string=   environment.categoryUrl;  
+  private readonly CATEGORY_BASE_URL:string=   environment.categoryServiceUrl;  
 
   allProduct():Observable<Response>
   {

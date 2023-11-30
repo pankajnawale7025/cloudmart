@@ -87,7 +87,6 @@ export class ProductsComponent implements OnInit {
 
   productsByCategory(categoryId:number)
   {
-
     this.productService.productsByCategory(categoryId).subscribe((data)=>{
 
       this.navbarService.productListInNavbarService = data.responseData;

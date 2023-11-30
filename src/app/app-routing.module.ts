@@ -20,14 +20,20 @@ import { SignupComponent } from './customer/signup/signup.component';
 import { AboutComponent } from './customer/about/about.component';
 import { FilterComponent } from './customer/filter/filter.component';
 import { SearchComponent } from './customer/search/search.component';
+import { CategoryComponent } from './customer/category/category.component';
 
 const routes: Routes = [
   {
     path: 'home', component: HomeComponent, children: [
-      { path: '', component: ProductsComponent },
-  
+    //   { path: '', component: CategoryComponent,children:[
+    //     { path: '', component: ProductsComponent }
+    //   ]
+    // }
     ]
   },
+
+
+  //{path:'category',component:CategoryComponent}
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'productDetails', component: ProductDetailsComponent },

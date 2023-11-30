@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #eff1f5;
     margin-top: 100px;
   }
 
@@ -58,11 +58,11 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-button{
+/* button{
   background-color: #007BFF;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 50px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -70,27 +70,36 @@ button{
   font-family: sans-serif;
   font-weight: 500;
 
-}
-.btn{
+} */
+/* .btn{
   display: flex;
   justify-content: center;
   
-}
-.delete-button {
-  background-color: #FF5733; /* Set your desired background color */
-  color: white; /* Text color */
+} */
+/* .delete-button {
+  background-color: #ff6600; 
+  color: white; 
   border: none;
   padding: 10px 20px;
-  margin-top: 10px; /* Adjust as needed */
+  margin-top: 10px; 
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
+} */
 
-.delete-button:hover {
-  background-color: #E60000; /* Change color on hover */
+/* .delete-button:hover {
+  background-color: #ff950a;
 }
-.dlt-btn{
+  */
+ 
+/* .dlt-btn{
 display: flex;
 justify-content: center;
+} */
+.asterik{
+  color: red;
+  margin-left: 4px;
+  height: 5px;
 }
+
+

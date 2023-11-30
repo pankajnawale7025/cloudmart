@@ -2,34 +2,53 @@
   <div class="container">
 
     <div class="form-group">
-      <label for="name">Name:</label>
+      <label for="name">Name<span class="asterik">*</span> :</label>
       <input type="text" id="name" name="name" [(ngModel)]="customer.name" />
     </div>
     <div class="form-group">
-      <label for="surName">Surname:</label>
+      <label for="surName">Surname :</label>
       <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
     </div>
     <div class="form-group">
-      <label for="contactNumber">Contact Number:</label>
+      <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
       <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" />
     </div>
     <div class="form-group">
-      <label for="emailAddress">Email Address:</label>
+      <label for="emailAddress">Email Address<span class="asterik">*</span> :</label>
       <input type="text" id="emailAddress" name="emailAddress" [(ngModel)]="customer.emailAddress" />
     </div>
     <div class="form-group">
-      <label for="adress">Address:</label>
+      <label for="adress">Address<span class="asterik">*</span> :</label>
       <input type="text" id="adress" name="adress" [(ngModel)]="customer.address" />
     </div>
-    <div class="btn">
 
-      <button (click)="updateCustomerInDatabase()">Save</button>
-    </div>
+
+
+
+
+<div class="row d-flex justify-content-between">
+  <div class="col-md-6">
+   
+      <button type="button" class="btn btn-primary col-md-12 "  style="background-color: #FD8801;"    (click)="updateCustomerInDatabase()" >Save</button>
   
-
-     <div class="dlt-btn">
-    <button (click)="deleteCustomerProfile()" class="delete-button">Delete Profile</button>
   </div>
+  <div class="col-md-6">
+    
+      <button (click)="deleteCustomerProfile()"  class="btn btn-light col-md-12">Delete </button>
+    
+  </div>
+
+</div>
+
+
+    <!-- <div class="d-flex justify-content-between">
+      <div class="btn">
+        <button (click)="updateCustomerInDatabase()">Save</button>
+      </div>
+      <div class="dlt-btn">
+        <button (click)="deleteCustomerProfile()" class="delete-button">Delete Profile</button>
+      </div>
+    </div> -->
 
   </div>
 </body>

@@ -26,10 +26,14 @@
 </div>
 -->
 <div class="container" *ngIf="showerrmsg">
-    <h1>cart is Empty</h1>
+    <h1>Cart is Empty</h1>
     <button (click)="toHome()">Shop Now</button>
 
-</div> 
+</div>
+
+
+
+
 
 
 
@@ -48,12 +52,9 @@
                 <p>Quantity is :{{item.quantity}}
                 </p>
                 <div>
-
                     <button (click)="updateQuantity(item.product.id,item.id)">Update Quantity</button>
                 </div>
-
                 <div class="total-price">
- q
                     <p>Total Price is :{{item.quantity*item.product.price}}</p>
                 </div>
             </div>
