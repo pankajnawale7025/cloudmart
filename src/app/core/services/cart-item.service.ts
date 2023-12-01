@@ -35,7 +35,7 @@ export class CartItemService {
    
     const params = new HttpParams()
     .set('customerId', customerId)
-        return this.http.post<Response>(this.BASE_URL+'getCartitemsNumbers',  ({ params }))
+        return this.http.get<Response>(this.BASE_URL+'getCartItemCount',  ({ params }))
   }
 
 

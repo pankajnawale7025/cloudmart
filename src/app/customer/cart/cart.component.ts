@@ -53,8 +53,12 @@ export class CartComponent implements OnInit {
 
   deleteItemFromCart(cartItemID: number) {
 
+if(this.navbarService.cartitemCount>0)
+{
+  this.navbarService.cartitemCount-=this.navbarService.cartitemCount
 
-   
+}
+
 
     this.cartiCartItemService.deleteFromCart(cartItemID).subscribe((data) => {
       console.log(data)

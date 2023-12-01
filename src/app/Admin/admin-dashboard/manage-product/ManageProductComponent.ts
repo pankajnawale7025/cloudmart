@@ -52,15 +52,10 @@ export class ManageProductComponent {
         return 0; // names are equal
       });
 
+      console.log("  A  fter Sorting this.dropdownData is :", this.dropdownData[0])
+      
+      this.product.category=this.dropdownData[0].category
 
-
-
-
-
-
-
-
-      console.log("  A  fter Sorting this.dropdownData is :", this.dropdownData)
     }
     )
 
@@ -113,12 +108,10 @@ if(data.success)
       );
     }
     else {
-      Swal.fire("Please Select Valid Category")
+      Swal.fire("Please Enter Valid Data")
 
     }
   }
-
-
 
   viewAllProduct() {
     this.showProductTable = this.showProductTable == true ? false : true;
@@ -326,15 +319,18 @@ if(data.success)
      console.log(selectedCategory.target.value)
     // console.log(this.dropdownData.find(category=>category.category_id===selectedCategory.target.value))
       let category1=this.dropdownData.find((a) =>a.category_id == selectedCategory.target.value);
-      this.category = category1?category1:{category_id:0, category:'',productList:[]}
+      this.category = category1?category1:{category_id:0, category:'',googleMaterialIcon:'',productList:[]}
+
+
+
       this.product.categoryInProduct= this.category
       console.log(this.category)
-    if (selectedCategory.target.value == 1) {
+    // if (selectedCategory.target.value == 1) {
 
-      Swal.fire("Please Select Valid Category")
-      console.log("valid input");
+    //   Swal.fire("Please Select Valid Category")
+    //   console.log("valid input");
 
-    }
+    // }
 
     // else{
     //   this.product.category = selectCategory.target.value

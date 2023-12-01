@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import Swal from 'sweetalert2';
 
@@ -14,12 +15,12 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  UserName: string = 'pankajnawale123@gmail.com';
-  password: string = '8329215769';
+  UserName: string = 'pankajnawale127025@gmail.com';
+  password: string = '8806444288';
   errdiv: boolean = false;
   processbtn = false;
   private router = inject(Router);
-  constructor(private cs: CustomerService, private navbarService: NavbarService) { }
+  constructor(private cs: CustomerService, private navbarService: NavbarService,private loginService:LoginService) { }
   ngOnInit(): void {
     this.navbarService.home = true;
 
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
             console.log(' getCustomer Response is :', response)
             this.cs.loggedInCustomer = response?.responseData;
             console.log('loggedInCustomer is :', this.cs.loggedInCustomer)
-          this.navbarService.cartitemflag=true
+            this.loginService.setCartItemCount()
+            console.log("verificationverificationverificationverificationverification")
             localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer))
                     
           })

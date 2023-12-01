@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartItemService } from 'src/app/core/services/cart-item.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import { OrderService } from 'src/app/core/services/order.service';
@@ -11,7 +12,7 @@ import { OrderService } from 'src/app/core/services/order.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  constructor(private http: HttpClient, private cs: CustomerService, private orderService: OrderService,private router:Router ,private navbarService:NavbarService ) { }
+  constructor(private http: HttpClient, private cs: CustomerService, private orderService: OrderService,private router:Router ,private navbarService:NavbarService,private cartItemService:CartItemService ) { }
  
  
  processorderresponse:any;
@@ -33,12 +34,9 @@ export class OrderComponent implements OnInit {
 
        
 
-
-
-
-
-
-       this.navbarService.cartitemflag=  this.navbarService.cartitemflag?this.navbarService.cartitemflag=false:this.navbarService.cartitemflag=true
+       this.cartItemService.getCartItemCount(this.cs.loggedInCustomer.id).subscribe((data)=>{
+        this.navbarService.cartitemCount=data.responseData
+        })
 {
   this.orderService.sendEmail(this.cs.loggedInCustomer.id,this.OrderId).subscribe((data)=>{
     console.log(Response)

@@ -12,7 +12,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit , DoCheck{
+export class NavbarComponent implements OnInit {
   searchedData: string = '';
   customerLoggedIn: false;
   cartitemNumber: any=0;
@@ -25,24 +25,24 @@ cartitem:number;
 
 
   constructor(public cartService: CartService,private cartItemService:CartItemService ,public  cs: CustomerService, private route: Router,public  navbarService:NavbarService,private productService:ProductsService) { }
-  ngDoCheck(): void {
-    console.log("Changes in navbar ")
+  
+  
+  
+  //, DoCheck
+  // ngDoCheck(): void {
+  //   console.log("Changes in navbar ")
+  //   if(this.cs.loggedInCustomer.cart!=undefined && this.cs!=undefined)
+  //   {    
+  //     console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart)
+  //     //  this.cartItemService.getCartItemCount(this.cs.loggedInCustomer.id).subscribe((data)=>{
+  //     //   this.cartitem=data.responseData
+  //     // })
+  //   }
+  //}
 
 
-    if(this.cs.loggedInCustomer.cart!=undefined && this.cs!=undefined)
-    {
-      
-      console.log("for cartitemnumber===>",this.cs.loggedInCustomer.cart)
-      //  this.cartItemService.getCartItemCount(this.cs.loggedInCustomer.id).subscribe((data)=>{
-      //   this.cartitem=data.responseData
-      // })
-    
-    }
 
 
-
-
-  }
   ngOnInit(): void {
     this.cartitemNumber=0
   if(localStorage.getItem("loggedInCustomer"))

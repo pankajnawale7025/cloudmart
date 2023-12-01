@@ -25,6 +25,7 @@ export class Response {
     export class Category {
       category_id: number;
       category: string;
+      googleMaterialIcon:string;
       productList: Product[];
     
       constructor(category_id: number, category: string, productList: Product[]) {

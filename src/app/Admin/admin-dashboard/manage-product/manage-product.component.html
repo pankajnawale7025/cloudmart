@@ -8,58 +8,32 @@
 </div>
 
 
-
-
-
-<!-- <div *ngIf="addProductTableDiv">
-            <div class="addProductMain">
-               <div class="addProductDiv">
-
-              <div class="name-div">
-                 <input type="text" placeholder="Enter the Name" name="name" [(ngModel)]="product.name"><br><br>
-             </div>
-
-            <div class="select-div">
-                <select (change)="selectCategory($event)">
-                    <option *ngFor="let item of dropdownData" [value]="item">
-                        {{item}}
-                    </option>
-                </select>
-                
-            </div>
-            <div class="price-div">
-                <input type="text" placeholder="Enter the price" name="price" [(ngModel)]="product.price"><br><br>
-            </div>
-            <div class="imageurl">
-            </div>
-            <input type="text" placeholder="Enter the  image path in project " name="imageurl"
-                [(ngModel)]="product.imageurl"><br><br>
-            <div class=" Add-button "><button class="update-btn" (click)="addProductInDatabase()"> Add Product</button>
-            </div>
-        </div>
-        <div class="addedmsg" *ngIf="addedmsg">
-            <h3>Product addd Sucessfully</h3>
-        </div> -->
-
-<!-- </div>
-</div> -->
 <div class="container" *ngIf="addProductTableDiv">
-    <div class="row justify-content-center"> Add Product </div>
+    <!-- <div class="row justify-content-center" > Add Product </div> -->
     <div class="row justify-content-center">
         <!-- <div class="col-md-6 marg py-2">Add Product </div> -->
         <div class="col-md-6 marg py-2">
-
+            <label for="name">Product Name<span class="asterik">*</span>:</label>
             <input type="text" class="form-control  mt-2 " id="name" placeholder="Enter Name Of Product"
                 [(ngModel)]="product.name">
+                <label for="category">Select Category<span class="asterik">*</span>:</label>
             <select class="form-control mt-2 " (change)="selectCategory($event)">
                 <option *ngFor="let item of dropdownData" [value]="item.category_id">{{item.category}}</option>
             </select>
+
+
+            <label for="Price"> Price<span class="asterik">*</span>:</label>
             <input type="price" class="form-control mt-2" id="price" placeholder="Enter  the Price of product "
                 [(ngModel)]="product.price">
+
+                <label for="Discount"> Discount<span class="asterik">*</span>:</label>
             <input type="text" class="form-control mt-2" id="discount" placeholder="Enter discount  on  Product"
                 [(ngModel)]="product.discount">
+                <label for="Stock Quantity"> Stock Quantity<span class="asterik">*</span>:</label>
             <input type="text" class="form-control mt-2" id="exampleInputEmail1"
                 placeholder="Enter the Stock in Quantity" [(ngModel)]="product.stockQuantity">
+                <label for="Select Image"> Select Image :</label>
+
             <input type="text" class="form-control  mt-2 mb-2 " id="image" placeholder="Enter ImageUrl of product"
                 [(ngModel)]="product.imageurl">
 
@@ -69,6 +43,14 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -83,8 +65,6 @@
                         <span class="material-symbols-outlined" (click)="ascOrder('name')">
                             keyboard_arrow_up
                             </span>
-
-
 
                             
                         <span class="material-symbols-outlined" (click)="descOrder('name')">

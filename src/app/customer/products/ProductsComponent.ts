@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit,OnChanges  {
   ngOnChanges(changes: SimpleChanges): void {
     
 console.log("categoryId in product is ",this.categoryId)
-    
+    if(this.categoryId!=undefined)
     this.productService.productsByCategory(this.categoryId).subscribe((data)=>{
       console.log(data)
       this.productService.productListInProductService=data.responseData

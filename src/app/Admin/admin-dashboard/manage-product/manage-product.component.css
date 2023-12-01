@@ -133,3 +133,19 @@ button:hover {
     height: 32px;
 }
 
+.asterik{
+    color: red;
+    margin-left: 4px;
+    height: 5px;
+  }
+  
+  .asterik{
+    color: red;
+    margin-left: 4px;
+    height: 5px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { sortedIndexOf } from 'lodash';
 import { Customer } from 'src/app/core/model/Object-model';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import Swal from 'sweetalert2';
@@ -90,8 +91,77 @@ if (
   });
   //console.log("same");
 } else {
-  console.log("Different");
+ 
+ 
+  this.customerService.updateCustomer(this.customer).subscribe((data)=>{
+    console.log("data in update is" , data)
+    this.dataVerification=data.success 
+    if(this.dataVerification)
+    {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+
+        title: `Profile Updated Successfully`,
+        //title: `Welcome, ${this.dynamicString }!`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+      //console.log("data is  while updating ===>",data)
+      //console.log("this.dataVerification ====>",this.dataVerification)
+      this.customerService.getCustomer(this.customer.emailAddress).subscribe((data)=>{
+        console.log(" updated customer is ===>",data.responseData)
+          this.customerService.loggedInCustomer=data.responseData
+          console.log("this.customerService.loggedInCustomer===>",this.customerService.loggedInCustomer)          
+        })
+
+        this.ngOnInit()
+    
+    }
+
+    else{
+         
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `We are Facing some Issue`,
+        //title: `Welcome, ${this.dynamicString }!`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  })
+
+//  console.log("Different");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  // 96 to 133 update logic swal.fire not working according to it 
 
 
@@ -103,15 +173,15 @@ if (
     //   denyButtonText: `Don't save`,
     // }).then((result) => {
     //   console.log("in swalfire")
-    //   this.customerService.updateCustomer(this.customer).subscribe((data)=>{
-    //     console.log("data in update is" , data)
-    //     this.ngOnInit()
-    //         this.dataVerification=data.success 
+      this.customerService.updateCustomer(this.customer).subscribe((data)=>{
+        console.log("data in update is" , data)
+        this.ngOnInit()
+            this.dataVerification=data.success 
                 
-    //         console.log("data is  while updating ===>",data)
+            console.log("data is  while updating ===>",data)
 
-    //           console.log("this.dataVerification ====>",this.dataVerification)
-    //   })
+              console.log("this.dataVerification ====>",this.dataVerification)
+      })
   
     //   if(false)
     //   {
@@ -136,20 +206,6 @@ if (
 
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -186,7 +242,5 @@ if (
 
 
 }
-  function deepEqual(customer: Customer, loggedInCustomer: Customer) {
-    throw new Error('Function not implemented.');
-  }
+
 

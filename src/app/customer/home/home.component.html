@@ -6,7 +6,7 @@
       <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column"  *ngFor="let category of categoryList">
         <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px; cursor: pointer;" (click)="toSpecificCategory(category.category_id)" >
           <span class="material-symbols-outlined" style="color: #2465e7;">
-          grocery
+          {{category.googleMaterialIcon}}
           </span>
         </div>
         <div class="menu-text" (click)="toSpecificCategory(category.category_id)" style="cursor: pointer;">
@@ -59,8 +59,10 @@
         </div>
       </div>   -->
   
+
+
        </div>
   </div>
   
 
-<!-- <app-products></app-products> -->
+<app-products></app-products>

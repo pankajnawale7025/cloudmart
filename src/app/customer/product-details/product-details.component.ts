@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/core/model/Product';
+import { CartItemService } from 'src/app/core/services/cart-item.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { NavbarService } from 'src/app/core/services/navbar.service';
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService, private cs: CustomerService, private cartService: CartService, private navbarService: NavbarService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductsService, private cs: CustomerService, private cartService: CartService, private navbarService: NavbarService,private cartItemService:CartItemService) { }
 
   p: any;
   productId: number;
@@ -68,9 +69,14 @@ export class ProductDetailsComponent implements OnInit {
         
         //     console.log("Response  is ",this.response)
         this.showSucessMessage = this.response.success
-        this.navbarService.cartitemflag=  this.navbarService.cartitemflag?this.navbarService.cartitemflag=false:this.navbarService.cartitemflag=true
+          
       if(this.showSucessMessage )
    {
+
+       this.cartItemService.getCartItemCount(this.cs.loggedInCustomer.id).subscribe((data)=>{
+      this.navbarService.cartitemCount=data.responseData
+      })
+
      this.showSuccessAlert()
    }
 

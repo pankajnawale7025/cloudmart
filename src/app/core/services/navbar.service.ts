@@ -9,7 +9,7 @@ export class NavbarService {
    cartitemflag:boolean=false;
     
   constructor() { }
-
+  cartitemCount:number=0
 
   home:boolean=true;
   login:boolean=true;

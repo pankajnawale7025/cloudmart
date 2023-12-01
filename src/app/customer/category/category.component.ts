@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/core/model/Object-model';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { NavbarService } from 'src/app/core/services/navbar.service';
@@ -13,6 +13,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class CategoryComponent implements  OnInit {
   categoryList:Category[]
   categoryId:number
+  private router = inject(Router);
   constructor(private categoryService:CategoryService,private route: ActivatedRoute){}
   ngOnInit(): void {
     
@@ -41,8 +42,10 @@ console.log("in  ategory components ===>",this.categoryId)
 
 }
 productsByCategory(categoryId:number){
-  this.categoryId=categoryId
-
+  //this.categoryId=categoryId
+  this.router.navigate(["/category"], {
+    queryParams: { categoryId: categoryId }
+  });
 }
 
 
