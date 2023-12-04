@@ -9,6 +9,7 @@ export class Product {
     discount:number;
     categoryInProduct:Category
     stockQuantity:number
+    byteArr: Blob
   
     constructor(
       id?: number,

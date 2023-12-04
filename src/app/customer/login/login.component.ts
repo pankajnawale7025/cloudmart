@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  UserName: string = 'pankajnawale127025@gmail.com';
+  UserName: string = 'Admin';
   password: string = '8806444288';
   errdiv: boolean = false;
   processbtn = false;

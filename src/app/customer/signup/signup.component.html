@@ -1,31 +1,43 @@
 <div class="container">
     <h1>Register Customer </h1>
 
-    <div class="form-group">
-        <label for="name">Name<span class="asterik">*</span> :</label>
-        <input type="text" id="name" name="name" [(ngModel)]="customer.name"  required />
-    </div>
-    <div class="form-group">
-        <label for="surName">Surname :</label>
-        <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
-    </div>
-    <div class="form-group">
+    <form  #myForm="ngForm" (ngSubmit)="addCustomerInDatabase()">
+
+        <div class="form-group">
+            <label for="name">Name<span class="asterik">*</span> :</label>
+            <input type="text" id="name" name="name" [(ngModel)]="customer.name"  required />
+        </div>
+        <div class="form-group">
+            <label for="surName">Surname :</label>
+            <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
+        </div>
+        <div class="form-group">
         <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
-        <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" />
+        <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" required />
     </div>
     <div class="form-group">
         <label for="emailAdress">Email Address<span class="asterik">*</span> :</label>
-        <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" />
+        <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" required />
     </div>
     <div class="form-group">
         <label for="adress">Address <span class="asterik">*</span> :</label>
-        <input type="text" id="adress" name="adress" [(ngModel)]="customer.address" />
+        <input type="text" id="adress" name="adress" [(ngModel)]="customer.address"  required/>
     </div>
-    <input type="submit" (click)="addCustomerInDatabase()" value="Add Customer">
+    <div *ngIf="!myForm.invalid">
+
+        <input type="submit" value="Add Customer"  [disabled]="myForm.invalid">
+    </div>
+  </form>
 </div>
+
+
+
+
+
+
 <div class="msgdiv">
- <div class="errdiv" *ngIf="errmsgforadd">
+    <div class="errdiv" *ngIf="errmsgforadd">
         <h3>Please Cheack Input's</h3>
     </div>
-
+    
 </div>

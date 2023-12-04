@@ -32,10 +32,14 @@
                 <label for="Stock Quantity"> Stock Quantity<span class="asterik">*</span>:</label>
             <input type="text" class="form-control mt-2" id="exampleInputEmail1"
                 placeholder="Enter the Stock in Quantity" [(ngModel)]="product.stockQuantity">
-                <label for="Select Image"> Select Image :</label>
-
+                <label for="Select Image"> Enter  Image Url :</label>
             <input type="text" class="form-control  mt-2 mb-2 " id="image" placeholder="Enter ImageUrl of product"
                 [(ngModel)]="product.imageurl">
+
+                <label for="Select Image"> Select Image :</label>
+                
+                <input type="file" id="myFile" name="filename" [(ngModel)]="imageFile" (change)="onFileSelected($event)">
+
 
             <div class=" Add-button "><button class="update-btn ms-4" (click)="addProductInDatabase()"> Add
                     Product</button>

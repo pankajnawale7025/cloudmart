@@ -29,11 +29,6 @@ import { Product } from '../model/Product';
 
 
 
-
-
-
-
-
   allProduct():Observable<Response>
   {
     return this.http.get<Response>(this.BASE_URL+'getAllProduct')
@@ -73,6 +68,16 @@ deleteProduct(product:Product):Observable<Response>{
   return this.http.delete<Response>(this.BASE_URL+'deleteProduct',{ body: product});
 }
 
+
+
+addProductwithImage(product:any,file:File|any):Observable<Response>{
+  const params=new HttpParams()
+  .set('product', product)
+  .set('file', file)
+
+  return this.http.post<Response>(this.BASE_URL+'addProductwithImage',{params});
+}
+  
 
 
 addProduct(product:Product):Observable<Response>{

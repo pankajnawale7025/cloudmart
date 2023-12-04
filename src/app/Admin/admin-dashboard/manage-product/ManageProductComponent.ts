@@ -29,6 +29,57 @@ export class ManageProductComponent {
 
   constructor(private productService: ProductsService) { }
 
+
+
+  selectedFile: File;
+  onFileSelected(event:any): void {
+    this.selectedFile = event.target.files[0];
+    console.log( this.selectedFile)
+    if (this.selectedFile) {
+      const reader = new FileReader();
+  
+      reader.onload = (e:any) => {
+        // 'result' contains the contents of the file as a data URL
+        const fileContent = e.target.result;
+        
+        // Convert data URL to byte array
+        const byteCharacters = atob(fileContent.split(',')[1]);
+        const byteNumbers = new Array(byteCharacters.length);
+  
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+  
+        const byteArray = new Uint8Array(byteNumbers);
+  
+
+        // Now 'byteArray' contains the file content as a byte array
+        console.log("Byte array is ",byteArray);
+
+        const blob = new Blob([byteArray]);
+        this.product.byteArr=blob
+      
+      
+      };
+  
+      // Read the file as a data URL
+      reader.readAsDataURL(this.selectedFile);
+    }
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
   addProduct() {
     this.showProductTable = this.showProductTable == true ? false : false;
     this.addProductTableDiv = this.addProductTableDiv == true ? false : true;
@@ -58,59 +109,57 @@ export class ManageProductComponent {
 
     }
     )
-
-
-
-
   }
+
+  imageFile:File;
   dynamicString:string="Error";
   addProductInDatabase() {
 
+    this.productService.addProductwithImage(this.product,this.selectedFile).subscribe((data)=>{
 
-
-
-
+      console.log(data.responseData)
+    })
 
 
     
     console.log("product is ===>",this.product);
-    if (this.product.categoryInProduct != null && this.product.category != "Select Category" && this.product.categoryInProduct.category_id!=1 ) {
-      this.productService.addProduct(this.product).subscribe((data => {
+//     if (true ) {
+//       this.productService.addProduct(this.product).subscribe((data => {
 
 
-if(data.success)
-{
-  Swal.fire({
-    position: "center",
-    icon: "success",
-    title: "Product has been Added",
-    showConfirmButton: false,
-    timer: 1500
-  });
-}
-    this.addedmsg = true;
-      }),
-      (error)=>{
-  console.log(error)
-        console.log(error.error.errorMessage)
-        this.dynamicString=error.error.errorMessage
+// if(data.success)
+// {
+//   Swal.fire({
+//     position: "center",
+//     icon: "success",
+//     title: "Product has been Added",
+//     showConfirmButton: false,
+//     timer: 1500
+//   });
+// }
+//     this.addedmsg = true;
+//       }),
+//       (error)=>{
+//   console.log(error)
+//         console.log(error.error.errorMessage)
+//         this.dynamicString=error.error.errorMessage
         
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          //title: 'Product is not saved, ${this.dynamicString }!',
-          title: `Product is not saved, ${this.dynamicString }!`,
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
+//         Swal.fire({
+//           position: "center",
+//           icon: "error",
+//           //title: 'Product is not saved, ${this.dynamicString }!',
+//           title: `Product is not saved, ${this.dynamicString }!`,
+//           showConfirmButton: false,
+//           timer: 1500
+//         });
+//       }
     
-      );
-    }
-    else {
-      Swal.fire("Please Enter Valid Data")
+//       );
+//     }
+//     else {
+//       Swal.fire("Please Enter Valid Data")
 
-    }
+//     }
   }
 
   viewAllProduct() {
