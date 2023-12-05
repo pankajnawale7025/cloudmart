@@ -149,3 +149,7 @@ button:hover {
     display: block;
     font-weight: bold;
 }
+img{
+    height: 18%;
+    width: 32%;
+}

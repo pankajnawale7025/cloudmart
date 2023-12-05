@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Response } from '../model/Object-model';
+
 import { environment } from 'src/environment/environment ';
 import { Product } from '../model/Product';
+import { Response } from '../model/Object-model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,8 +31,7 @@ import { Product } from '../model/Product';
 
 
 
-  allProduct():Observable<Response>
-  {
+  allProduct():Observable<Response> {
     return this.http.get<Response>(this.BASE_URL+'getAllProduct')
   }
   

@@ -21,6 +21,7 @@ import { AboutComponent } from './customer/about/about.component';
 import { FilterComponent } from './customer/filter/filter.component';
 import { SearchComponent } from './customer/search/search.component';
 import { CategoryComponent } from './customer/category/category.component';
+import { dirtycheck1Guard } from './core/services/dirtycheck1.guard';
 
 const routes: Routes = [
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
   { path: 'orderhistory', component: OrderhistoryComponent },
   { path: 'productsHome', component: ProductsComponent },
   { path: 'orderDetail', component: OrderDetailsComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent  ,canDeactivate  :[dirtycheck1Guard] },
   { path: 'about', component: AboutComponent },
  
   { path: 'Adminlogin', component: AdminDashboardComponent

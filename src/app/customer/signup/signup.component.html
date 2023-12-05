@@ -5,23 +5,23 @@
 
         <div class="form-group">
             <label for="name">Name<span class="asterik">*</span> :</label>
-            <input type="text" id="name" name="name" [(ngModel)]="customer.name"  required />
+            <input type="text" id="name" name="name" [(ngModel)]="customer.name"  (change)="isDirty=true" required />
         </div>
         <div class="form-group">
             <label for="surName">Surname :</label>
-            <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" />
+            <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName"  (change)="isDirty=true"/>
         </div>
         <div class="form-group">
         <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
-        <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" required />
+        <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" (change)="isDirty=true" required />
     </div>
     <div class="form-group">
         <label for="emailAdress">Email Address<span class="asterik">*</span> :</label>
-        <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" required />
+        <input type="text" id="emailAdress" name="emailAdress" [(ngModel)]="customer.emailAddress" (change)="isDirty=true" required />
     </div>
     <div class="form-group">
         <label for="adress">Address <span class="asterik">*</span> :</label>
-        <input type="text" id="adress" name="adress" [(ngModel)]="customer.address"  required/>
+        <input type="text" id="adress" name="adress" [(ngModel)]="customer.address"  (change)="isDirty=true" required/>
     </div>
     <div *ngIf="!myForm.invalid">
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { any } from 'list';
 import { Category } from 'src/app/core/model/Object-model';
 import { Product } from 'src/app/core/model/Product';
+import { CategoryService } from 'src/app/core/services/category.service';
 import { ProductsService } from 'src/app/core/services/products.service';
 import Swal from 'sweetalert2';
 
@@ -25,76 +26,59 @@ export class ManageProductComponent {
   showupdateform: boolean = false;
   responseForUpdate: any;
   dropdownData: Category[] = [];
+  productList:Product[]=[]
+  imageSelected = false;
+  imageBase64string: string;
 
-
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService,private categoryService:CategoryService) { }
 
 
 
   selectedFile: File;
-  onFileSelected(event:any): void {
+  onFileSelected(event: any): void {
+    this.imageSelected = true;
+
     this.selectedFile = event.target.files[0];
-    console.log( this.selectedFile)
+    console.log("Filepath is ===>", event.target.files[0])
+    console.log("this.selectedFile", this.selectedFile)
     if (this.selectedFile) {
       const reader = new FileReader();
-  
-      reader.onload = (e:any) => {
+      reader.onload = (e: any) => {
+        console.log("File data is ===>", e)
         // 'result' contains the contents of the file as a data URL
         const fileContent = e.target.result;
-        
-        // Convert data URL to byte array
-        const byteCharacters = atob(fileContent.split(',')[1]);
-        const byteNumbers = new Array(byteCharacters.length);
-  
-        for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
-        }
-  
-        const byteArray = new Uint8Array(byteNumbers);
-  
 
-        // Now 'byteArray' contains the file content as a byte array
-        console.log("Byte array is ",byteArray);
 
-        const blob = new Blob([byteArray]);
-        this.product.byteArr=blob
-      
-      
+        console.log("fileContent LENGTH IS  ===>", fileContent.length)
+        this.imageBase64string = fileContent
+        this.product.imageurl = fileContent
       };
-  
+
       // Read the file as a data URL
       reader.readAsDataURL(this.selectedFile);
     }
 
-
-
-
-
-
   }
-
-
-
-
-
 
 
 
   addProduct() {
     this.showProductTable = this.showProductTable == true ? false : false;
     this.addProductTableDiv = this.addProductTableDiv == true ? false : true;
+    this.imageSelected = false;
+
 
 
     this.productService.listOfCategory().subscribe((response) => {
-      
+
       console.log("Response is :", response)
       this.dropdownData = response.responseData
-      
-            console.log("  Before  Sorting this.dropdownData is :", this.dropdownData)
-       this.dropdownData .sort((a, b) => {
+
+      console.log("  Before  Sorting this.dropdownData is :", this.dropdownData)
+      this.dropdownData.sort((a, b) => {
         const category_idA = a.category_id; // Ignore case for comparison
         const category_idB = b.category_id;
-                if (category_idA < category_idB) {
+        if (category_idA < category_idB) {
           return -1; // a comes before b
         }
         if (category_idA > category_idB) {
@@ -104,73 +88,105 @@ export class ManageProductComponent {
       });
 
       console.log("  A  fter Sorting this.dropdownData is :", this.dropdownData[0])
-      
-      this.product.category=this.dropdownData[0].category
+
+      this.product.category = this.dropdownData[0].category
 
     }
     )
   }
 
-  imageFile:File;
-  dynamicString:string="Error";
+  imageFile: File;
+  dynamicString: string = "Error";
   addProductInDatabase() {
+   
+if(this.product.categoryInProduct==undefined)
+{
+  this.categoryService.getCategoryByName(this.product.category).subscribe((data)=>{
+   
+  this.product.categoryInProduct=data.responseData
+  })
 
-    this.productService.addProductwithImage(this.product,this.selectedFile).subscribe((data)=>{
-
-      console.log(data.responseData)
-    })
-
-
+}
+   
+    console.log("Product is ===>",this.product)
     
-    console.log("product is ===>",this.product);
-//     if (true ) {
-//       this.productService.addProduct(this.product).subscribe((data => {
-
-
-// if(data.success)
-// {
-//   Swal.fire({
-//     position: "center",
-//     icon: "success",
-//     title: "Product has been Added",
-//     showConfirmButton: false,
-//     timer: 1500
-//   });
-// }
-//     this.addedmsg = true;
-//       }),
-//       (error)=>{
-//   console.log(error)
-//         console.log(error.error.errorMessage)
-//         this.dynamicString=error.error.errorMessage
-        
-//         Swal.fire({
-//           position: "center",
-//           icon: "error",
-//           //title: 'Product is not saved, ${this.dynamicString }!',
-//           title: `Product is not saved, ${this.dynamicString }!`,
-//           showConfirmButton: false,
-//           timer: 1500
-//         });
-//       }
     
-//       );
-//     }
-//     else {
-//       Swal.fire("Please Enter Valid Data")
+    
+        if (true ) {
+          this.productService.addProduct(this.product).subscribe((data => {
+            console.log("add product in database -2")
+    if(data.success)
+    {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Product has been Added",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+        this.addedmsg = true;
+          }),
+          (error)=>{
+      console.log(error)
+            console.log(error.error.errorMessage)
+            this.dynamicString=error.error.errorMessage
 
-//     }
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              //title: 'Product is not saved, ${this.dynamicString }!',
+              title: `Product is not saved, ${this.dynamicString }!`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+
+          );
+        }
+        else {
+          Swal.fire("Please Enter Valid Data")
+
+        }
   }
 
   viewAllProduct() {
     this.showProductTable = this.showProductTable == true ? false : true;
     this.addProductTableDiv = false;
+console.log( "This product is ===>",this.product)
+    this.productService.listOfCategory().subscribe((response) => {
+   
+      console.log("Response is :", response)
+      this.dropdownData = response.responseData
 
-     console.log("Yo are in view all product")
+      console.log("  Before  Sorting this.dropdownData is :", this.dropdownData)
+      this.dropdownData.sort((a, b) => {
+        const category_idA = a.category_id; // Ignore case for comparison
+        const category_idB = b.category_id;
+        if (category_idA < category_idB) {
+          return -1; // a comes before b
+        }
+        if (category_idA > category_idB) {
+          return 1; // a comes after b
+        }
+        return 0; // names are equal
+      });
+
+      console.log("  A  fter Sorting this.dropdownData is :", this.dropdownData[0])
+
+      this.product.category = this.dropdownData[0].category
+
+    })
+
+
+
+    
+    console.log("You are in view all product")
     this.productService.allProduct().subscribe((data => {
-      this.response = data;
-      this.response = this.response;
-      console.log(this.response);
+      
+      
+      this.productList=data.responseData.content
+      console.log("view all=============================>",this.productList)
     }));
   }
 
@@ -302,9 +318,17 @@ export class ManageProductComponent {
     console.log("this.showupdateform", this.showupdateform);
     this.product.id = data.id;
     this.product.name = data.name;
-    this.product.category = data.category;
     this.product.price = data.price;
     this.product.imageurl = data.imageurl;
+    this.product.discount = data.discount;
+    this.imageSelected=true
+
+    console.log("updateProduct data is ===>",data) 
+    console.log("data.imageurl====>",data.imageurl)
+    this.product.imageurl=data.imageurl
+    console.log("this.product.imageurl==>",this.product.imageurl)
+    
+
   }
 
 
@@ -364,16 +388,16 @@ export class ManageProductComponent {
 
   category: Category;
 
-   selectCategory(selectedCategory:  any) {
-     console.log(selectedCategory.target.value)
+  selectCategory(selectedCategory: any) {
+    console.log(selectedCategory.target.value)
     // console.log(this.dropdownData.find(category=>category.category_id===selectedCategory.target.value))
-      let category1=this.dropdownData.find((a) =>a.category_id == selectedCategory.target.value);
-      this.category = category1?category1:{category_id:0, category:'',googleMaterialIcon:'',productList:[]}
+    let category1 = this.dropdownData.find((a) => a.category_id == selectedCategory.target.value);
+    this.category = category1 ? category1 : { category_id: 0, category: '', googleMaterialIcon: '', productList: [] }
 
 
 
-      this.product.categoryInProduct= this.category
-      console.log(this.category)
+    this.product.categoryInProduct = this.category
+    console.log(this.category)
     // if (selectedCategory.target.value == 1) {
 
     //   Swal.fire("Please Select Valid Category")

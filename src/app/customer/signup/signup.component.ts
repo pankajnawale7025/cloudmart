@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/model/Object-model';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { ComponentCanDeactive } from 'src/app/shared/component-can-deactive';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements ComponentCanDeactive {
 
   errmsgforadd:boolean=false;
   sccmsgforadd:boolean=false;
@@ -18,7 +20,13 @@ export class SignupComponent {
 constructor(private customerService:CustomerService,private router:Router)
 {}
 
-  customer=new Customer()
+customer=new Customer()
+ isDirty=false;
+
+  canDeactivate () : boolean {
+  return  !this.isDirty;
+  }
+
   addCustomerInDatabase(){
     this.customerService.isEmailNotPresent(this.customer.emailAddress).subscribe((data)=>{
     console.log("isEmailNotPresentOutput",data)
@@ -76,3 +84,7 @@ toLogIn()
 }
 
 }
+function addCustomerInDatabase() {
+  throw new Error('Function not implemented.');
+}
+
