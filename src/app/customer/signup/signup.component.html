@@ -1,7 +1,38 @@
 <div class="container">
     <h1>Register Customer </h1>
+    <form [formGroup]="myForm" (ngSubmit)="addCustomerInDatabase()">
 
-    <form  #myForm="ngForm" (ngSubmit)="addCustomerInDatabase()">
+        <div class="form-group">
+            <label for="name">Name<span class="asterik">*</span> :</label>
+            <input type="text" id="name" formControlName="name" (change)="isDirty=true" />
+            <p *ngIf="f['name'].errors && f['name'].touched">Customer name should be greater than 3</p>
+        </div>
+        <div class="form-group">
+            <label for="surName">Surname :</label>
+            <input type="text" id="surName" formControlName="surName" (change)="isDirty=true" />
+        </div>
+        <div class="form-group">
+            <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
+            <input type="text" id="contactNumber" formControlName="contactNumber" (change)="isDirty=true" />
+            <p *ngIf="f['contactNumber'].errors && f['contactNumber'].touched">Contact number Should be valid</p>
+        </div>
+        <div class="form-group">
+            <label for="emailAdress">Email Address<span class="asterik">*</span> :</label>
+            <input type="text" id="emailAdress" formControlName="emailAddress" (change)="isDirty=true" />
+            <p *ngIf="f['emailAddress'].errors && f['emailAddress'].touched">Email Id should be valid</p>
+        </div>
+        <div class="form-group">
+            <label for="adress">Address <span class="asterik">*</span> :</label>
+            <input type="text" id="adress" formControlName="address" (change)="isDirty=true" />
+            <p *ngIf="f['address'].errors && f['address'].touched">Adress is not valid 10 character</p>
+        </div>
+        <input type="submit" value="Add Customer"  [ngStyle]="{'background-color': myForm.invalid ? '#515356' : '#007bff'}" [disabled]="myForm.invalid" />
+    </form>
+    
+
+           <!-- This is Template Driven Form -->
+
+    <!-- <form  #myForm="ngForm" (ngSubmit)="addCustomerInDatabase()">
 
         <div class="form-group">
             <label for="name">Name<span class="asterik">*</span> :</label>
@@ -23,11 +54,8 @@
         <label for="adress">Address <span class="asterik">*</span> :</label>
         <input type="text" id="adress" name="adress" [(ngModel)]="customer.address"  (change)="isDirty=true" required/>
     </div>
-    <div *ngIf="!myForm.invalid">
-
         <input type="submit" value="Add Customer"  [disabled]="myForm.invalid">
-    </div>
-  </form>
+  </form> -->
 </div>
 
 

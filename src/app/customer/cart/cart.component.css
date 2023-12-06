@@ -1,4 +1,4 @@
-.cartitem{
+/* .cartitem{
     margin: 80px;
 }
 .process-btn{
@@ -110,4 +110,9 @@
 
 .container button:hover {
     background-color: #fc941d;
+} */
+
+img{
+  width: 80px;
+  height: 100px;
 }

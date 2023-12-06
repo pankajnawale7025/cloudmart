@@ -33,7 +33,42 @@
 
 
 
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class=" col-md-3 product m-2  mb-4 " *ngFor="let product of cartItems.responseData" style="background-color: #fefaf5;">
+                  <div class="product-image m-2 d-flex justify-content-center">
+                    <img [src]="product.product.imageurl" alt="Image not added in database" class="product-image">
+                </div>
+               
 
+
+                <div class="row  d-flex justify-content-around">
+
+                    <div class="col-md-3 p-2">
+                        <button (click)=deleteItemFromCart(product.id)>Remove From Cart</button>
+                    </div>
+                    <div class="col-md-3 p-2">
+                        <button (click)="updateQuantity(product.product.id,product.id)">Update Quantity</button>
+                    </div>    
+                </div>
+
+            
+        </div>
+    </div>
+    <div class="row d-flex justify-content-end">
+
+        <div class="col-md-2 p-2 ">
+            <div class="px-2 py-2 d-flex justify-content-center" *ngIf="showfinalTotalPrice">
+                <h6>Total price is : ₹ {{finaltotalPrice}} </h6>
+            </div>
+        </div>
+        <div class="col-md-2 d-flex justify-content-center  p-2 ">
+            <div class="p-2 " *ngIf="showprocessbtn">
+                <button (click)="processOrder()">Process Order</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

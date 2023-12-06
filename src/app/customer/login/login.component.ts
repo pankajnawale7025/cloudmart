@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  UserName: string = 'Admin';
+  UserName: string = 'pankajnawale7025@gmail.com';
   password: string = '8806444288';
   errdiv: boolean = false;
   processbtn = false;
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       console.log('username is :', this.UserName)
       console.log('Password is :', this.password)
 
-      this.cs.validateCustomer(this.UserName, this.password).subscribe((response => {
+      this.cs.validateCustomer(this.UserName, this.password).subscribe((response )=> {
         console.log("this.cs.validateCustomer response", response)
         this.processbtn = response?.success;
         console.log("process button", this.processbtn)
@@ -49,34 +49,37 @@ export class LoginComponent implements OnInit {
             console.log("verificationverificationverificationverificationverification")
             localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer))
                     
-          })
-          this.navbarService.signUp = false;
-          this.navbarService.login = false;
-          this.navbarService.cart = true;
-          this.navbarService.orderHistrory = true;
-          this.navbarService.logout = true;
-          this.navbarService.about = true;
-
-
-         
-          Swal.fire({
-            position: "center",
-            icon: "success",
-
-            title: `Welcome`,
-            //title: `Welcome, ${this.dynamicString }!`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-
-          console.log(localStorage.getItem("loggedInCustomer"));
+            this.navbarService.signUp = false;
+            this.navbarService.login = false;
+            this.navbarService.cart = true;
+            this.navbarService.orderHistrory = true;
+            this.navbarService.logout = true;
+            this.navbarService.about = true;
+            Swal.fire({
+              position: "center",
+              icon: "success",      
+              title: `Welcome`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+               console.log(localStorage.getItem("loggedInCustomer"));
             this.router.navigate(['/home']);
-        }
-        else {
-          this.errdiv = true;
-        }
-      }))
-
+          },
+          (error)=>{
+                     
+             Swal.fire({
+    
+              position: "center",
+              icon: "error",      
+              title: `We are facing some issue`,
+              showConfirmButton: false,
+              timer: 1000
+    
+             })
+          })
+          }
+      }
+      )
     }
   }
 

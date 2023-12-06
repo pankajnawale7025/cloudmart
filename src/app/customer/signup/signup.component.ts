@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/model/Object-model';
@@ -11,14 +12,25 @@ import Swal from 'sweetalert2';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements ComponentCanDeactive {
+export class SignupComponent implements ComponentCanDeactive,OnInit {
 
   errmsgforadd:boolean=false;
   sccmsgforadd:boolean=false;
   response:any;
   response1:any;
-constructor(private customerService:CustomerService,private router:Router)
+  myForm: FormGroup;
+constructor(private customerService:CustomerService,private router:Router,private fb:FormBuilder)
 {}
+  ngOnInit(): void {
+     // Initialize the form with form controls and validators
+     this.myForm = this.fb.group({
+      name: ['', [Validators.required,Validators.minLength(3)]],
+      surName: [''],
+      contactNumber: ['', [Validators.required,Validators.pattern("^[0-9]{10}$")]],
+      emailAddress: ['', [Validators.required, Validators.pattern("^@?[A-Za-z0-9+_.-]+@?(.+)(com|In|biz)+$")]],
+      address: ['', [Validators.required,Validators.minLength(10)]]
+    });
+  }
 
 customer=new Customer()
  isDirty=false;
@@ -26,8 +38,20 @@ customer=new Customer()
   canDeactivate () : boolean {
   return  !this.isDirty;
   }
-
+  get f() {
+    return this.myForm.controls;
+  }
   addCustomerInDatabase(){
+    this.isDirty=false;
+
+
+    this.customer.emailAddress=this.myForm.value.emailAddress
+
+
+    this.customer=this.myForm.value
+    console.log("this.myForm.value===>",this.myForm.value)
+    console.log("this.customer===>",this.customer)
+    
     this.customerService.isEmailNotPresent(this.customer.emailAddress).subscribe((data)=>{
     console.log("isEmailNotPresentOutput",data)
     this.response1=data
@@ -67,6 +91,23 @@ customer=new Customer()
             },
             (error) => {
               // Handle HTTP errors here
+            
+
+                          
+          Swal.fire({
+            position: "center",
+            icon: "error",
+
+            title: `Check Inputs..!`,
+            //title: `Welcome, ${this.dynamicString }!`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+
+
+      
+
+                 
               console.error("HTTP error:", error);
               // You can display an error message or perform other actions here
             }

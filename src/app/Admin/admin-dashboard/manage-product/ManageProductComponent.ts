@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, provideZoneChangeDetection } from '@angular/core';
 import { any } from 'list';
 import { Category } from 'src/app/core/model/Object-model';
 import { Product } from 'src/app/core/model/Product';
@@ -29,12 +29,12 @@ export class ManageProductComponent {
   productList:Product[]=[]
   imageSelected = false;
   imageBase64string: string;
+  selectedFile: File;
 
   constructor(private productService: ProductsService,private categoryService:CategoryService) { }
 
 
 
-  selectedFile: File;
   onFileSelected(event: any): void {
     this.imageSelected = true;
 
@@ -239,9 +239,10 @@ console.log( "This product is ===>",this.product)
     }
   }
   getPageWiseProduct(no: number, pagesize: number): void {
+    this.no=no
     this.productService.getSpecificProduct(no, this.pageSize).subscribe((data) => {
       console.log(no);
-      this.response = data;
+      this.productList = data.responseData.content;
       this.totalPages = this.response.responseData.totalPages;
       this.totalPagesarray = new Array(this.totalPages);
       console.log(this.response.responseData.content);
@@ -252,9 +253,9 @@ console.log( "This product is ===>",this.product)
   onPageSizeBtnClick(event: any) {
     this.pageSize = event.target.value;
     this.productService.getSpecificProduct(this.no, this.pageSize).subscribe((data) => {
-      console.log(this.no);
-      this.response = data;
-      this.totalPages = this.response.responseData.totalPages;
+      console.log("productService.getSpecificProduct api op is ===>",data);
+      this.productList = data.responseData.content;
+      this.totalPages = data.responseData.totalPages;
       this.totalPagesarray = new Array(this.totalPages);
       console.log(this.response.responseData.content);
 
@@ -290,28 +291,71 @@ console.log( "This product is ===>",this.product)
   updatePro() {
 
     console.log("Product is :", this.product);
-    this.productService.updateProduct(this.product).subscribe((data1) => {
-
-      this.responseForUpdate = data1;
-      console.log("this.responseForUpdate", this.responseForUpdate);
-
-      // data1 is sucess method
-      this.responseForUpdate.isSuccess = data1.success;
-      //  console.log(this.response.responseData)
-      //  console.log(this.response.errorMessage)
-      //  console.log(this.response.isSuccess)
-      //   console.log('data 1 is ',data1)
-      //   console.log('this.response.isSuccess=data1.isSuccess;', this.response.isSuccess);
-      //   console.log('Data1 is sucess:', data1.isSuccess);
-      //  console.log('this.response:', this.response);
-    },
-      error => {
-        console.log("At Error messsage");
-        this.responseForUpdate = error.error;
+   
+{
+  this.categoryService.getCategoryByName("Electronics").subscribe((data)=>{
+   
 
 
-      }
-    );
+    console.log("Category data is===>",data)
+  this.product.categoryInProduct=data.responseData
+  })
+
+}
+//     this.productService.updateProduct(this.product).subscribe((data1) => {
+
+//       this.responseForUpdate = data1;
+//       console.log("this.responseForUpdate", this.responseForUpdate);
+
+//       // data1 is sucess method
+//       this.responseForUpdate.isSuccess = data1.success;
+
+//  if(this.responseForUpdate.isSuccess)
+//  {
+
+
+
+      
+//   Swal.fire({
+//     position: "center",
+//     icon: "success",
+//     title: `Product Updated Sucessfully`,
+//     //title: `Welcome, ${this.dynamicString }!`,
+//     showConfirmButton: false,
+//     timer: 1500
+//   });
+
+
+//     console.log("this.no, this.pageSize===>",this.no, this.pageSize)
+//   this.productService.getSpecificProduct(this.no, this.pageSize).subscribe((data) => {
+//     console.log("productService.getSpecificProduct api op is ===>",data);
+//     this.productList = data.responseData.content;
+//     this.totalPages = data.responseData.totalPages;
+//     this.totalPagesarray = new Array(this.totalPages);
+//     console.log(this.response.responseData.content);
+
+//   });
+
+
+//  // this.viewAllProduct()
+//  }
+
+
+//       //  console.log(this.response.responseData)
+//       //  console.log(this.response.errorMessage)
+//       //  console.log(this.response.isSuccess)
+//       //   console.log('data 1 is ',data1)
+//       //   console.log('this.response.isSuccess=data1.isSuccess;', this.response.isSuccess);
+//       //   console.log('Data1 is sucess:', data1.isSuccess);
+//       //  console.log('this.response:', this.response);
+//     },
+//       error => {
+//         console.log("At Error messsage");
+//         this.responseForUpdate = error.error;
+
+
+//       }
+//     );
   }
   updateProduct(data: any) {
     this.showupdateform = true;
@@ -322,12 +366,7 @@ console.log( "This product is ===>",this.product)
     this.product.imageurl = data.imageurl;
     this.product.discount = data.discount;
     this.imageSelected=true
-
-    console.log("updateProduct data is ===>",data) 
-    console.log("data.imageurl====>",data.imageurl)
-    this.product.imageurl=data.imageurl
-    console.log("this.product.imageurl==>",this.product.imageurl)
-    
+    this.product.categoryInProduct=data.categoryInProduct
 
   }
 

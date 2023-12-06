@@ -55,6 +55,11 @@ this.productService.productList().subscribe((data) => {
 this.cartItemService.getCartItemCount(this.customerService.loggedInCustomer.id).subscribe((data)=>{
   this.navbarService.cartitemCount=data.responseData
   })
+  this.productService.productList().subscribe((data) => {
+    // this.navbarService.productListInNavbarService = data.responseData;
+    this.productService.productListInProductService=data.responseData
+  }
+  );
   }
 
 
