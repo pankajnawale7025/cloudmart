@@ -15,7 +15,7 @@ export class UtilityService {
   // Returns an observable 
   fileToByteArray(file:File) { 
   
- console.log("Hii")
+ //console.log("Hii")
   
 }
 }

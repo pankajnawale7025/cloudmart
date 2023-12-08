@@ -24,6 +24,7 @@ export class ProductDetailsComponent implements OnInit {
   response: any;
   responseforcartitem: any
 
+  productLoaded:boolean=false;
   ngOnInit() {
     this.navbarService.navbar=true; 
     this.route.queryParams.subscribe(params => {
@@ -33,7 +34,8 @@ export class ProductDetailsComponent implements OnInit {
       //    console.log(param1);
       this.productService.getProductById(this.productId).subscribe((data) => {
         this.p = data
-        console.log("p is ", this.p)
+        this.productLoaded=true;
+    //    console.log("p is ", this.p)
       })
 
     });
@@ -47,8 +49,15 @@ export class ProductDetailsComponent implements OnInit {
       this.value -= 1
     }
     else {
-      alert("single quantity required to add to cart");
-     this.showLoginAlert();
+      Swal.fire({
+    
+        position: "center",
+        icon: "error",      
+        title: `Atleast one quantity to be select`,
+        showConfirmButton: false,
+        timer: 1000
+
+       })
 
     }
   }

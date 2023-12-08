@@ -20,7 +20,7 @@ export class CategoryComponent implements  OnInit {
 
 this.categoryService.listOfCategory().subscribe((data)=>{
   this.categoryList=data.responseData
-  console.log("List Of Category is ===>",data)
+ // console.log("List Of Category is ===>",data)
 })
 
 
@@ -28,11 +28,11 @@ this.route.queryParams.subscribe(params => {
   const categoryId = params['categoryId'];
   this.categoryId=categoryId
 
-console.log("in  ategory components ===>",this.categoryId)
+//console.log("in  ategory components ===>",this.categoryId)
 
 
   // Now, param1Value contains the value of the 'param1' query parameter
-  console.log("category id is ",categoryId);
+ // console.log("category id is ",categoryId);
 });
 
 

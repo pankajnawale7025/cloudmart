@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { sortedIndexOf } from 'lodash';
 import { Customer } from 'src/app/core/model/Object-model';
@@ -10,233 +11,154 @@ import Swal from 'sweetalert2';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent  implements OnInit{
+export class AboutComponent implements OnInit {
 
-constructor(private customerService:CustomerService,private router:Router ){}
+  constructor(private customerService: CustomerService, private router: Router,private fb:FormBuilder) { }
 
+  customer: Customer
+  result: any;
+  myForm: FormGroup;
 
+  ngOnInit(): void {
 
-customer: Customer = {
-  id:1,
-  name: "xyz",
-  surName: "xyz",
-  contactNumber: "xyz",
-  emailAddress: "xyz",
-  address: "xyz",
-  
-  customerOrderList:"xyz",
-  cart:"xyz"
+    //this.customer = { ...this.customerService.loggedInCustomer };
 
-};
-result:any;
-ngOnInit(): void {
-  
-//console.log("login customerobject in customer Service ====>",this.customerService.loggedInCustomer)
-
-// create shallow copy to otherwise two instances will point to the same memory address by below first commiirting line 
-//this.customer=this.customerService.loggedInCustomer;
- this.customer = { ...this.customerService.loggedInCustomer };
-
-
-    // this.customerService.getCustomer(this.customerService.loggedInCustomer.emailAddress).subscribe((data)=>{
-    //   this.result=data;
-    //   this.customer=this.result.responseData
-    //   console.log("login customer at in about component OnInit====>",this.customer)
-    // })
-  }
-
- dataVerification:boolean;
-
-
-
-
-
-
-
-
-
-
-
-
-
-  updateCustomerInDatabase(){
-
-console.log("Updated  Customer===>",this.customer)
-console.log("Customer in Service ===>",this.customerService.loggedInCustomer)
-
-   
-
-
-
-if (
-  this.customer.id === this.customerService.loggedInCustomer.id &&
-  this.customer.name === this.customerService.loggedInCustomer.name &&
-  this.customer.surName === this.customerService.loggedInCustomer.surName &&
-  this.customer.contactNumber === this.customerService.loggedInCustomer.contactNumber &&
-  this.customer.emailAddress === this.customerService.loggedInCustomer.emailAddress &&
-  this.customer.address === this.customerService.loggedInCustomer.address 
-) 
-
-
-
-{
-
-   
-  Swal.fire({
-    position: "center",
-    icon: "question",
-    title: `Sorry ! No Changes Found `,
-    showConfirmButton: false,
-    timer: 1500
-  });
-  //console.log("same");
-} else {
- 
- 
-  this.customerService.updateCustomer(this.customer).subscribe((data)=>{
-    console.log("data in update is" , data)
-    this.dataVerification=data.success 
-    if(this.dataVerification)
-    {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-
-        title: `Profile Updated Successfully`,
-        //title: `Welcome, ${this.dynamicString }!`,
-        showConfirmButton: false,
-        timer: 1500
-      });
-      //console.log("data is  while updating ===>",data)
-      //console.log("this.dataVerification ====>",this.dataVerification)
-      this.customerService.getCustomer(this.customer.emailAddress).subscribe((data)=>{
-        console.log(" updated customer is ===>",data.responseData)
-          this.customerService.loggedInCustomer=data.responseData
-          console.log("this.customerService.loggedInCustomer===>",this.customerService.loggedInCustomer)          
-        })
-
-        this.ngOnInit()
+    this.myForm = this.fb.group({
+      name: [this.customerService.loggedInCustomer.name, [Validators.required,Validators.minLength(3)]],
+      surName: [this.customerService.loggedInCustomer.surName],
+      contactNumber: [this.customerService.loggedInCustomer.contactNumber, [Validators.required,Validators.pattern("^[0-9]{10}$")]],
+      emailAddress: [this.customerService.loggedInCustomer.emailAddress, [Validators.required, Validators.pattern("^@?[A-Za-z0-9+_.-]+@?(.+)(com|In|biz)+$")]],
+      address: [this.customerService.loggedInCustomer.address, [Validators.required,Validators.minLength(10)]]
+    });
     
-    }
+    //this.myForm.patchValue({ ...this.customerService.loggedInCustomer });
+   console.log("this.customerService.loggedInCustomer===>",this.customerService.loggedInCustomer)
+   console.log(" this.myForm==>", this.myForm)
+    
 
-    else{
-         
+  }
+   f() {
+    return this.myForm.controls;
+  }
+
+  dataVerification: boolean;
+  updateCustomerInDatabase() {
+    if (
+      this.customer.id === this.customerService.loggedInCustomer.id &&
+      this.customer.name === this.customerService.loggedInCustomer.name &&
+      this.customer.surName === this.customerService.loggedInCustomer.surName &&
+      this.customer.contactNumber === this.customerService.loggedInCustomer.contactNumber &&
+      this.customer.emailAddress === this.customerService.loggedInCustomer.emailAddress &&
+      this.customer.address === this.customerService.loggedInCustomer.address
+    ) {
+
       Swal.fire({
         position: "center",
-        icon: "error",
-        title: `We are Facing some Issue`,
-        //title: `Welcome, ${this.dynamicString }!`,
+        icon: "question",
+        title: `Sorry ! No Changes Found `,
         showConfirmButton: false,
         timer: 1500
       });
+
     }
-  })
+    else {
 
-//  console.log("Different");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // 96 to 133 update logic swal.fire not working according to it 
-
-
-    // Swal.fire({
-    //   title: 'Do you want to save the changes?',
-    //   showDenyButton: true,
-    //   // showCancelButton: true,
-    //   confirmButtonText: 'Save',
-    //   denyButtonText: `Don't save`,
-    // }).then((result) => {
-    //   console.log("in swalfire")
-      this.customerService.updateCustomer(this.customer).subscribe((data)=>{
-        console.log("data in update is" , data)
-        this.ngOnInit()
-            this.dataVerification=data.success 
-                
-            console.log("data is  while updating ===>",data)
-
-              console.log("this.dataVerification ====>",this.dataVerification)
-      })
-  
-    //   if(false)
-    //   {
-    //     if (result.isConfirmed) {
-    //       Swal.fire('Saved!', '', 'success')
-    //     } else if (result.isDenied) {
-    //       Swal.fire('Changes are not saved', '', 'info')
-    //     }
-    //   }
-    //   else
-    //   {
-    //     Swal.fire('Insert valid data')
-    //   }
-    // })
-//   // this.customerService.updateCustomer(this.customer).subscribe((data)=>{
-    //   //   console.log("data in update is" , data)
-    //   // })
-      // //  alert("Data updated")
-    // // this.ngOnInit()
-     
-    // }
-
-
-  }
-
-
-
-
-    deleteCustomerProfile(){
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete profile!'
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`
       }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
 
-          this.customerService.deleteCustomer(this.customerService.loggedInCustomer.id).subscribe((data)=>{
-            console.log(data)
-          })
-          Swal.fire(
-            'Deleted!',
-            'Your profile has been deleted.',
-            'success'
-          )
-          this.customerService.loogedOutCustomer()
-      this.router.navigate(['signup'])
-          
-        }
-      })
+          this.customerService.updateCustomer(this.customer).subscribe((data) => {
 
+
+            localStorage.setItem('loggedInCustomer', JSON.stringify(data.responseData))
+
+            this.customer = { ...data.responseData };
+            this.customerService.loggedInCustomer = data.responseData
+
+        //    console.log("data.responseDatais ===>", data.responseData)
+         //   console.log("this.customerService.loggedInCustomer is ===>", this.customerService.loggedInCustomer)
+            if (data.success) {
+
+
+              Swal.fire({
+
+                position: "center",
+                icon: "success",
+                title: `Profile updated successfully`,
+                showConfirmButton: false,
+                timer: 1000
+
+              })
+
+            }
+
+
+          },
+            (error) => {
+              Swal.fire({
+
+                position: "center",
+                icon: "error",
+                title: `We are facing some issue`,
+                showConfirmButton: false,
+                timer: 1000
+
+              })
+            }
+          )
+
+
+
+
+
+        } else if (result.isDenied) {
+          this.customer = { ...this.customerService.loggedInCustomer };
+          Swal.fire("Changes are not saved", "", "info");
+        }
+        else if (result.isDismissed) {
+          this.customer = { ...this.customerService.loggedInCustomer };
+        //  console.log("User clicked on cancel button");
+        }
+      });
     }
+  }
+
+
+
+
+  deleteCustomerProfile() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete profile!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.customerService.deleteCustomer(this.customerService.loggedInCustomer.id).subscribe((data) => {
+
+        })
+        Swal.fire(
+          'Deleted!',
+          'Your profile has been deleted.',
+          'success'
+        )
+        this.customerService.loogedOutCustomer()
+        this.router.navigate(['signup'])
+
+      }
+    })
+
+  }
 
 
 

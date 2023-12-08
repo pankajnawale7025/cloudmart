@@ -23,15 +23,15 @@ export class OrderDetailsComponent implements OnInit{
     this.aroute.queryParams.subscribe(params => {
       const param1 = params['param1'];
 
- console.log("value of param through routing is ",param1)
+         //   console.log("value of param through routing is ",param1)
 
           this.orderService.viewOrderByOrderId(param1).subscribe((data)=>{
             this.orderDetail=data;
 
             this.finalTotalPrice=(this.orderDetail.responseData.finalTotalPrice).toFixed(2)
-            console.log("OrderDetail is ",this.orderDetail)
+       //     console.log("OrderDetail is ",this.orderDetail)
             this.productdetails=this.orderDetail.responseData.orderitemList
-            console.log("this.productdetails is : ",this.productdetails)
+         //   console.log("this.productdetails is : ",this.productdetails)
           })
   
         })

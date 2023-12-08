@@ -25,51 +25,57 @@
     </table>
 </div>
 -->
-<div class="container" *ngIf="showerrmsg">
+<div class="container12" *ngIf="showerrmsg">
     <h1>Cart is Empty</h1>
     <button (click)="toHome()">Shop Now</button>
-
 </div>
-
-
+<div *ngIf="showcartitem">
 
 <div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class=" col-md-3 product m-2  mb-4 " *ngFor="let product of cartItems.responseData" style="background-color: #fefaf5;">
-                  <div class="product-image m-2 d-flex justify-content-center">
-                    <img [src]="product.product.imageurl" alt="Image not added in database" class="product-image">
-                </div>
-               
-
-
-                <div class="row  d-flex justify-content-around">
-
-                    <div class="col-md-3 p-2">
-                        <button (click)=deleteItemFromCart(product.id)>Remove From Cart</button>
-                    </div>
-                    <div class="col-md-3 p-2">
-                        <button (click)="updateQuantity(product.product.id,product.id)">Update Quantity</button>
-                    </div>    
-                </div>
-
-            
-        </div>
-    </div>
-    <div class="row d-flex justify-content-end">
-
-        <div class="col-md-2 p-2 ">
-            <div class="px-2 py-2 d-flex justify-content-center" *ngIf="showfinalTotalPrice">
-                <h6>Total price is : ₹ {{finaltotalPrice}} </h6>
+    
+    <div class="row mt-4 d-flex justify-content-center" *ngFor="let item of cartItems.responseData">
+        <div class="col-md-3 py-4" style="  border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;   background-color:#EFF1F5; ">
+            <div>
+                <img [src]="item.product.imageurl" alt="Image not added in database" class="product-image">
             </div>
         </div>
-        <div class="col-md-2 d-flex justify-content-center  p-2 ">
-            <div class="p-2 " *ngIf="showprocessbtn">
-                <button (click)="processOrder()">Process Order</button>
+        <div class="col-md-3 d-flex align-items-center" style="background-color:#EFF1F5; border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;">
+
+            <div class="col-md-12">
+                <div style="float: right; margin-top: 3px;">
+                    <span style="border: 1px solid black;" (click)=deleteItemFromCart(item.id)
+                        class="material-symbols-outlined">
+                        close
+                    </span>
+                </div>
+                <div> <h5>{{item.product.name}}</h5></div>
+
+                <div><p>nos : {{item.quantity}}</p></div>
+                <div class="d-flex justify-content-between">
+                    <div> <button class="up-btn" (click)="updateQuantity(item.product.id,item.id)">Change Quantity</button></div>
+                    <div >  <h6 style="color: #FD8801;"> ₹ {{item.quantity*item.product.price}}</h6></div>
+                </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
+<div class="d-flex justify-content-end py-4 px-2">
+
+    <div class="px-5"  *ngIf="showfinalTotalPrice">
+        <h6 class="final-price">Total price is : ₹ {{finaltotalPrice}} </h6>
+    </div>
+    <div  class="px-5"  *ngIf="showprocessbtn">
+        <button class="process-btn" (click)="processOrder()">Process Order</button>
+    </div>
+    
+</div>
+</div>
+<!-- 
 
 
 
@@ -99,12 +105,5 @@
         <h1> </h1>
         <h6></h6>
     </div>
-</div>
+</div> -->
 
-
-<div *ngIf="showfinalTotalPrice">
-    <h6 class="final-price">Total price is : ₹ {{finaltotalPrice}} </h6>
-</div>
-<div *ngIf="showprocessbtn">
-    <button class="process-btn" (click)="processOrder()">Process Order</button>
-</div>

@@ -33,20 +33,20 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/Adminlogin'])
     }
     else {
-      console.log('username is :', this.UserName)
-      console.log('Password is :', this.password)
+      //console.log('username is :', this.UserName)
+     // console.log('Password is :', this.password)
 
       this.cs.validateCustomer(this.UserName, this.password).subscribe((response )=> {
-        console.log("this.cs.validateCustomer response", response)
+        //console.log("this.cs.validateCustomer response", response)
         this.processbtn = response?.success;
-        console.log("process button", this.processbtn)
+       // console.log("process button", this.processbtn)
         if (this.processbtn) {
           this.cs.getCustomer(this.UserName).subscribe((response) => {
-            console.log(' getCustomer Response is :', response)
+            //console.log(' getCustomer Response is :', response)
             this.cs.loggedInCustomer = response?.responseData;
-            console.log('loggedInCustomer is :', this.cs.loggedInCustomer)
+            //console.log('loggedInCustomer is :', this.cs.loggedInCustomer)
             this.loginService.setCartItemCount()
-            console.log("verificationverificationverificationverificationverification")
+           // console.log("verificationverificationverificationverificationverification")
             localStorage.setItem('loggedInCustomer', JSON.stringify(this.cs.loggedInCustomer))
                     
             this.navbarService.signUp = false;
@@ -62,7 +62,8 @@ export class LoginComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             });
-               console.log(localStorage.getItem("loggedInCustomer"));
+           //
+              // console.log(localStorage.getItem("loggedInCustomer"));
             this.router.navigate(['/home']);
           },
           (error)=>{

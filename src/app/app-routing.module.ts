@@ -22,19 +22,11 @@ import { FilterComponent } from './customer/filter/filter.component';
 import { SearchComponent } from './customer/search/search.component';
 import { CategoryComponent } from './customer/category/category.component';
 import { dirtycheck1Guard } from './core/services/dirtycheck1.guard';
+import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-product.component';
 
 const routes: Routes = [
-  {
-    path: 'home', component: HomeComponent, children: [
-    //   { path: '', component: CategoryComponent,children:[
-    //     { path: '', component: ProductsComponent }
-    //   ]
-    // }
-    ]
-  },
-
-
-  {path:'category',component:CategoryComponent},
+  { path: 'home', component: HomeComponent},
+   {path:'category',component:CategoryComponent},
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'productDetails', component: ProductDetailsComponent },
@@ -53,6 +45,8 @@ const routes: Routes = [
   { path: 'manageUser', component:ManageUserComponent },
   {path :"manageProduct", component:ManageProductComponent},
   {path :"manageAdmin", component:ManageAdminComponent},
+  {path :"addProduct", component:AddProductComponent}
+
 ]
 
 }

@@ -21,15 +21,15 @@ export class OrderComponent implements OnInit {
 
 
 
-    console.log(this.cs.loggedInCustomer.id)
+  //  console.log(this.cs.loggedInCustomer.id)
     this.orderService.processOrder(this.cs.loggedInCustomer.id).subscribe((data => {
      
      this.processorderresponse=data
-      console.log(this.cs.loggedInCustomer.id)
-      console.log(data)
+    //  console.log(this.cs.loggedInCustomer.id)
+    //  console.log(data)
       this.OrderId=this.processorderresponse.responseData.id
 
-      console.log(this.processorderresponse.success)
+  //    console.log(this.processorderresponse.success)
        if(this.processorderresponse.success)
 
        
@@ -39,7 +39,7 @@ export class OrderComponent implements OnInit {
         })
 {
   this.orderService.sendEmail(this.cs.loggedInCustomer.id,this.OrderId).subscribe((data)=>{
-    console.log(Response)
+ //   console.log(Response)
   })
 }
 

@@ -28,6 +28,7 @@ import { FilterComponent } from './customer/filter/filter.component';
 import { SearchComponent } from './customer/search/search.component';
 import { CategoryComponent } from './customer/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-product.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FilterComponent,
     SearchComponent,
     CategoryComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

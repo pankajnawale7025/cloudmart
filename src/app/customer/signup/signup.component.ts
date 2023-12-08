@@ -23,6 +23,7 @@ constructor(private customerService:CustomerService,private router:Router,privat
 {}
   ngOnInit(): void {
      // Initialize the form with form controls and validators
+     
      this.myForm = this.fb.group({
       name: ['', [Validators.required,Validators.minLength(3)]],
       surName: [''],
@@ -49,13 +50,13 @@ customer=new Customer()
 
 
     this.customer=this.myForm.value
-    console.log("this.myForm.value===>",this.myForm.value)
-    console.log("this.customer===>",this.customer)
+   // console.log("this.myForm.value===>",this.myForm.value)
+   // console.log("this.customer===>",this.customer)
     
     this.customerService.isEmailNotPresent(this.customer.emailAddress).subscribe((data)=>{
-    console.log("isEmailNotPresentOutput",data)
+   // console.log("isEmailNotPresentOutput",data)
     this.response1=data
-    console.log(this.response1.success)
+   // console.log(this.response1.success)
      if(!this.response1.success)
       {
        Swal.fire("Email Address Already Registered Please  login");
@@ -66,9 +67,9 @@ customer=new Customer()
         this.customerService.addCustomer(this.customer).subscribe((data)=>{
       
         
-            console.log( "data is ",data)
+          //  console.log( "data is ",data)
             this.response=data
-            console.log("this.response.success :",this.response)
+          //  console.log("this.response.success :",this.response)
             
             if(this.response.success==false)
             {
@@ -86,7 +87,7 @@ customer=new Customer()
             }
           
             this.response=this.response.responseData
-            console.log(this.response)
+           // console.log(this.response)
             
             },
             (error) => {
@@ -105,10 +106,10 @@ customer=new Customer()
           });
 
 
-      
+
 
                  
-              console.error("HTTP error:", error);
+            //  console.error("HTTP error:", error);
               // You can display an error message or perform other actions here
             }
       )

@@ -24,7 +24,7 @@ export class CartItemService {
 
 
   getCartitemsNumbers(customer: Customer): Observable<Response> {
-    console.log("In the  fetcartitemnumber===>",customer)
+  //  console.log("In the  fetcartitemnumber===>",customer)
     // console.log("data in productService==>"+product)
     return this.http.post<Response>('http://localhost:8081/cart/getCartitemsNumbers', customer)
   }
@@ -32,9 +32,10 @@ export class CartItemService {
 
 
   getCartItemCount(customerId: number): Observable<Response> {
-   
+   //console.log("getCartItemCount methid cartitemservice  customerId===>",customerId)
     const params = new HttpParams()
     .set('customerId', customerId)
+    
         return this.http.get<Response>(this.BASE_URL+'getCartItemCount',  ({ params }))
   }
 

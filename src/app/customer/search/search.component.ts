@@ -31,16 +31,16 @@ export class SearchComponent implements OnInit {
     this.aroute.queryParams.subscribe(params => {
       const param1 = params['param1'];
       this.data = param1;
-      console.log("this.data is :", this.data)
+     // console.log("this.data is :", this.data)
     })
 
     this.navbarService.navbar = false;
     this.productService.searchProducts(this.data).subscribe((response) => {
-      console.log("this.response is :", response)
+     // console.log("this.response is :", response)
       this.result = response;
 
       this.result = this.result.responseData
-      console.log("this.result is :", this.result)
+    //  console.log("this.result is :", this.result)
     })
   }
   productDetails(productId: number) {
@@ -55,12 +55,12 @@ export class SearchComponent implements OnInit {
   }
 
   searchDataByEvent() {
-    console.log("data is :", this.data)
+ //   console.log("data is :", this.data)
     this.productService.searchProducts(this.data).subscribe((response) => {
-      console.log("this.response is :", response)
+   //   console.log("this.response is :", response)
       this.result = response;
       this.result = this.result.responseData
-      console.log("this.result is :", this.result)
+   //   console.log("this.result is :", this.result)
     })
   }
 

@@ -1,7 +1,6 @@
 <div class="container">
 <div class="row">
-
-  <div class="product-details">
+  <div  *ngIf="productLoaded"  class="product-details">
     <img [src]="p.responseData.imageurl" alt=" img not added in database ">
     <h2>{{ p.responseData.name }}</h2>
     <p>{{ p.responseData.category }}</p>

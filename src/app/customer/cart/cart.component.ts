@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   showprocessbtn: boolean = false;
   showfinalTotalPrice:boolean=false;
   finaltotalPrice: number = 0;
-
+  
   ngOnInit(): void {
     this.viewCart();
   }
@@ -46,22 +46,23 @@ export class CartComponent implements OnInit {
       else {
         this.showerrmsg = true;
       }
-      console.log('cartItem is :', this.cartItems.responseData)
+   //   console.log('cartItem is :', this.cartItems.responseData)
     }
     )
   }
 
   deleteItemFromCart(cartItemID: number) {
 
+  //  console.log("stage -1")
 if(this.navbarService.cartitemCount>0)
-{
-  this.navbarService.cartitemCount-=this.navbarService.cartitemCount
-
+{//console.log("stage -2")
+  this.navbarService.cartitemCount=this.navbarService.cartitemCount-1
+//  console.log("stage -3")
 }
 
 
     this.cartiCartItemService.deleteFromCart(cartItemID).subscribe((data) => {
-      console.log(data)
+     // console.log(data)
       this.showfinalTotalPrice=false;
         this.showprocessbtn = false;
         this.navbarService.cartitemflag=  this.navbarService.cartitemflag?this.navbarService.cartitemflag=false:this.navbarService.cartitemflag=true

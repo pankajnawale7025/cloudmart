@@ -45,13 +45,16 @@ this.navbarService.home=false;
 
 this.categoryService.listOfCategory().subscribe((data)=>{
   this.categoryList=data.responseData
-  console.log("List Of Category is ===>",data)
+//  console.log("List Of Category is ===>",data)
 })
 this.productService.productList().subscribe((data) => {
  this.productService.productListInProductService = data.responseData;
   
 }
 );
+
+
+//console.log(this.customerService.loggedInCustomer.id)
 this.cartItemService.getCartItemCount(this.customerService.loggedInCustomer.id).subscribe((data)=>{
   this.navbarService.cartitemCount=data.responseData
   })

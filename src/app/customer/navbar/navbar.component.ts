@@ -88,7 +88,7 @@ cartitem:number;
 
   changeProfileStatus()
   {
-    console.log(this.profileOptions)
+    //console.log(this.profileOptions)
      this.profileOptions=this.profileOptions==true?this.profileOptions=false:this.profileOptions=true;
   }
 

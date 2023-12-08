@@ -1,0 +1,37 @@
+<p>add-product works!</p>
+<div class="container" *ngIf="addProductTableDiv">
+    <!-- <div class="row justify-content-center" > Add Product </div> -->
+    <div class="row justify-content-center">
+        <!-- <div class="col-md-6 marg py-2">Add Product </div> -->
+        <div class="col-md-6 marg py-2">
+            <label for="name">Product Name<span class="asterik">*</span>:</label>
+            <input type="text" class="form-control  mt-2 " id="name" placeholder="Enter Name Of Product"
+                [(ngModel)]="product.name">
+                <label for="category">Select Category<span class="asterik">*</span>:</label>
+            <select class="form-control mt-2 " (change)="selectCategory($event)">
+                <option *ngFor="let item of dropdownData" [value]="item.category_id">{{item.category}}</option>
+            </select>
+
+
+            <label for="Price"> Price<span class="asterik">*</span>:</label>
+            <input type="price" class="form-control mt-2" id="price" placeholder="Enter  the Price of product "
+                [(ngModel)]="product.price">
+
+                <label for="Discount"> Discount<span class="asterik">*</span>:</label>
+            <input type="text" class="form-control mt-2" id="discount" placeholder="Enter discount  on  Product"
+                [(ngModel)]="product.discount">
+                <label for="Stock Quantity"> Stock Quantity<span class="asterik">*</span>:</label>
+            <input type="text" class="form-control mt-2" id="exampleInputEmail1"
+                placeholder="Enter the Stock in Quantity" [(ngModel)]="product.stockQuantity">
+        
+                <label for="Select Image"> Select Image :</label>
+                
+                <input type="file" class="form-control  mt-2 mb-2 " id="myFile" name="filename" [(ngModel)]="imageFile" (change)="onFileSelected($event)">
+                   <img  *ngIf="imageSelected" class="form-control  mt-2 mb-2 "  src="{{imageBase64string}}">
+
+            <div class=" Add-button "><button class="update-btn ms-4" (click)="addProductInDatabase()"> Add
+                    Product</button>
+            </div>
+        </div>
+    </div>
+</div>

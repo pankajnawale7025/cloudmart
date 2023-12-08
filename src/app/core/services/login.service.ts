@@ -18,7 +18,7 @@ export class LoginService {
   setCartItemCount()
   {
 
-     console.log("You are in set cartItem method of LoginService")
+  //   console.log("You are in set cartItem method of LoginService")
 
     this.cartItemService.getCartItemCount(this.customerService.loggedInCustomer.id).subscribe((data)=>{
     this.navbarService.cartitemCount=data.responseData

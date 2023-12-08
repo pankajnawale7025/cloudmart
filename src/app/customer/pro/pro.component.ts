@@ -68,11 +68,11 @@ export class ProComponent implements OnInit {
   }
   getPageWiseProduct(no: number, pagesize: number): void {
     this.productService.getSpecificProduct(no, this.pageSize).subscribe((data) => {
-      console.log(no);
+      //console.log(no);
       this.response = data;
       this.totalPages = this.response.responseData.totalPages;
       this.totalPagesarray = new Array(this.totalPages);
-      console.log(this.re.responseData.content);
+    //  console.log(this.re.responseData.content);
 
     })
   }
@@ -80,18 +80,18 @@ export class ProComponent implements OnInit {
   onPageSizeBtnClick(event: any) {
     this.pageSize = event.target.value
     this.productService.getSpecificProduct(this.no, this.pageSize).subscribe((data) => {
-      console.log(this.no);
+   //   console.log(this.no);
       this.response = data;
       this.totalPages = this.response.responseData.totalPages;
       this.totalPagesarray = new Array(this.totalPages);
-      console.log(this.re.responseData.content);
+     // console.log(this.re.responseData.content);
 
     })
-    console.log(this.pageSize)
+ //   console.log(this.pageSize)
   }
   ascOrder(columnname: string) {
-    console.log(columnname);
-    console.log(this.response.responseData.content);
+    //console.log(columnname);
+  //  console.log(this.response.responseData.content);
   
     if (Array.isArray(this.response.responseData.content)) {
       this.response.responseData.content = this.response.responseData.content.sort((a: any, b: any) => {
@@ -118,8 +118,8 @@ export class ProComponent implements OnInit {
   
   descOrder(columnname: string) {
 
-    console.log(columnname);
-    console.log(this.response.responseData.content);
+   // console.log(columnname);
+  //  console.log(this.response.responseData.content);
   
     if (Array.isArray(this.response.responseData.content)) {
       this.response.responseData.content = this.response.responseData.content.sort((a: any, b: any) => {
@@ -135,9 +135,9 @@ export class ProComponent implements OnInit {
         }
       });
   
-      console.log(this.response.responseData.content);
+     // console.log(this.response.responseData.content);
     } else {
-      console.error('content is not an array or does not exist.');
+     // console.error('content is not an array or does not exist.');
     }
   }
 

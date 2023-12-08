@@ -1,7 +1,7 @@
 
 body{
   font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #EFF1F5;
             text-align: center;
             padding: 20px;
 
@@ -37,7 +37,7 @@ body{
   }
   .back-btn button{
 
-    background-color: #4CAF50;
+    background-color: #FD8801;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -47,5 +47,12 @@ body{
     margin-top: 10px;
   }
   .back-btn button:hover {
-    background-color: #45a049;
+    background-color: #f79d37;
+}
+img{
+  padding: 5px;
+  width: 50%;
+aspect-ratio: 3/2;
+object-fit: contain;
+mix-blend-mode: darken;
 }

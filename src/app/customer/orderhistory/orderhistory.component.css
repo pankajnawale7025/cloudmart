@@ -1,6 +1,5 @@
-/* .container {
-    display: flex;
-    justify-content: center;
+.container {
+height: auto;
 }
 
 .single-order
@@ -8,31 +7,34 @@
    background-color: antiquewhite;
     margin: 12px 12px;
     padding: 15px 44px;
-    width: 100%;
+  
      border: 1px solid #ddd;
-    background-color: #fff;
-    overflow: scroll;
+    background-color: #eff1f5;
+    border-radius: 30px;
+    
 }
 
 .Order-History{
         width: 100%;
         border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    height: 548px;
-    display: flex;
+    background-color: #f1f3f8;
+    height: auto;
+   
     align-items: center;
 }
 
 
 button{
- background-color: green;
+ background-color: #FD8801;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 5px 16px;
+    border-radius: 16px;
     cursor: pointer;
+    margin: 19px 0px 20px 0px;
 }
   button:hover {
-    background-color: orangered;
+    background-color: #f19832;
   }
   .image-outerdiv{
     display: flex;
@@ -69,4 +71,13 @@ button{
 
 .cont button:hover {
   background-color: #f08306;
-} */
+}
+
+img{
+  padding: 5px;
+  width: 20%;
+aspect-ratio: 3/2;
+object-fit: contain;
+mix-blend-mode: darken;
+overflow: scroll;
+}

@@ -24,7 +24,7 @@ export class CustomerService {
     const params = new HttpParams()
       .set('emailAddress', emailAddress)
       .set('contactNumber', contactNumber);
-    console.log('params is :', params)
+   // console.log('params is :', params)
     return this.http.get<Response>(this.BASE_URL + 'validateCustomer', ({ params }))
   }
   
@@ -49,7 +49,7 @@ viewAllCustomer(): Observable<Response> {
 
 }
 addCustomer(customer:Customer): Observable<Response> {
-  console.log("In service customer is ",customer)
+ // console.log("In service customer is ",customer)
   return this.http.post<Response>(this.BASE_URL + 'addCustomer',customer)
 
 }
@@ -62,7 +62,7 @@ deleteCustomer(customerId:number)
 }
 
 updateCustomer(customer:Customer): Observable<Response> {
-  console.log("In service customer is ",customer)
+  //console.log("In service customer is ",customer)
   return this.http.put<Response>(this.BASE_URL + 'updateCustomer',customer)
 
 }

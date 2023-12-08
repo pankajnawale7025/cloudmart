@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit,OnChanges  {
   }
   ngOnChanges(changes: SimpleChanges): void {
     
-console.log("categoryId in product is ",this.categoryId)
+ //console.log("categoryId in product is ",this.categoryId)
     if(this.categoryId!=undefined)
     this.productService.productsByCategory(this.categoryId).subscribe((data)=>{
       console.log(data)
@@ -58,10 +58,10 @@ console.log("categoryId in product is ",this.categoryId)
   ngOnInit(): void {
     this.productService.productList().subscribe((data) => {
       // this.navbarService.productListInNavbarService = data.responseData;
-      console.log("this.productList is ", this.productList);
+     // console.log("this.productList is ", this.productList);
     }
     );
-    console.log('init invoke !!!!');
+   // console.log('init invoke !!!!');
     // const loggedInCustomerString: string | null = localStorage.getItem("loggedInCustomer");
     // if (loggedInCustomerString !== null) {
     //   const loggedInCustomer = JSON.parse(loggedInCustomerString);
@@ -119,7 +119,7 @@ console.log("categoryId in product is ",this.categoryId)
   //             this.productList = data.responseData;
   //           }
   //           )
-  //            console.log("prodcut list is ",this.productList)
+  //            ///.log("prodcut list is ",this.productList)
   //         });
   //       }
   result: Product[] = [];

@@ -2,32 +2,44 @@
 
     <div>
         <div class="finaltotalproice">
-        <h1> Final Total Price : ₹ {{finalTotalPrice}}</h1>
-    </div>
-    <div class="date">
-        <h1> Date : {{orderDetail.responseData.localDate}} </h1>
-        
-    </div>
-    <div>
-        <div class="product-list">
-            <div class="product" *ngFor="let item of productdetails">
-                   <!-- <div (click)="productDetails(product.id)"> -->
-                <img [src]="item.product.imageurl" alt="{{item.product.name}}" class="product-image">
-                <!-- <pre>{{ item | json }}</pre> -->
-                <div class="product-details">
-                    <h3>{{item.product.name}}</h3>
-                    <h3> Price  : ₹ {{item.product.price}}</h3>
-                    <h3> Quantity is :{{item.quantity}}</h3>
-                    <!-- <h3>Total Price: {{item.product.price}} * {{item.quantity}}={{item.quantity * item.product.price}}</h3> -->
-                    <h3>{{item.name}}</h3>
-                    <p>{{item.description}}</p>
-                    <span ><h1> ₹ {{item.quantity * item.product.price}}</h1></span>
+            <h1> Final Total Price : ₹ {{finalTotalPrice}}</h1>
+        </div>
+        <div class="date">
+            <h1> Date : {{orderDetail.responseData.localDate}} </h1>
+
+        </div>
+        <div>
+            <div class="product-list">
+                <div class="product" *ngFor="let item of productdetails">
+                    <!-- <div (click)="productDetails(product.id)"> -->
+                    <div>
+                        <img [src]="item.product.imageurl" alt="{{item.product.name}}" class="product-image">
+                        <!-- <pre>{{ item | json }}</pre> -->
+                    </div>
+                    <div class="product-details">
+                        <div>
+                            <h3> Name : {{item.product.name}}</h3>
+                        </div>
+                        <div>
+                            <h3> Price : ₹ {{item.product.price}}</h3>
+                        </div>
+                        <div>
+                            <h3> Quantity is :{{item.quantity}}</h3>
+                        </div>
+                        <!-- <h3>Total Price: {{item.product.price}} * {{item.quantity}}={{item.quantity * item.product.price}}</h3> -->
+                        <h3>{{item.name}}</h3>
+                        <p>{{item.description}}</p>
+                        <div>
+                            <span>
+                                <h1> ₹ {{item.quantity * item.product.price}}</h1>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="back-btn">
-    <button (click)="toOrderHistory()">OrderHistory</button>
-</div>
+    <div class="back-btn">
+        <button (click)="toOrderHistory()">OrderHistory</button>
+    </div>
 </body>
