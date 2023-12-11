@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { sortedIndexOf } from 'lodash';
+import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/model/Object-model';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { ComponentCanDeactive } from 'src/app/shared/component-can-deactive';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,36 +13,26 @@ import Swal from 'sweetalert2';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit,ComponentCanDeactive {
 
-  constructor(private customerService: CustomerService, private router: Router,private fb:FormBuilder) { }
-
+  constructor(private customerService: CustomerService, private router: Router) { }
+  isDirty=false;
   customer: Customer
   result: any;
   myForm: FormGroup;
 
+
+  canDeactivate () : boolean {
+    return  !this.isDirty;
+    }
+
+
+    
+
   ngOnInit(): void {
-
-    //this.customer = { ...this.customerService.loggedInCustomer };
-
-    this.myForm = this.fb.group({
-      name: [this.customerService.loggedInCustomer.name, [Validators.required,Validators.minLength(3)]],
-      surName: [this.customerService.loggedInCustomer.surName],
-      contactNumber: [this.customerService.loggedInCustomer.contactNumber, [Validators.required,Validators.pattern("^[0-9]{10}$")]],
-      emailAddress: [this.customerService.loggedInCustomer.emailAddress, [Validators.required, Validators.pattern("^@?[A-Za-z0-9+_.-]+@?(.+)(com|In|biz)+$")]],
-      address: [this.customerService.loggedInCustomer.address, [Validators.required,Validators.minLength(10)]]
-    });
-    
-    //this.myForm.patchValue({ ...this.customerService.loggedInCustomer });
-   console.log("this.customerService.loggedInCustomer===>",this.customerService.loggedInCustomer)
-   console.log(" this.myForm==>", this.myForm)
-    
-
+    this.customer = { ...this.customerService.loggedInCustomer };
   }
-   f() {
-    return this.myForm.controls;
-  }
-
+  
   dataVerification: boolean;
   updateCustomerInDatabase() {
     if (
@@ -105,7 +97,8 @@ export class AboutComponent implements OnInit {
 
                 position: "center",
                 icon: "error",
-                title: `We are facing some issue`,
+                title: `Please cheack inputs  
+                `,
                 showConfirmButton: false,
                 timer: 1000
 

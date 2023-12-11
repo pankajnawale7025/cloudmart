@@ -11,8 +11,6 @@
             <select class="form-control mt-2 " (change)="selectCategory($event)">
                 <option *ngFor="let item of dropdownData" [value]="item.category_id">{{item.category}}</option>
             </select>
-
-
             <label for="Price"> Price<span class="asterik">*</span>:</label>
             <input type="price" class="form-control mt-2" id="price" placeholder="Enter  the Price of product "
                 [(ngModel)]="product.price">

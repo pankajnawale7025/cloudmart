@@ -1,44 +1,45 @@
 <body>
   <div class="container">
 
-    <div class="form-group">
-      <label for="name">Name<span class="asterik">*</span> :</label>
-      <input type="text" id="name" name="name" formControlName="name" />
-    </div>
-    <div class="form-group">
-      <label for="surName">Surname :</label>
-      <input type="text" id="surName" name="surName" formControlName="surName" />
-    </div>
-    <div class="form-group">
-      <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
-      <input type="text" id="contactNumber" name="contactNumber" formControlName="contactNumber"/>
-    </div>
-    <div class="form-group">
-      <label for="emailAddress">Email Address<span class="asterik">*</span> :</label>
-      <input type="text" id="emailAddress" name="emailAddress"formControlName="emailAddress" />
-    </div>
-    <div class="form-group">
-      <label for="adress">Address<span class="asterik">*</span> :</label>
-      <input type="text" id="adress" name="adress" ormControlName="address" />
-    </div>
+    <form #myForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name<span class="asterik">*</span> :</label>
+        <input type="text" id="name" name="name" [(ngModel)]="customer.name" (change)="isDirty=true" required />
+      </div>
+      <div class="form-group">
+        <label for="surName">Surname :</label>
+        <input type="text" id="surName" name="surName" [(ngModel)]="customer.surName" (change)="isDirty=true"
+          required />
+      </div>
+      <div class="form-group">
+        <label for="contactNumber">Contact Number<span class="asterik">*</span> :</label>
+        <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber"
+          (change)="isDirty=true" required />
+      </div>
+      <div class="form-group">
+        <label for="emailAddress">Email Address<span class="asterik">*</span> :</label>
+        <input type="text" id="emailAddress" name="emailAddress" [(ngModel)]="customer.emailAddress"
+          (change)="isDirty=true" required />
+      </div>
+      <div class="form-group">
+        <label for="adress">Address<span class="asterik">*</span> :</label>
+        <input type="text" id="adress" name="adress" [(ngModel)]="customer.address" (change)="isDirty=true" required />
+      </div>
 
+      <div class="row d-flex justify-content-between">
+        <div class="col-md-6">
+          <!-- <input type="submit" value="Add Customer"  [ngStyle]="{'background-color': myForm.invalid ? '#515356' : '#007bff'}" [disabled]="myForm.invalid" /> -->
+          <button type="submit" [ngStyle]="{'background-color': myForm.invalid ? '#919397' : '#FD8801'}"
+            [disabled]="myForm.invalid" (click)="updateCustomerInDatabase()" class="btn btn-primary col-md-12 "
+            style="background-color: #FD8801;">Save</button>
+        </div>
+        <div class="col-md-6">
+          <button type="submit" (click)="deleteCustomerProfile()" class="btn btn-light col-md-12">Delete </button>
 
+        </div>
 
-
-
-<div class="row d-flex justify-content-between">
-  <div class="col-md-6">
-   
-      <button type="button" class="btn btn-primary col-md-12 "  style="background-color: #FD8801;"    (click)="updateCustomerInDatabase()" >Save</button>
-  
-  </div>
-  <div class="col-md-6">
-    
-      <button (click)="deleteCustomerProfile()"  class="btn btn-light col-md-12">Delete </button>
-    
-  </div>
-
-</div>
+      </div>
+    </form>
 
 
     <!-- <div class="d-flex justify-content-between">

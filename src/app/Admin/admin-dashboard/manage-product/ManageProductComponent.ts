@@ -1,4 +1,5 @@
 import { Component, provideZoneChangeDetection } from '@angular/core';
+import { Router } from '@angular/router';
 import { any } from 'list';
 import { Category } from 'src/app/core/model/Object-model';
 import { Product } from 'src/app/core/model/Product';
@@ -26,12 +27,13 @@ export class ManageProductComponent {
   showupdateform: boolean = false;
   responseForUpdate: any;
   dropdownData: Category[] = [];
-  productList:Product[]=[]
+  productList: Product[] = []
   imageSelected = false;
   imageBase64string: string;
+  sizeOption: number[] = [1];
   selectedFile: File;
 
-  constructor(private productService: ProductsService,private categoryService:CategoryService) { }
+  constructor(private productService: ProductsService, private categoryService: CategoryService, private router: Router) { }
 
 
 
@@ -63,6 +65,11 @@ export class ManageProductComponent {
 
 
   addProduct() {
+
+
+    this.router.navigate(['/addproduct']);
+
+
     this.showProductTable = this.showProductTable == true ? false : false;
     this.addProductTableDiv = this.addProductTableDiv == true ? false : true;
     this.imageSelected = false;
@@ -98,64 +105,63 @@ export class ManageProductComponent {
   imageFile: File;
   dynamicString: string = "Error";
   addProductInDatabase() {
-   
-if(this.product.categoryInProduct==undefined)
-{
-  this.categoryService.getCategoryByName(this.product.category).subscribe((data)=>{
-   
-  this.product.categoryInProduct=data.responseData
-  })
 
-}
-   
-    console.log("Product is ===>",this.product)
-    
-    
-    
-        if (true ) {
-          this.productService.addProduct(this.product).subscribe((data => {
-            console.log("add product in database -2")
-    if(data.success)
-    {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Product has been Added",
-        showConfirmButton: false,
-        timer: 1500
-      });
+    if (this.product.categoryInProduct == undefined) {
+      this.categoryService.getCategoryByName(this.product.category).subscribe((data) => {
+
+        this.product.categoryInProduct = data.responseData
+      })
+
     }
+
+    console.log("Product is ===>", this.product)
+
+
+
+    if (true) {
+      this.productService.addProduct(this.product).subscribe((data => {
+        console.log("add product in database -2")
+        if (data.success) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product has been Added",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
         this.addedmsg = true;
-          }),
-          (error)=>{
-      console.log(error)
-            console.log(error.error.errorMessage)
-            this.dynamicString=error.error.errorMessage
+      }),
+        (error) => {
+          console.log(error)
+          console.log(error.error.errorMessage)
+          this.dynamicString = error.error.errorMessage
 
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              //title: 'Product is not saved, ${this.dynamicString }!',
-              title: `Product is not saved, ${this.dynamicString }!`,
-              showConfirmButton: false,
-              timer: 1500
-            });
-          }
-
-          );
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            //title: 'Product is not saved, ${this.dynamicString }!',
+            title: `Product is not saved, ${this.dynamicString}!`,
+            showConfirmButton: false,
+            timer: 1500
+          });
         }
-        else {
-          Swal.fire("Please Enter Valid Data")
 
-        }
+      );
+    }
+    else {
+      Swal.fire("Please Enter Valid Data")
+
+    }
   }
+
 
   viewAllProduct() {
     this.showProductTable = this.showProductTable == true ? false : true;
     this.addProductTableDiv = false;
-console.log( "This product is ===>",this.product)
+    console.log("This product is ===>", this.product)
     this.productService.listOfCategory().subscribe((response) => {
-   
+
       console.log("Response is :", response)
       this.dropdownData = response.responseData
 
@@ -178,15 +184,16 @@ console.log( "This product is ===>",this.product)
 
     })
 
-
-
-    
     console.log("You are in view all product")
     this.productService.allProduct().subscribe((data => {
-      
-      
-      this.productList=data.responseData.content
-      console.log("view all=============================>",this.productList)
+      console.log("allProduct() internal getproduct repsonse is  on init ==>", data)
+
+
+   console.log("data.responseData.content.elements===>",data.responseData.elements)
+      this.sizeOption = this.numberArray(data.responseData.totalElements)
+      data.responseData.totalElements
+      this.productList = data.responseData.content
+      //console.log("view all=============================>", this.productList)
     }));
   }
 
@@ -239,25 +246,45 @@ console.log( "This product is ===>",this.product)
     }
   }
   getPageWiseProduct(no: number, pagesize: number): void {
-    this.no=no
+    console.log("getPageWiseProduct")
+    this.no = no
+    this.pageSize = 5
     this.productService.getSpecificProduct(no, this.pageSize).subscribe((data) => {
-      console.log(no);
+      console.log("data getSpecificProduct ======================================================================>", data);
       this.productList = data.responseData.content;
       this.totalPages = this.response.responseData.totalPages;
+
       this.totalPagesarray = new Array(this.totalPages);
-      console.log(this.response.responseData.content);
+      console.log(data);
+
+
+      console.log("data.responseData.content.elements===>",data.responseData.content.elements)
+      this.sizeOption=this.numberArray(data.responseData.content.elements)
+      console.log("this.sizeOption===>",this.sizeOption)
+
+
+
 
     });
+  }
+  numberArray(num: number): number[] {
+    return Array(num + 1)  // create a array of length
+      .fill(0) // fille elements as 0
+      .map((el, i) => i) // provide an array consisting of index
+      .filter((el) => el >= 5 && el % 5 === 0); // return array including element > 5 and multiple of 5
   }
 
   onPageSizeBtnClick(event: any) {
     this.pageSize = event.target.value;
     this.productService.getSpecificProduct(this.no, this.pageSize).subscribe((data) => {
-      console.log("productService.getSpecificProduct api op is ===>",data);
+      console.log("data onPageSizeBtnClick ======================================================================>", data);
+
+
+      console.log(" onPageSizeBtnClick productService.getSpecificProduct api op is ===>",data);
       this.productList = data.responseData.content;
-      this.totalPages = data.responseData.totalPages;
-      this.totalPagesarray = new Array(this.totalPages);
-      console.log(this.response.responseData.content);
+       this.totalPages = data.responseData.totalPages;
+       this.totalPagesarray = new Array(this.totalPages);
+       console.log(this.response.responseData.content);
 
     });
     console.log(this.pageSize);
@@ -291,71 +318,18 @@ console.log( "This product is ===>",this.product)
   updatePro() {
 
     console.log("Product is :", this.product);
-   
-{
-  this.categoryService.getCategoryByName("Electronics").subscribe((data)=>{
-   
 
-
-    console.log("Category data is===>",data)
-  this.product.categoryInProduct=data.responseData
-  })
-
-}
-//     this.productService.updateProduct(this.product).subscribe((data1) => {
-
-//       this.responseForUpdate = data1;
-//       console.log("this.responseForUpdate", this.responseForUpdate);
-
-//       // data1 is sucess method
-//       this.responseForUpdate.isSuccess = data1.success;
-
-//  if(this.responseForUpdate.isSuccess)
-//  {
+    {
+      this.categoryService.getCategoryByName("Electronics").subscribe((data) => {
 
 
 
-      
-//   Swal.fire({
-//     position: "center",
-//     icon: "success",
-//     title: `Product Updated Sucessfully`,
-//     //title: `Welcome, ${this.dynamicString }!`,
-//     showConfirmButton: false,
-//     timer: 1500
-//   });
+        console.log("Category data is===>", data)
+        this.product.categoryInProduct = data.responseData
+      })
 
+    }
 
-//     console.log("this.no, this.pageSize===>",this.no, this.pageSize)
-//   this.productService.getSpecificProduct(this.no, this.pageSize).subscribe((data) => {
-//     console.log("productService.getSpecificProduct api op is ===>",data);
-//     this.productList = data.responseData.content;
-//     this.totalPages = data.responseData.totalPages;
-//     this.totalPagesarray = new Array(this.totalPages);
-//     console.log(this.response.responseData.content);
-
-//   });
-
-
-//  // this.viewAllProduct()
-//  }
-
-
-//       //  console.log(this.response.responseData)
-//       //  console.log(this.response.errorMessage)
-//       //  console.log(this.response.isSuccess)
-//       //   console.log('data 1 is ',data1)
-//       //   console.log('this.response.isSuccess=data1.isSuccess;', this.response.isSuccess);
-//       //   console.log('Data1 is sucess:', data1.isSuccess);
-//       //  console.log('this.response:', this.response);
-//     },
-//       error => {
-//         console.log("At Error messsage");
-//         this.responseForUpdate = error.error;
-
-
-//       }
-//     );
   }
   updateProduct(data: any) {
     this.showupdateform = true;
@@ -365,8 +339,8 @@ console.log( "This product is ===>",this.product)
     this.product.price = data.price;
     this.product.imageurl = data.imageurl;
     this.product.discount = data.discount;
-    this.imageSelected=true
-    this.product.categoryInProduct=data.categoryInProduct
+    this.imageSelected = true
+    this.product.categoryInProduct = data.categoryInProduct
 
   }
 

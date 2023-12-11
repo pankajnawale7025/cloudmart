@@ -153,3 +153,7 @@ img{
     height: 18%;
     width: 32%;
 }
+.getPageWiseProduct{
+    display: flex;
+    overflow: scroll;
+}

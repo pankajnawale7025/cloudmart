@@ -6,7 +6,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-add-product',
+  selector: 'addProduct',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })

@@ -38,18 +38,16 @@ const routes: Routes = [
   { path: 'productsHome', component: ProductsComponent },
   { path: 'orderDetail', component: OrderDetailsComponent },
   { path: 'signup', component: SignupComponent  ,canDeactivate  :[dirtycheck1Guard] },
-  { path: 'about', component: AboutComponent },
- 
+  { path: 'about', component: AboutComponent ,canDeactivate  :[dirtycheck1Guard] },
   { path: 'Adminlogin', component: AdminDashboardComponent
 , children:[
   { path: 'manageUser', component:ManageUserComponent },
   {path :"manageProduct", component:ManageProductComponent},
-  {path :"manageAdmin", component:ManageAdminComponent},
-  {path :"addProduct", component:AddProductComponent}
+  {path :"manageAdmin", component:ManageAdminComponent}
 
 ]
-
-}
+},
+{path :"addproduct", component:AddProductComponent}
   
 
 

@@ -19,6 +19,7 @@ export class SignupComponent implements ComponentCanDeactive,OnInit {
   response:any;
   response1:any;
   myForm: FormGroup;
+  isDirty=false;
 constructor(private customerService:CustomerService,private router:Router,private fb:FormBuilder)
 {}
   ngOnInit(): void {
@@ -34,7 +35,6 @@ constructor(private customerService:CustomerService,private router:Router,privat
   }
 
 customer=new Customer()
- isDirty=false;
 
   canDeactivate () : boolean {
   return  !this.isDirty;
@@ -44,11 +44,7 @@ customer=new Customer()
   }
   addCustomerInDatabase(){
     this.isDirty=false;
-
-
     this.customer.emailAddress=this.myForm.value.emailAddress
-
-
     this.customer=this.myForm.value
    // console.log("this.myForm.value===>",this.myForm.value)
    // console.log("this.customer===>",this.customer)
@@ -65,8 +61,6 @@ customer=new Customer()
 
 
         this.customerService.addCustomer(this.customer).subscribe((data)=>{
-      
-        
           //  console.log( "data is ",data)
             this.response=data
           //  console.log("this.response.success :",this.response)
