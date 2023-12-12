@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-md-12 m-3">
+        <button style="border-radius: 100px;cursor: pointer;" (click)="backToManageProduct()"> <span
+                (click)="backToManageProduct()" style="padding: 3px;" class="material-symbols-outlined">
+                arrow_back
+            </span></button>
+    </div>
+</div>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+
+            <div class="allProductdata">
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <td class=" align-items-centre">
+                                Name
+                                <span class="material-symbols-outlined" (click)="ascOrder('name')">
+                                    keyboard_arrow_up
+                                </span>
+                                <span class="material-symbols-outlined" (click)="descOrder('name')">
+                                    arrow_drop_down
+                                </span>
+                            </td>
+                            <td>Price
+                                <span class="material-symbols-outlined" (click)="ascOrder('price')">
+                                    arrow_drop_up
+                                </span>
+                                <span class="material-symbols-outlined" (click)="descOrder('price')">
+                                    arrow_drop_down
+                                </span>
+                            </td>
+                            <td>Category
+                                <span class="material-symbols-outlined" (click)="ascOrder('category')">
+                                    arrow_drop_up
+                                </span>
+                                <span class="material-symbols-outlined" (click)="descOrder('category')">
+                                    arrow_drop_down
+                                </span>
+                            </td>
+                            <td>Enter the Quantity to update</td>
+                            <td> Update Product</td>
+                            <td> Delete </td>
+                            <td> Image </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr *ngFor="let item of productList">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.categoryInProduct.category}}</td>
+                            <td >{{item.stockQuantity}}</td>
+                            <td><button class="update-btn" (click)="updateProduct(item)">Update</button></td>
+                            <td><button class="Delete-btn" (click)="deleteProduct(item)">Delete</button></td>
+                            <td>
+                                <div class="imagediv">
+                                    <img [src]="item.imageurl" alt=" Some problem ia there ">
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
+    </div>
+    <div>
+        <!-- <div class="pagination-btn me-5 pe-5">
+            <div class=" m-1" *ngFor="let item of totalPagesarray; let i = index">
+                <button class="page-btn" (click)="getPageWiseProduct(i,pageSize)">{{i+1}}</button>
+            </div>
+            <div class="dropdown">
+                <h6>Select the page Size </h6>
+                <select name="pageSize" id="pageSize" (change)="onPageSizeBtnClick($event)">
+                    <option value=5>5</option>
+                    <option value=10>10</option>
+                    <option value=15>15</option>
+                    <option value=20>20</option>
+                </select>
+            </div>
+            <select name="pageSize" id="pageSize" (change)="onPageSizeBtnClick($event)">
+                <option *ngFor="let num of sizeOption" value="{{ num }}">  {{ num }}
+                </option>
+            </select>
+        </div> -->
+    </div>
+</div>

@@ -3,6 +3,14 @@
     text-align: center;
 }
 
+
+
+.Welcome_text
+{
+    width: 501px;
+    height: 123px;
+}
+
 .product-btn button {
     padding: 10px 20px;
     margin: 5px;

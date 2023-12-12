@@ -157,6 +157,10 @@ export class ManageProductComponent {
 
 
   viewAllProduct() {
+
+    this.router.navigate(['/viewproduct']);
+
+
     this.showProductTable = this.showProductTable == true ? false : true;
     this.addProductTableDiv = false;
     console.log("This product is ===>", this.product)

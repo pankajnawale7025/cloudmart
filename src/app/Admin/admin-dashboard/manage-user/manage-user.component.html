@@ -4,7 +4,7 @@
 </div>
 <div *ngIf="vct">
     <div class="allUSer">
-        <table  datatable  class="table" border="1">
+        <table  datatable   [dtOptions]="dtOptions"  class="table" border="1">
             <thead>
                 <tr>
                     <td>sr no.</td>
