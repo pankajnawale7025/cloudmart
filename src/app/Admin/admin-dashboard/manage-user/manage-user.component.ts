@@ -15,26 +15,19 @@ export class ManageUserComponent {
   errmsgforadd:boolean=false;
  sccmsgforadd:boolean=false;
  upct:boolean=false;
-
   constructor(private customerService: CustomerService) { }
   addCustomer(): void {
     this.vct=false
     console.log(this.adct)
     this.adct = this.adct == true ? false : true;
   }
-
-
 customer=new Customer()
-
 addCustomerInDatabase()
 {
-
 this.customerService.addCustomer(this.customer).subscribe((data=>{
 console.log( "data is ",data)
-
 this.response=data
 console.log("this.response.success :",this.response.success)
-
 if(this.response.success==false)
 {
   this.errmsgforadd=true;
@@ -44,16 +37,11 @@ else{
   this.sccmsgforadd=true;
   this.errmsgforadd=false;
 }
-
-
 this.response=this.response.responseData
 console.log(this.response)
-
 }))
-
-  console.log("customer is :", this.customer)
+console.log("customer is :", this.customer)
 }
-
 
   viewCustomer(): void {
     this.vct = this.vct == true ? false : true;
@@ -67,12 +55,6 @@ console.log(this.response)
     })
   }
   deleteUser(item: any) {
-
-
-
-
-
-
 
 Swal.fire({
   title: 'Are you sure?',
@@ -98,15 +80,6 @@ Swal.fire({
   }
 })
 
-
-
-
-
-  //   this.customerService.deleteCustomer(item.id).subscribe((data)=>{
-  //   alert("customer deleted successfully")
-  //  this.viewCustomer();
-  //  this.viewCustomer();
-  //   })
   }
   updateUser(item: any)
   {
