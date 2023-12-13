@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Customer } from 'src/app/core/model/Object-model';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import Swal from 'sweetalert2';
@@ -16,8 +17,11 @@ export class ManageUserComponent {
  sccmsgforadd:boolean=false;
  upct:boolean=false;
  dtOptions: DataTables.Settings = {};
- constructor(private customerService: CustomerService) { }
+ constructor(private customerService: CustomerService,private router:Router) { }
   addCustomer(): void {
+
+this.router.navigate(['/adduser'])
+
     this.vct=false
     console.log(this.adct)
     this.adct = this.adct == true ? false : true;

@@ -1,0 +1,41 @@
+.addProductMain {
+    display: flex;
+    justify-content: center;
+}
+.asterik{
+    color: red;
+    margin-left: 4px;
+    height: 5px;
+  }
+  .add-btn {
+    color: white;
+    border-radius: 5px;
+    padding: 6px 16px;
+    background: #fd8801;
+    border: none;
+    
+}
+.Add-button-div
+{
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
+.background{
+    border-radius: 10px;
+    background-color: #eff1f5;
+    padding: 50px;
+ 
+}
+label {
+    display: block;
+    font-weight: bold;
+}
+img{
+    padding: 5px;
+    width: 20%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  mix-blend-mode: darken;
+  overflow: scroll;
+  }

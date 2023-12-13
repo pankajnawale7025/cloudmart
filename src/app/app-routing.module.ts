@@ -24,6 +24,7 @@ import { CategoryComponent } from './customer/category/category.component';
 import { dirtycheck1Guard } from './core/services/dirtycheck1.guard';
 import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-product.component';
 import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
+import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -49,7 +50,9 @@ const routes: Routes = [
 ]
 },
 {path :"addproduct", component:AddProductComponent},
-{path :"viewproduct", component:ViewproductComponent}
+{path :"viewproduct", component:ViewproductComponent},
+{path :"adduser", component:AdduserComponent},
+  
   
 
 

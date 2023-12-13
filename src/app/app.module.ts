@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-product.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
+import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewpr
     SearchComponent,
     CategoryComponent,
     AddProductComponent,
-    ViewproductComponent
+    ViewproductComponent,
+    AdduserComponent
   ],
   imports: [
     BrowserModule,

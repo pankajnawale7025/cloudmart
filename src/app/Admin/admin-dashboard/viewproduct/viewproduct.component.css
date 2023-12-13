@@ -5,3 +5,13 @@ img{
   object-fit: contain;
   mix-blend-mode: darken
 }
+.item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+}
+
+.scroll-container {
+  height: 300px; /* Set a fixed height for the scroll container */
+  overflow-y: scroll;
+}
