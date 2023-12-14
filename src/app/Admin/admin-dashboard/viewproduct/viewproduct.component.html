@@ -7,21 +7,21 @@
     </div>
 </div>
 <div class="container">
-
     <div class="row d-flex justify-content-end">
         <div class="col-md-3 ">
             <div class="search-container d-flex p-2">
                 <div>
-                    <input class="form-control" type="text" placeholder="Search...">
+                    <input class="form-control" type="text" [(ngModel)]="searchTerm"  placeholder="Search...">
                 </div>
                 <div class="px-2">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <button class="btn btn-primary" (click)="onSearchChange()" type="submit">Search</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" Style=" height: 700px;
+        overflow: auto;">
             <div class="allProductdata">
                 <table class="table" border="1">
                     <thead>
@@ -58,22 +58,21 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr *ngFor="let item of productList">
                             <td>{{item.name}}</td>
                             <td>{{item.price}}</td>
                             <td>{{item.categoryInProduct.category}}</td>
                             <td>{{item.stockQuantity}}</td>
-                            <td><button class="update-btn" (click)="updateProduct(item)">Update</button></td>
-                            <td><button class="Delete-btn" (click)="deleteProduct(item)">Delete</button></td>
+                            <td><button class="update-btn btn btn-warning" (click)="updateProduct(item)">Update</button>
+                            </td>
+                            <td><button class="delete-btn btn btn-danger" (click)="deleteProduct(item)">Delete</button>
+                            </td>
                             <td>
                                 <div class="imagediv">
                                     <img [src]="item.imageurl" alt=" Some problem ia there ">
                                 </div>
                             </td>
                         </tr>
-
-
                     </tbody>
                 </table>
             </div>
@@ -83,47 +82,51 @@
 </div>
 <div class="container">
     <div class="row">
-<div class="col-md-12 d-flex justify-content-end">
-    <div class="dropdown">
-        <h6>Select the page Size </h6>
-        <select
-      name="pageSize"
-      id="pageSizeOptions"
-      (change)="onPageSizeBtnClick($event)"
-    >
-      <option
-        *ngFor="let num of numberArray(totalElements)"
-        value="{{ num }}"
-      >
-        {{ num }}
-      </option>
-    </select>
-    </div>
-</div>
+        <div class="col-md-12 d-flex justify-content-end">
+            <div class="dropdown">
+                <h6>Select the page Size </h6>
+                <select name="pageSize" id="pageSizeOptions" [(ngModel)]="selectedPageSize"
+                    (change)="onPageSizeBtnClick($event)">
+                    <option *ngFor="let num of numberArray(totalElements)" value="{{ num }}">
+                        {{ num }}
+                    </option>
+                </select>
+            </div>
+        </div>
     </div>
     <div class="row mt-2">
         <div class="col-md-12 d-flex justify-content-end">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link"  aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only" (click)="previousPage()">Previous</span>
-                    </a>
-                  </li>
-                 
-                
-                <input  type="text"   style="width: 50px;" class="form-control" value={{currentPageNumber}} [(ngModel)]="currentPageNumber" (change)="setManualPageNumber($event)">
-                
-                
-                  <li class="page-item">
-                    <a class="page-link"  aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only" (click)="nextPage()">Next</span>
-                    </a>
-                  </li>
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only" (click)="previousPage()">Previous</span>
+                        </a>
+                    </li>
+                    <input type="text" style="width: 50px;" class="form-control" value={{currentPageNumber}}
+                        [(ngModel)]="currentPageNumber" (change)="setManualPageNumber($event)">
+
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only" (click)="nextPage()">Next</span>
+                        </a>
+                    </li>
+
+
+                    <li class="page-item">
+                        <a class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only" (click)="LastPage()">Last</span>
+                        </a>
+
+                        <!-- <span class="sr-only" (click)="LastPage()">Last</span> -->
+                    </li>
+
+
                 </ul>
-              </nav>
+            </nav>
         </div>
     </div>
 </div>

@@ -15,3 +15,16 @@ img{
   height: 300px; /* Set a fixed height for the scroll container */
   overflow-y: scroll;
 }
+table{
+  height: 537px;
+  overflow: auto;
+}
+
+.update-btn
+{
+  background-color: #eff1f5;
+}
+.delete-btn
+{
+  background-color:#838383;
+}

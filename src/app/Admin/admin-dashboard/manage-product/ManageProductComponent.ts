@@ -265,10 +265,6 @@ export class ManageProductComponent {
       console.log("data.responseData.content.elements===>",data.responseData.content.elements)
       this.sizeOption=this.numberArray(data.responseData.content.elements)
       console.log("this.sizeOption===>",this.sizeOption)
-
-
-
-
     });
   }
   numberArray(num: number): number[] {

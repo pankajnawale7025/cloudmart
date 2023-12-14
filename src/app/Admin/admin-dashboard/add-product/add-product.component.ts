@@ -15,23 +15,23 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productService: ProductsService, private categoryService: CategoryService, private router: Router) { }
 
-  product: Product =
-  {
-    
-    "id":0,
-    "name": "Enter the product Name",
-    "category":"",
-      "price": 0,
-      "imageurl": "",
-      "categoryInProduct": {
-        "category_id": 0,
-        "category": "Electronics",
-        "googleMaterialIcon": "laptop_mac",
-        "productList": []
-      },
-      "discount": 0,
-      "stockQuantity": 0
-    }
+    product: Product =
+    {
+      
+      "id":0,
+      "name": "Enter the product Name",
+      "category":"",
+        "price": 0,
+        "imageurl": "",
+        "categoryInProduct": {
+          "category_id": 0,
+          "category": "Electronics",
+          "googleMaterialIcon": "laptop_mac",
+          "productList": []
+        },
+        "discount": 0,
+        "stockQuantity": 0
+      }
     
     dropdownData: Category[] = [];
   imageSelected = false;
