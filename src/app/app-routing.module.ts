@@ -23,50 +23,40 @@ import { SearchComponent } from './customer/search/search.component';
 import { CategoryComponent } from './customer/category/category.component';
 import { dirtycheck1Guard } from './core/services/dirtycheck1.guard';
 import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-product.component';
-import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
+
 import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
+import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
+
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-   {path:'category',component:CategoryComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'category', component: CategoryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
   { path: 'productDetails', component: ProductDetailsComponent },
   { path: 'products', component: ProComponent },
   { path: 'cart', component: CartComponent },
-  { path: '', component: ProductsComponent }, 
+  { path: '', component: ProductsComponent },
   { path: 'order', component: OrderComponent },
   { path: 'orderhistory', component: OrderhistoryComponent },
   { path: 'productsHome', component: ProductsComponent },
   { path: 'orderDetail', component: OrderDetailsComponent },
-  { path: 'signup', component: SignupComponent  ,canDeactivate  :[dirtycheck1Guard] },
-  { path: 'about', component: AboutComponent ,canDeactivate  :[dirtycheck1Guard] },
-  { path: 'Adminlogin', component: AdminDashboardComponent
-, children:[
-  { path: 'manageUser', component:ManageUserComponent },
-  {path :"manageProduct", component:ManageProductComponent},
-  {path :"manageAdmin", component:ManageAdminComponent}
+  { path: 'signup', component: SignupComponent, canDeactivate: [dirtycheck1Guard] },
+  { path: 'about', component: AboutComponent, canDeactivate: [dirtycheck1Guard] },
+  {
+    path: 'Adminlogin', component: AdminDashboardComponent
+    , children: [
+      { path: 'manageUser', component: ManageUserComponent },
+      { path: "manageProduct", component: ManageProductComponent },
+      { path: "manageAdmin", component: ManageAdminComponent }
 
-]
-},
-{path :"addproduct", component:AddProductComponent},
-{path :"viewproduct", component:ViewproductComponent},
-{path :"adduser", component:AdduserComponent},
-  
-  
+    ]
+  },
+  { path: "addproduct", component: AddProductComponent },
+  { path: "viewproduct", component: ViewproductComponent },
+  { path: "adduser", component: AdduserComponent }
 
 
-  
-
-  // {
-  //     path: 'home', component: HomeComponent, children: [
-  //     { path: '', component: NavbarComponent },
-  //     { path: 'products', component: ProComponent },
-  //     { path: 'cart', component: CartComponent },
-  //     { path: 'order', component: OrderComponent },
-  //     { path: 'orderhistory', component: OrderhistoryComponent}
-  //   ]
-  // }
 
 ]
 

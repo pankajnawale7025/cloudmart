@@ -16,7 +16,7 @@ export class ManageUserComponent {
   errmsgforadd:boolean=false;
  sccmsgforadd:boolean=false;
  upct:boolean=false;
- dtOptions: DataTables.Settings = {};
+
  constructor(private customerService: CustomerService,private router:Router) { }
   addCustomer(): void {
 
@@ -52,11 +52,7 @@ console.log("customer is :", this.customer)
     this.vct = this.vct == true ? false : true;
       this.adct=false
 
-      this.dtOptions = {
-        pagingType: 'full_numbers',
-        pageLength: 10,
-        processing: true,
-      };
+
     this.customerService.viewAllCustomer().subscribe((data) => {
       this.response = data
       this.response=this.response.responseData

@@ -29,9 +29,10 @@ import { SearchComponent } from './customer/search/search.component';
 import { CategoryComponent } from './customer/category/category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-product.component';
-import { DataTablesModule } from 'angular-datatables';
+
 import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
 import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
+
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.compon
     CategoryComponent,
     AddProductComponent,
     ViewproductComponent,
-    AdduserComponent
+    AdduserComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,7 @@ import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.compon
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    DataTablesModule
+    
   ],
 
   providers: [],

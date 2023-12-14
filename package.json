@@ -10,7 +10,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-slider/ngx-slider": "^2.0.4",
     "@angular/animations": "^17.0.6",
     "@angular/common": "^17.0.6",
     "@angular/compiler": "^17.0.6",
@@ -20,14 +19,9 @@
     "@angular/platform-browser-dynamic": "^17.0.6",
     "@angular/router": "^17.0.6",
     "angular": "^1.6.10",
-    "angular-datatables": "^17.0.0",
-    "datatables.net": "^1.13.8",
-    "datatables.net-dt": "^1.13.8",
-    "jquery": "^3.7.1",
     "list": "^2.0.19",
-    "ng5-slider": "^1.2.6",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.6.13",
+    "sweetalert2": "^11.10.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },

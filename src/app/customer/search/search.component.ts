@@ -1,6 +1,6 @@
 import { Component, OnChanges, DoCheck, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Options } from 'ng5-slider';
+
 import { NavbarService } from 'src/app/core/services/navbar.service';
 import { ProductsService } from 'src/app/core/services/products.service';
 
@@ -17,10 +17,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private aroute: ActivatedRoute, private route: Router, private productService: ProductsService, private navbarService: NavbarService) { }
 
-  priceRangeOptions: Options = {
-    floor: 0,
-    ceil: 1000,
-  };
+
 
   // Define variables to store the selected price range
   min: number = 0;

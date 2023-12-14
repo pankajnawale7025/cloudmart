@@ -23,7 +23,7 @@
         <div class="col-md-12" Style=" height: 700px;
         overflow: auto;">
             <div class="allProductdata">
-                <table class="table" border="1">
+                <table class="table">
                     <thead>
                         <tr>
                             <td class=" align-items-centre">
@@ -63,8 +63,7 @@
                             <td>{{item.price}}</td>
                             <td>{{item.categoryInProduct.category}}</td>
                             <td>{{item.stockQuantity}}</td>
-                            <td><button class="update-btn btn btn-warning" (click)="updateProduct(item)">Update</button>
-                            </td>
+                            <td><button class="update-btn btn btn-warning" (click)="updateProduct(item)">Update</button></td>
                             <td><button class="delete-btn btn btn-danger" (click)="deleteProduct(item)">Delete</button>
                             </td>
                             <td>
@@ -124,9 +123,11 @@
                         <!-- <span class="sr-only" (click)="LastPage()">Last</span> -->
                     </li>
 
-
+                    
                 </ul>
             </nav>
         </div>
     </div>
+    <button class="btn btn-primary" (click)="test()">Click me </button>
 </div>
+           
