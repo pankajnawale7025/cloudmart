@@ -110,6 +110,21 @@ downloadExcelRange(minId:number,maxId:number): Observable<Blob> {
 
 
 
+
+
+getSearchProductsInRange(searchedData:string,minId:number,maxId:number): Observable<Response> {
+  const params=new HttpParams()
+  .set('searchedData',searchedData)
+  .set('minId', minId)
+  .set('maxId', maxId)
+
+  return this.http.get<Response>(this.BASE_URL + 'getSearchProductsInRange', {params});
+}
+
+
+
+
+
 searchProducts(data:string) :Observable<Response>{
   const params=new HttpParams()
  .set('data', data)

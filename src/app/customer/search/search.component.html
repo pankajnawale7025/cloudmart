@@ -8,22 +8,24 @@
 
 <div class="container-fluid py-4">
   <div class="row">
-   <div class="col-md-1 back-btn">
-    <!-- <button class="back-btn" (click)="toHome()">back</button> -->
-    <span  (click)="toHome()"class="material-symbols-outlined">
-      arrow_back
+    <div class="col-md-1 back-btn">
+      <!-- <button class="back-btn" (click)="toHome()">back</button> -->
+      <span (click)="toHome()" class="material-symbols-outlined">
+        arrow_back
       </span>
-   </div>
-
-   <div class="col-md-11 d-flex justify-content-center">
-    <div class="col-md-5  px-3">
-      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="data">&nbsp;
     </div>
+
+    <div class="col-md-11 d-flex justify-content-center">
+      <div class="col-md-5  px-3">
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="data">&nbsp;
+      </div>
       <button class="search-btn" (click)="searchDataByEvent()">Search</button>
-   </div>
+    </div>
 
   </div>
 </div>
+
+
 
 <!-- <div class="container-fluid">
   <div class="row">
@@ -58,33 +60,80 @@
     </div>
   </div>
   </div> -->
-  
+
 <div class="mx-5">
-<div class="row">
-   
-<div class="col-md-2">
-  <h6>Select Price Range </h6>
-  <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    <input type="text" name="min" [(ngModel)]="min" id="">
-    <input type="text" name="max" [(ngModel)]="max" id="">
-     <button (click)="applyFilter()"> Apply Filter</button>
-  </div>
-</div>
-<div class="col-md-10">
-<div class="row">
-<div class="col-md-2 product-p m-2" *ngFor="let product of result">
-  <div (click)="productDetails(product.id)">
-    <img [src]="product.imageurl" alt="{{product.name}}" class="product-image">
-    <div class="product-details">
-      <h3>{{product.name}}</h3>
-      <p>{{product.category}}</p>
-      <span class="product-price">rs {{product.price}}</span>
+  <div class="row">
+
+    <div class="col-md-2">
+      <div class="d-flex">
+
+        <h6 class="px-5">Filter on search data  </h6>
+        <input
+        type="checkbox"
+        id="myCheckbox"
+        name="myCheckbox"
+        [(ngModel)]="checkboxValue"
+        class="form-check-input"
+        />
+      </div>
+      <h6 class="px-5">Select Price Range </h6>
+      <div class="slidecontainer">
+        <!-- <input type="range" min="1" max="100" value="50" class="slider" id="myRange"> -->
+        <input type="text" name="min" [(ngModel)]="min" id="">
+        <input type="text" name="max" [(ngModel)]="max" id="">
+        <button (click)="applyFilter()"> Apply Filter</button>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+       
+        <!-- <div class="col-md-2 product-p m-2" *ngFor="let product of result">
+          <div (click)="productDetails(product.id)">
+            <img [src]="product.imageurl" alt="{{product.name}}" class="product-image">
+            <div class="product-details">
+              <h3>{{product.name}}</h3>
+              <p>{{product.category}}</p>
+              <span class="product-price">rs {{product.price}}</span>
+            </div>
+          </div>
+
+        </div> -->
+      </div>
+
+
+
+
+
+      <div class="container">
+
+        <div class="row d-flex justify-content-center">
+
+          <!-- <div class="product-list d-flex"> -->
+          <div class=" col-md-2 product m-2  mb-4 " *ngFor="let product of result">
+
+            <!-- <div class="border border-dark  py-1 px-3" style="position: absolute;">
+        <h6>Save 10%</h6>
+      </div> -->
+            <div (click)="productDetails(product.id)">
+              <div class="product-img d-flex justify-content-center py-4">
+                <img [src]="product.imageurl" alt="{{product.name}}" class="product-image">
+              </div>
+              <div class="product-details p-2 px-3">
+                <h6 class="py-1">{{product.name}}</h6>
+                <!-- <p>{{product.description}}</p> -->
+                <h6 class="d-flex ">
+                  <span class="product-price">₹ {{(product.price).toFixed(2)}}</span>
+                  <del><span class="ps-3">{{(product.price +
+                      ((product.price*product.discount))/100).toFixed(2)}}</span></del>
+                  <span class="ps-3" style="color: #388E3C; font-weight: 700;"> {{product.discount}} % off </span>
+
+                </h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
-
-  </div>
 </div>
-</div>
-</div>
-</div>  

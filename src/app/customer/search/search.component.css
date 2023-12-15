@@ -41,7 +41,7 @@ justify-content: center;
   
   .product-image {
     max-width: 100%;
-    padding-left: 50px;
+ 
     height: 250px;
   }
   
@@ -60,8 +60,11 @@ justify-content: center;
   }
   img
   {
-    padding-left: 50px;
-    height: 250px;
+    padding: 5px;
+    width: 50%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  mix-blend-mode: darken;
   }
   button.search-btn {
     padding: 5px 10px;

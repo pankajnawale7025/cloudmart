@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import {Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/core/model/Product';
 import { ProductsService } from 'src/app/core/services/products.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'viewproduct',
-
+  selector: 'Viewproduct',
   templateUrl: './viewproduct.component.html',
   styleUrl: './viewproduct.component.css'
 })
@@ -47,12 +46,19 @@ export class ViewproductComponent implements OnInit {
   deleteProduct(item: Product) {
 
   }
-  updateProduct(item: Product) {
+  updateProduct(item: any) {
+    console.log("hiii")
+    // console.log("updateProduct()",item)
+    // this.router.navigate(['updateuser'])
 
   }
+  
   ascOrder(name: any) {
 
   }
+
+
+  
   descOrder(name: any) {
 
   }
@@ -61,14 +67,8 @@ export class ViewproductComponent implements OnInit {
     return value === null || value === undefined || (typeof value === 'string' && value.trim() === '');
   }
   onSearchChange(): void {
-
-    this.productService.getSpecificProduct(this.currentPageNumber-1, this.selectedPageSize).subscribe((data) => {
-      console.log("data getSpecificProduct ======================================================================>", data)
-      this.productList = data.responseData.content
-      this.totalPages = data.responseData.totalPages
-      this.currentPageNumber = 1
-    });
     console.log('Search term changed:', this.searchTerm);
+
     if (!this.isBlank(this.searchTerm)) {
 
       this.filteredProducts = this.productList.filter(product =>
@@ -77,22 +77,28 @@ export class ViewproductComponent implements OnInit {
         product.price.toString().includes(this.searchTerm)
       );
 
-      console.log("this.filteredProducts =======>",this.filteredProducts)
+      console.log("this.filteredProducts =======>", this.filteredProducts)
       this.productList = this.filteredProducts
     }
-   
+    else {
+
+      this.productService.getSpecificProduct(this.currentPageNumber - 1, this.selectedPageSize).subscribe((data) => {
+        console.log("this.filteredProducts =======>", data.responseData.contents)
+        this.productList = data.responseData.content
+        this.totalPages = data.responseData.totalPages
+
+      });
+    }
+
   }
   onPageSizeBtnClick(event: Event) {
 
     console.log(this.selectedPageSize)
     this.productService.getSpecificProduct(0, this.selectedPageSize).subscribe((data) => {
-      console.log("data getSpecificProduct ======================================================================>", data)
       this.productList = data.responseData.content
       this.totalPages = data.responseData.totalPages
       this.currentPageNumber = 1
     });
-
-
 
   }
 
@@ -105,7 +111,6 @@ export class ViewproductComponent implements OnInit {
       this.currentPageNumber = this.currentPageNumber - 1;
       console.log(this.currentPageNumber)
       this.productService.getSpecificProduct(this.currentPageNumber - 1, this.selectedPageSize).subscribe((data) => {
-        console.log("data getSpecificProduct ======================================================================>", data)
         this.productList = data.responseData.content
       });
 
@@ -116,7 +121,6 @@ export class ViewproductComponent implements OnInit {
       this.currentPageNumber = this.currentPageNumber + 1;
       console.log(this.currentPageNumber)
       this.productService.getSpecificProduct(this.currentPageNumber - 1, this.selectedPageSize).subscribe((data) => {
-        console.log("data getSpecificProduct ======================================================================>", data)
         this.productList = data.responseData.content
       });
     }
@@ -143,7 +147,6 @@ export class ViewproductComponent implements OnInit {
     else {
       if (this.totalPages > this.currentPageNumber) {
         this.productService.getSpecificProduct(this.currentPageNumber - 1, this.selectedPageSize).subscribe((data) => {
-          console.log("data getSpecificProduct ======================================================================>", data)
           this.productList = data.responseData.content
         });
 
@@ -177,7 +180,7 @@ export class ViewproductComponent implements OnInit {
 
       this.currentPageNumber = this.totalPages
       this.productService.getSpecificProduct(this.currentPageNumber - 1, this.selectedPageSize).subscribe((data) => {
-        console.log("data getSpecificProduct ======================================================================>", data)
+        // console.log("data getSpecificProduct ======================================================================>", data)
         this.productList = data.responseData.content
       });
     }
