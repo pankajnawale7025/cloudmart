@@ -47,20 +47,61 @@ export class ViewproductComponent implements OnInit {
 
   }
   updateProduct(item: any) {
-    console.log("hiii")
-    // console.log("updateProduct()",item)
-    // this.router.navigate(['updateuser'])
+    this.router.navigate(['/updateproduct'],
+    {
+      queryParams: { productId: item.id }
+    })
 
   }
   
-  ascOrder(name: any) {
+  ascOrder(columnname: string) {
+
+
+    if (Array.isArray(this.productList)) {
+      this.productList = this.productList.sort((a: any, b: any) => {
+        const columnA = a[columnname];
+        const columnB = b[columnname];
+
+        if (columnA > columnB) {
+          return 1; // Sort in descending order
+        } else if (columnA < columnB) {
+          return -1; // Sort in descending order
+        } else {
+          return 0; // No change in order
+        }
+      });
+
+      console.log("this.productList",);
+    } else {
+      console.error('content is not an array or does not exist.');
+    }
 
   }
 
 
-  
-  descOrder(name: any) {
+  descOrder(columnname: string) {
 
+    console.log(columnname);
+    console.log(this.productList);
+
+    if (Array.isArray(this.productList)) {
+      this.productList = this.productList.sort((a: any, b: any) => {
+        const columnA = a[columnname];
+        const columnB = b[columnname];
+
+        if (columnA < columnB) {
+          return 1; // Sort in descending order
+        } else if (columnA > columnB) {
+          return -1; // Sort in descending order
+        } else {
+          return 0; // No change in order
+        }
+      });
+
+      console.log(this.productList);
+    } else {
+      console.error('content is not an array or does not exist.');
+    }
   }
 
   isBlank(value: any): boolean {

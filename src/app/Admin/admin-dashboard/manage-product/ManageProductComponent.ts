@@ -157,8 +157,8 @@ export class ManageProductComponent {
 
 
   viewAllProduct() {
-
-    this.router.navigate(['/viewproduct']);
+// toward the view product component 
+   this.router.navigate(['/viewproduct']);
 
 
     this.showProductTable = this.showProductTable == true ? false : true;
@@ -316,21 +316,19 @@ export class ManageProductComponent {
   }
 
   updatePro() {
-
     console.log("Product is :", this.product);
-
-    {
-      this.categoryService.getCategoryByName("Electronics").subscribe((data) => {
-
-
-
-        console.log("Category data is===>", data)
-        this.product.categoryInProduct = data.responseData
+    {     this.categoryService.getCategoryByName("Electronics").subscribe((data) => {
+          console.log("Category data is===>", data)
+          this.product.categoryInProduct = data.responseData
       })
-
     }
-
   }
+
+
+
+
+
+
   updateProduct(data: any) {
     this.showupdateform = true;
     console.log("this.showupdateform", this.showupdateform);

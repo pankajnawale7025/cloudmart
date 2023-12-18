@@ -15,25 +15,25 @@ export class AddProductComponent implements OnInit {
 
   constructor(private productService: ProductsService, private categoryService: CategoryService, private router: Router) { }
 
-    product: Product =
+  product: Product =
     {
-      
-      "id":0,
+
+      "id": 0,
       "name": "Enter the product Name",
-      "category":"",
-        "price": 0,
-        "imageurl": "",
-        "categoryInProduct": {
-          "category_id": 0,
-          "category": "Electronics",
-          "googleMaterialIcon": "laptop_mac",
-          "productList": []
-        },
-        "discount": 0,
-        "stockQuantity": 0
-      }
-    
-    dropdownData: Category[] = [];
+      "category": "",
+      "price": 0,
+      "imageurl": "",
+      "categoryInProduct": {
+        "category_id": 0,
+        "category": "Electronics",
+        "googleMaterialIcon": "laptop_mac",
+        "productList": []
+      },
+      "discount": 0,
+      "stockQuantity": 0
+    }
+
+  dropdownData: Category[] = [];
   imageSelected = false;
   imageFile: File;
   category: Category;
@@ -100,45 +100,45 @@ export class AddProductComponent implements OnInit {
   }
   addProductInDatabase() {
 
-    if (this.product.category='Electronics') {
+    if (this.product.category = 'Electronics') {
       this.categoryService.getCategoryByName(this.product.category).subscribe((data) => {
 
         this.product.categoryInProduct = data.responseData
       })
 
     }
-console.log("Product is ===>", this.product)
-console.log("Product in   addProductInDatabase() is  ===>",this.product)
+    console.log("Product is ===>", this.product)
+    console.log("Product in   addProductInDatabase() is  ===>", this.product)
 
-      // this.productService.addProduct(this.product).subscribe((data => {
-      //   console.log("add product in database -2")
-      //   if (data.success) {
-      //     Swal.fire({
-      //       position: "center",
-      //       icon: "success",
-      //       title: "Product has been Added",
-      //       showConfirmButton: false,
-      //       timer: 1500
-      //     });
-      //   }
+    this.productService.addProduct(this.product).subscribe((data => {
+      console.log("add product in database -2")
+      if (data.success) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product has been Added",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
 
-      // }),
-      //   (error) => {
-      //     console.log(error)
-      //     console.log(error.error.errorMessage)
+    }),
+      (error) => {
+        console.log(error)
+        console.log(error.error.errorMessage)
 
-      //     Swal.fire({
-      //       position: "center",
-      //       icon: "error",
-      //       title: `Product is not saved }!`,
-      //       showConfirmButton: false,
-      //       timer: 1500
-      //     });
-      //   }
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `Product is not saved }!`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
 
-      // );
-    
-  
+    );
+
+
   }
   backToManageProduct() {
 

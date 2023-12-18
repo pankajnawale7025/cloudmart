@@ -105,7 +105,7 @@ export class SearchComponent implements OnInit {
 
     else {
 
-      console.log(" in else block  min and max is ",this.min,this.max)
+      console.log(" in else block  min and max is ", this.min, this.max)
       if (!isNaN(this.min) && !isNaN(this.max) && this.min < this.max) {
         this.productService.getSearchProductsInRange(this.data, this.min, this.max).subscribe((Response) => {
           this.result = Response.responseData

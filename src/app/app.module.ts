@@ -32,6 +32,7 @@ import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-pro
 
 import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
 import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
+import { UpdateproductComponent } from './Admin/updateproduct/updateproduct.component';
 
 
 
@@ -63,6 +64,7 @@ import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.compon
     AddProductComponent,
     ViewproductComponent,
     AdduserComponent,
+    UpdateproductComponent
   ],
   imports: [
     BrowserModule,

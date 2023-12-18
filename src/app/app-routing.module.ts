@@ -26,6 +26,7 @@ import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-pro
 
 import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
 import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
+import { UpdateproductComponent } from './Admin/updateproduct/updateproduct.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
   },
   { path: "addproduct", component: AddProductComponent },
   { path: "viewproduct", component: ViewproductComponent },
-  { path: "adduser", component: AdduserComponent }
+  { path: "adduser", component: AdduserComponent },
+  { path: "updateproduct", component: UpdateproductComponent }
 
 
 
