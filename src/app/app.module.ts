@@ -33,7 +33,11 @@ import { AddProductComponent } from './Admin/admin-dashboard/add-product/add-pro
 import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewproduct.component';
 import { AdduserComponent } from './Admin/admin-dashboard/adduser/adduser.component';
 import { UpdateproductComponent } from './Admin/updateproduct/updateproduct.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { materialize } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from './material/material.module';
+import { ViewcustomerComponent } from './Admin/admin-dashboard/viewcustomer/viewcustomer.component';
 
 
 @NgModule({
@@ -64,7 +68,8 @@ import { UpdateproductComponent } from './Admin/updateproduct/updateproduct.comp
     AddProductComponent,
     ViewproductComponent,
     AdduserComponent,
-    UpdateproductComponent
+    UpdateproductComponent,
+    ViewcustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +77,8 @@ import { UpdateproductComponent } from './Admin/updateproduct/updateproduct.comp
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    
+    BrowserAnimationsModule,
+    MaterialModule
   ],
 
   providers: [],

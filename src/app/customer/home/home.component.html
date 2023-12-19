@@ -1,8 +1,9 @@
 <router-outlet></router-outlet>
    <div class="container-fluid pt-3" style="background-color: #EFF1F5;">
     <div class="row menus d-flex justify-content-center ps-5 mb-5">
+      
     
-  
+      
       <div class="col-md-2 m-1 pb-4 d-flex align-items-center flex-column"  *ngFor="let category of categoryList">
         <div class="menu-icon p-3 px-4 mb-2" style="background-color: #d3e2ff;border-radius: 5px; cursor: pointer;" (click)="toSpecificCategory(category.category_id)" >
           <span class="material-symbols-outlined" style="color: #2465e7;">
@@ -10,7 +11,7 @@
           </span>
         </div>
         <div class="menu-text" (click)="toSpecificCategory(category.category_id)" style="cursor: pointer;">
-          <h6>{{category.category}}</h6>
+          <h6 style="font-size: larger; font-weight: 400;">{{category.category}}</h6>
         </div>  
       </div>  
 
@@ -66,3 +67,4 @@
   
 
 <app-products></app-products>
+

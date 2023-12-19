@@ -49,6 +49,8 @@ console.log("customer is :", this.customer)
 }
 
   viewCustomer(): void {
+
+  this.router.navigate(['/viewcustomer']);
     this.vct = this.vct == true ? false : true;
       this.adct=false
 

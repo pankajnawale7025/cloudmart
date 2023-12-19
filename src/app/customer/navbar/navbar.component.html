@@ -36,8 +36,9 @@
 </body> -->
 <div class="container-fluid px-5 py-3" style="background-color: #EFF1F5;">
   <div class="row">
-    <div class="col-md-3" [routerLink]="'home'"    [routerLinkActive]="'active'"   (click)="refreshProductList()" style="cursor: pointer;">
+    <div class="col-md-3  " [routerLink]="'home'"    [routerLinkActive]="'active'"   (click)="refreshProductList()" style="cursor: pointer;">
       <h5>CloudMart</h5>
+      
     </div>
     <div class="col-md-6 d-flex">
       <input class="form-control mx-2" type="text" placeholder="Search..." [(ngModel)]="searchedData">
