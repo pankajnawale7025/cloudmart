@@ -36,6 +36,16 @@ export class CustomerService {
   }
 
 
+
+
+  getCustomerById(customerId:number): Observable<Response> {
+    const params = new HttpParams()
+      .set('customerId', customerId)
+    return this.http.get<Response>(this.BASE_URL + 'getCustomerById', ({ params }))
+  }
+
+
+
 validCustomer():boolean
 {
   //console.log(this.loggedInCustomer.name);

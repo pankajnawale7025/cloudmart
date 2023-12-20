@@ -33,16 +33,16 @@
     </ng-container>
     <ng-container matColumnDef="Orders">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Orders</th>
-        <td mat-cell *matCellDef="let row">{{ row.orders }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.customerOrderList.length }}</td>
     </ng-container>
     <ng-container matColumnDef="Update">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Update</th>
-        <td mat-cell *matCellDef="let row"><button>Update</button></td>
+        <td mat-cell *matCellDef="let row"><button mat-raised-button style="background-color: #dddddd;"  (click)="updateCustomer(row.id)">Update</button></td>
     </ng-container>
 
     <ng-container matColumnDef="Delete">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
-        <td mat-cell *matCellDef="let row"><button>Delete</button></td>
+        <td mat-cell *matCellDef="let row"><button mat-raised-button (click)="deletCustomer(row.id)">Delete</button></td>
     </ng-container>
 
     <!-- Add more columns as needed.3    -->

@@ -38,6 +38,8 @@ import { materialize } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialModule } from './material/material.module';
 import { ViewcustomerComponent } from './Admin/admin-dashboard/viewcustomer/viewcustomer.component';
+import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
+import { AdminNavbarComponent } from './Admin/admin-home/admin-navbar/admin-navbar.component';
 
 
 @NgModule({
@@ -69,7 +71,9 @@ import { ViewcustomerComponent } from './Admin/admin-dashboard/viewcustomer/view
     ViewproductComponent,
     AdduserComponent,
     UpdateproductComponent,
-    ViewcustomerComponent
+    ViewcustomerComponent,
+    AdminHomeComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,

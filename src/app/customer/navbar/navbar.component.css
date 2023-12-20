@@ -80,7 +80,7 @@ button.search-btn:hover {
 .badge:after{
     content:attr(value);
     font-size:12px;
-    color: #fff;
+    color: #eff1f5 !important;
     background: #FD8801;
     
     border-radius:50%;

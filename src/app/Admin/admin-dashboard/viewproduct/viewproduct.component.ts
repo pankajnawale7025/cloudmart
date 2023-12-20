@@ -1,3 +1,4 @@
+import { coerceStringArray } from '@angular/cdk/coercion';
 import {Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/core/model/Product';
@@ -44,6 +45,24 @@ export class ViewproductComponent implements OnInit {
 
 
   deleteProduct(item: Product) {
+    this.productService.deleteProduct(item).subscribe((data1) => {
+     if(data1.success) 
+     {
+      
+
+      this.productService.getSpecificProduct(this.currentPageNumber - 1, this.selectedPageSize).subscribe((data) => {
+        console.log("this.filteredProducts =======>", data.responseData.contents)
+        this.productList = data.responseData.content
+        this.totalPages = data.responseData.totalPages
+
+      });
+
+     }
+    },
+
+      error => {
+        console.log(" error.error is ", error.error.success);
+      });
 
   }
   updateProduct(item: any) {

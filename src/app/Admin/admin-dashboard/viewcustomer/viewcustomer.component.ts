@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { coerceStringArray } from '@angular/cdk/coercion';
+import { ProductsService } from 'src/app/core/services/products.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { coerceStringArray } from '@angular/cdk/coercion';
 export class ViewcustomerComponent implements OnInit {
 
   dataSource: any;
- pageSizeOption:number[];
+  pageSizeOption: number[];
   data = [
     { name: 'John', age: 30, city: 'New York' }
 
@@ -47,7 +48,7 @@ export class ViewcustomerComponent implements OnInit {
       this.dataSource.sort = this.sort;
       console.log(this.dataSource.paginator)
       this.dataSource.paginator = this.paginator;
-               this.pageSizeOption=this.numberArray(response.responseData.length);
+      this.pageSizeOption = this.numberArray(response.responseData.length);
     },
       (error) => {
 
@@ -67,5 +68,57 @@ export class ViewcustomerComponent implements OnInit {
       .filter((el) => el >= 5 && (el % 5 === 0 || el === num)) // include elements >= 5 and multiples of 5 or the last element
       .map((el, i, arr) => (i === arr.length - 1 && el % 5 !== 0) ? el : el); // add 5 to the last element if it's not a multiple of 5
   }
+
+
+  updateCustomer(customerId: number) {
+    
+    console.log("customerId in up[dateCistomer is ===>",customerId)
+    this.router.navigate(['about'], {
+      queryParams: { customerId: customerId }
+    })
+  }
+  deletCustomer(id:number)
+  {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.customerService.deleteCustomer(id).subscribe((data)=>{
+       //   alert("customer deleted successfully")
+
+       
+       
+    this.customerService.viewAllCustomer().subscribe((response) => {
+      console.log("response.responseData===>", response.responseData)
+      this.data = response.responseData
+      this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.sort = this.sort;
+      console.log(this.dataSource.paginator)
+      this.dataSource.paginator = this.paginator;
+      this.pageSizeOption = this.numberArray(response.responseData.length);
+    },
+      (error) => {
+
+        Swal.fire("Problem is there")
+      }
+    )
+          })
+        
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+    
+  }
+
 
 }

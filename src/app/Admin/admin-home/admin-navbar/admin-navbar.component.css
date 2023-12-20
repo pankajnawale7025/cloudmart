@@ -1,0 +1,45 @@
+.nav-bar {
+    height: 100vh;
+    background-color: #ffffff;
+   
+ 
+    .logo img{
+        height: 45px;
+    }
+ 
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+ 
+        li {
+            display: flex;
+            align-items: center;
+ 
+            img{
+                height: 18px;
+            }
+        }
+    }
+}
+object {
+    padding: 0px;
+    margin: 0px;
+    height: 37px;
+    width: 150px;
+}
+ 
+header li a {
+    color: #353536;
+    width: 100%;
+    font-family: 'Poppins';
+    font-weight: 400;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+ 
+.active {
+    background-color: #F3F7FD;
+    border-right: 2px solid #3559E9;
+}
+ 

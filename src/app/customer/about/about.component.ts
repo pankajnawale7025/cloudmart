@@ -1,6 +1,7 @@
+import { coerceStringArray } from '@angular/cdk/coercion';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { sortedIndexOf } from 'lodash';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/model/Object-model';
@@ -13,26 +14,59 @@ import Swal from 'sweetalert2';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit,ComponentCanDeactive {
+export class AboutComponent implements OnInit, ComponentCanDeactive {
 
-  constructor(private customerService: CustomerService, private router: Router) { }
-  isDirty=false;
+  constructor(private customerService: CustomerService, private router: Router,private aroute : ActivatedRoute) { }
+  isDirty = false;
   customer: Customer
   result: any;
   myForm: FormGroup;
 
 
-  canDeactivate () : boolean {
-    return  !this.isDirty;
-    }
-
-
-    
+  canDeactivate(): boolean {
+    return !this.isDirty;
+  }
 
   ngOnInit(): void {
+
+
+    console.log("this.customerService.loggedInCustomer =========>",this.customerService.loggedInCustomer.id )
+    if (this.customerService.loggedInCustomer.id!=undefined)
+    {
+      
     this.customer = { ...this.customerService.loggedInCustomer };
   }
+    
+    else {
+console.log("in else block ")
   
+      this.aroute.queryParams.subscribe(params => {
+        const customerId = params['customerId'];
+console.log("customerId===>", customerId)
+
+       console.log("customerId through activated route is ====>", customerId)
+            
+       this.customerService.getCustomerById(customerId).subscribe((response)=>{
+        console.log("Response is ===> ",response)
+
+        this.customer =response.responseData
+        console.log("this.customer is ",this.customer)
+
+       },
+       (error=>{
+        Swal.fire("We are facing some internal isssue")
+       }))
+      
+      
+      
+      })
+      console.log("hiii")
+
+
+    }
+
+  }
+
   dataVerification: boolean;
   updateCustomerInDatabase() {
     if (
@@ -73,8 +107,8 @@ export class AboutComponent implements OnInit,ComponentCanDeactive {
             this.customer = { ...data.responseData };
             this.customerService.loggedInCustomer = data.responseData
 
-        //    console.log("data.responseDatais ===>", data.responseData)
-         //   console.log("this.customerService.loggedInCustomer is ===>", this.customerService.loggedInCustomer)
+            //    console.log("data.responseDatais ===>", data.responseData)
+            //   console.log("this.customerService.loggedInCustomer is ===>", this.customerService.loggedInCustomer)
             if (data.success) {
 
 
@@ -116,7 +150,7 @@ export class AboutComponent implements OnInit,ComponentCanDeactive {
         }
         else if (result.isDismissed) {
           this.customer = { ...this.customerService.loggedInCustomer };
-        //  console.log("User clicked on cancel button");
+          //  console.log("User clicked on cancel button");
         }
       });
     }
@@ -153,7 +187,19 @@ export class AboutComponent implements OnInit,ComponentCanDeactive {
 
   }
 
+  backToManageProduct() {
 
+    if(this.customerService.loggedInCustomer.id==undefined)
+{
+  this.router.navigate(['viewcustomer']);
+
+}
+  else
+  {
+    this.router.navigate(['home']);
+
+  }
+  }
 
 
 }
