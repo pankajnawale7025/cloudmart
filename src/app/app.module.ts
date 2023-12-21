@@ -40,6 +40,7 @@ import { MaterialModule } from './material/material.module';
 import { ViewcustomerComponent } from './Admin/admin-dashboard/viewcustomer/viewcustomer.component';
 import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
 import { AdminNavbarComponent } from './Admin/admin-home/admin-navbar/admin-navbar.component';
+import { DashboardComponent } from './Admin/admin-home/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { AdminNavbarComponent } from './Admin/admin-home/admin-navbar/admin-navb
     UpdateproductComponent,
     ViewcustomerComponent,
     AdminHomeComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

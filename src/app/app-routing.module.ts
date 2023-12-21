@@ -29,6 +29,7 @@ import { ViewproductComponent } from './Admin/admin-dashboard/viewproduct/viewpr
 import { UpdateproductComponent } from './Admin/updateproduct/updateproduct.component';
 import { ViewcustomerComponent } from './Admin/admin-dashboard/viewcustomer/viewcustomer.component';
 import { AdminHomeComponent } from './Admin/admin-home/admin-home.component';
+import { DashboardComponent } from './Admin/admin-home/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -60,9 +61,12 @@ const routes: Routes = [
   { path: "adduser", component: AdduserComponent },
   { path: "updateproduct", component: UpdateproductComponent },
   { path: "viewcustomer", component: ViewcustomerComponent },
-  { path: "admin-home", component: AdminHomeComponent }
+  { path: "admin-home", component: AdminHomeComponent ,children :
+[
+  {path: "",component:DashboardComponent}
+]}
 
-
+ 
 
 ]
 
