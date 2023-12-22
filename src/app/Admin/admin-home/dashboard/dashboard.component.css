@@ -1,3 +1,8 @@
+h3{
+    margin: 0px;
+    padding: 0px;
+}
+
 .card
 {
     border: 4px solid #fff;
@@ -11,3 +16,8 @@
 .rs{
     font-weight:500;
 }   
+.row-2-card
+{
+    border-right:solid #fff  2px;
+
+}
