@@ -88,15 +88,23 @@ export class UpdateproductComponent implements OnInit {
   }
 
   backToManageProduct() {
-    this.router.navigate(['viewproduct']);
+    this.router.navigate(['admin-home/viewproduct']);
   }
   updatePro() {
     console.log("hii")
     this.productService.updateProduct(this.product).subscribe((data)=>{
-    
-    
-    console.log(data)
-    },
+  
+  if(data.success)
+  {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "product updated successfully",
+      showConfirmButton: false,
+      timer: 1000
+    });
+  }
+  },
     (error)=>{
 
       Swal.fire({

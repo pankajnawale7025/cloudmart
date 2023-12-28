@@ -56,9 +56,9 @@ export class ViewcustomerComponent implements OnInit {
       }
     )
   }
-  backToManageProduct() {
-    console.log("hii")
-    this.router.navigate(['/Adminlogin/manageUser']);
+  AddCustomer() {
+ 
+    this.router.navigate(['admin-home/adduser']);
   }
 
   numberArray(num: number): number[] {

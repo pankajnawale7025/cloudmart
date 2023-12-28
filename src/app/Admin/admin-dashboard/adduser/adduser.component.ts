@@ -15,7 +15,7 @@ constructor(private router:Router){}
 
 backToManageProduct() {
 
-  this.router.navigate(['/Adminlogin/manageUser']);
+  this.router.navigate(['admin-home/viewcustomer']);
 }
 
 

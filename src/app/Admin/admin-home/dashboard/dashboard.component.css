@@ -21,3 +21,21 @@ h3{
     border-right:solid #fff  2px;
 
 }
+img{
+
+    width: 70%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  mix-blend-mode: darken;
+  overflow: scroll;
+  } 
+  .title
+  {
+    font-weight:500;
+     font-size: 20px;
+  }
+  .card-top-sale
+{
+   border-bottom: 1px solid #fff;
+    
+}

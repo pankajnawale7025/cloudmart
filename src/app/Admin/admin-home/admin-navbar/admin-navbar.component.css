@@ -1,3 +1,7 @@
+h3{
+    padding: 0px;
+    margin: 0px;
+}
 .nav-bar {
     height: 100vh;
     background-color: #ffffff;
@@ -40,6 +44,14 @@ header li a {
  
 .active {
     background-color: #F3F7FD;
-    border-right: 2px solid #3559E9;
+border-bottom: blue;
+    
 }
- 
+.options{
+    font-size: 20px;
+    font-weight: 00;
+}
+a{
+    font-size: 20px;
+    font-weight: 600;
+}

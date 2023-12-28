@@ -7,7 +7,7 @@
                     <h1 class="rs"> Rs : 12456 </h1>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
-                    <span class="material-symbols-outlined" style="color: #2f87ef;font-size: 40px;">
+                    <span class="material-symbols-rounded" style="color: #2f87ef;font-size: 40px;">
                         monetization_on
                     </span>
                 </div>
@@ -26,13 +26,11 @@
         <div class=" card col-md-3  me-4">
             <div class=" row pl-3 pt-3 pr-3">
                 <div class="col-md-6">
-
                     <h3 class="card-heading">Total Orders</h3>
                     <h1 class="rs"> 20 </h1>
-
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
-                    <span class="material-symbols-outlined" style="color: #2dbf3c; font-size: 40px;">
+                    <span class="material-symbols-rounded" style="color: #2dbf3c; font-size: 40px;">
                         shopping_cart
                     </span>
                 </div>
@@ -54,7 +52,7 @@
                     <h1 class="rs"> 385223 </h1>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
-                    <span class="material-symbols-outlined" style="color: #a263f1; font-size: 40px;">
+                    <span class="material-symbols-rounded" style="color: #a263f1; font-size: 40px;">
                         group
                     </span>
                 </div>
@@ -71,23 +69,19 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
     <div class="card mb-2 p-3 mt-4">
         <div class="row">
             <div class="col-md-2">
 
-                <h3 class="" style="font-weight:500; font-size: 20px;"> Sale Analytics
+                <h3 class="title" style="font-weight:500; font-size: 20px;"> Sale Analytics
                 </h3>
             </div>
             <div class="col-md-10 d-flex justify-content-end align-items-center">
                 <div class="sort">
                     <h3 class="card-heading me-2" style="padding: 0;margin: 0px;">Sort by </h3>
+                </div>
+                <div class="mx-2">
+                    <input type="date" class="form-control " style="border-radius: 10px;">
                 </div>
                 <div>
                     <input type="date" class="form-control " style="border-radius: 10px;">
@@ -125,7 +119,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <canvas #chart id="MyChart">{{ chart }}</canvas>
+                
+                <canvas id="myChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -137,20 +132,45 @@
 
 
 
-
-
-
-
-
-
-
-
     <div class="row mb-2">
-        <div class="col-md-5">
-            Top Orders
+        <div class="card col-md-4 ">
+            <div class="  row">
+                <div class=" col-md-3 d-flex justify-content-center">
+                    <h6 class="title">Top Orders</h6>
+                </div>
+            </div>
+            <!-- Use ng for to show the list of products  -->
+            <div class="card-top-sale row p-1">
+
+
+                <div class="col-md-3">
+                    <img src="https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61dMer9YV9L._AC_SY175_.jpg"
+                        alt="">
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div>
+                        <div>
+                            <h3 style=" font-size:16; font-weight: 500;">Name of product</h3>
+                        </div>
+                        <div>
+                            <h5 class="ms-3" style="font-size:12; font-weight: 500;">25 </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-end">
+                    <h3 style=" font-size:16; font-weight: 500;">Rs 45123</h3>
+                </div>
+
+            </div>
         </div>
-        <div class="col-md-7">
-            Recent Orders
+        <div class=" card col-md-7 ms-4">
+
+            <div class="col-md-12">
+                <h6 class="title"> Recent Orders</h6>
+            </div>
+            <div class="col-md-12">
+                Recent Order 10 orders
+            </div>
         </div>
     </div>
 </div>

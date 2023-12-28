@@ -6,27 +6,73 @@
         <nav>
             <ul>
                 <li routerLinkActive="active">
-                    <img class="px-3" src="../../../../../assets/icons/dashboard-icon.svg" alt="">
-                    <!-- <object data="../../../../../assets/icons/dashboard-icon.svg" type=""></object> -->
-                    <a class="py-2" routerLink="/admin/home/dashboard" routerLinkActive="active">Dashboard</a>
+
+                    <div class="row d-flex align-items-center">
+
+                        <div class="col-md-4">
+                            <span class="material-symbols-rounded" style="font-size: 30px;">
+                                home
+                            </span>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-start">
+                            <a class="py-2" routerLink="/admin-home" routerLinkActive="active">
+                                <h3 class="options"> Dashboard</h3>
+                            </a>
+                        </div>
+                    </div>
                 </li>
                 <li routerLinkActive="active">
-                    <img class="px-3" src="../../../../../assets/icons/trips-outline-icon.svg" alt="">
-                    <a class="py-2" routerLink="/admin/home/trips" routerLinkActive="active">Product</a>
+
+                    <div class="row d-flex align-items-center">
+
+                        <div class="col-md-4">
+                            <span class="material-symbols-rounded" style="font-size: 30px;">
+                                package_2
+                                </span>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-start">
+                            <a class="py-2" routerLink="/admin-home/viewproduct" routerLinkActive="active">
+                                <h3 class="options"> Product</h3>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li routerLinkActive="active">
+
+                    <div class="row d-flex align-items-center">
+
+                        <div class="col-md-4">
+                            <span class="material-symbols-rounded" style="font-size: 30px;">
+                                group
+                            </span>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-start">
+                            <a class="py-2" routerLink="/admin-home/viewcustomer" routerLinkActive="active">
+                                <h3 class="options"> Customer</h3>
+                            </a>
+                        </div>
+                    
+                    </div>
+                    
                 </li>
                 <li routerLinkActive="active">
-                    <img class="px-3" src="../../../../../assets/icons/drivers-icon.svg" alt="">
-                    <a class="py-2" routerLink="/admin/home/drivers" routerLinkActive="active">Customer</a>
-                </li>
-                <li routerLinkActive="active">
-                    <img class="px-3" src="../../../../../assets/icons/riders-icon.svg" alt="">
-                    <a class="py-2" routerLink="/admin/home/riders" routerLinkActive="active">Order</a>
-                </li>
-                <li routerLinkActive="active">
-                    <!-- <a class="py-2" >Reports</a> -->
+
+                    <div class="row d-flex align-items-center">
+
+                        <div class="col-md-4">
+                            <span class="material-symbols-rounded" style="font-size: 30px;">
+                                orders
+                            </span>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-start">
+                            <a class="py-2" routerLink="/dashboard" routerLinkActive="active">
+                                <h3 class="options"> Order</h3>
+                            </a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </nav>
     </header>
 </div>
- 

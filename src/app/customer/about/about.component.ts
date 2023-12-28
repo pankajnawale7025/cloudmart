@@ -191,7 +191,7 @@ console.log("customerId===>", customerId)
 
     if(this.customerService.loggedInCustomer.id==undefined)
 {
-  this.router.navigate(['viewcustomer']);
+  this.router.navigate(['/admin-home/viewcustomer']);
 
 }
   else

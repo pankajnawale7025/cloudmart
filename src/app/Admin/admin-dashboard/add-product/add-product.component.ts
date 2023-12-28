@@ -142,7 +142,7 @@ export class AddProductComponent implements OnInit {
   }
   backToManageProduct() {
 
-    this.router.navigate(['/Adminlogin/manageProduct']);
+    this.router.navigate(['admin-home/viewproduct']);
   }
 
 }

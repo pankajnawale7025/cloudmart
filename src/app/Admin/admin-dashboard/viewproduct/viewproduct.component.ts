@@ -66,7 +66,7 @@ export class ViewproductComponent implements OnInit {
 
   }
   updateProduct(item: any) {
-    this.router.navigate(['/updateproduct'],
+    this.router.navigate(['/admin-home/updateproduct'],
     {
       queryParams: { productId: item.id }
     })
@@ -252,6 +252,12 @@ export class ViewproductComponent implements OnInit {
       .map((el, i) => i) // provide an array consisting of index
       .filter((el) => el >= 5 && (el % 5 === 0 || el === num)) // include elements >= 5 and multiples of 5 or the last element
       .map((el, i, arr) => (i === arr.length - 1 && el % 5 !== 0) ? el : el); // add 5 to the last element if it's not a multiple of 5
+  }
+
+
+
+  addProduct(){
+    this.router.navigate(['/admin-home/addproduct'])
   }
 
 }

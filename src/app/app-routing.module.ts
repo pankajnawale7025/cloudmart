@@ -60,10 +60,20 @@ const routes: Routes = [
   { path: "viewproduct", component: ViewproductComponent },
   { path: "adduser", component: AdduserComponent },
   { path: "updateproduct", component: UpdateproductComponent },
-  { path: "viewcustomer", component: ViewcustomerComponent },
   { path: "admin-home", component: AdminHomeComponent ,children :
-[
-  {path: "",component:DashboardComponent}
+  [
+    {path: "",component:DashboardComponent},
+    { path: "viewproduct", component: ViewproductComponent },
+    { path: "addproduct", component: AddProductComponent },
+    { path: "updateproduct", component: UpdateproductComponent },
+    
+    
+     { path: "viewcustomer", component: ViewcustomerComponent },
+   { path: "adduser", component: AdduserComponent },
+ 
+
+
+
 ]}
 
  

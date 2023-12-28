@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     if (this.UserName == 'Admin') {
       this.navbarService.signUp = false;
-      this.router.navigate(['/Adminlogin'])
+      this.router.navigate(['/admin-home'])
     }
     else {
       //console.log('username is :', this.UserName)
